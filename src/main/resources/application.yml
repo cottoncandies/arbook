@@ -5,15 +5,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/arbook
     username: postgres
     password: postgres
-  mvc:
-    view:
-      prefix: /
-      suffix: .html
 #server
 server:
   port: 8989
   servlet:
     context-path: /arbook
-
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
 
 
