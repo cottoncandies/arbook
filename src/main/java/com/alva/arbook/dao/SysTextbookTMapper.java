@@ -1,6 +1,8 @@
 package com.alva.arbook.dao;
 
 import com.alva.arbook.entity.SysTextbookT;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface SysTextbookTMapper {
@@ -43,4 +45,8 @@ public interface SysTextbookTMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(SysTextbookT record);
+
+    List<SysTextbookT> selectByCustom(@Param("subject") String subject, @Param("publish") String publish, @Param("section") String section, @Param("grade") String grade, @Param("offset") int offset, @Param("limit") int limit);
+
+    Long count(@Param("subject") String subject, @Param("publish") String publish, @Param("section") String section, @Param("grade") String grade);
 }

@@ -44,4 +44,6 @@ public interface AppKeyTService {
      * @mbg.generated
      */
     int updateByPrimaryKey(AppKeyT record);
+
+    AppKeyT selectByAccessKey(String accessKey);
 }

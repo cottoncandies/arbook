@@ -1,6 +1,7 @@
 package com.alva.arbook.service;
 
 import com.alva.arbook.entity.SysTextbookT;
+import com.alva.arbook.vo.TextBookVO;
 
 import java.util.List;
 
@@ -44,4 +45,8 @@ public interface SysTextbookTService {
      * @mbg.generated
      */
     int updateByPrimaryKey(SysTextbookT record);
+
+    List<TextBookVO> selectByCustom(String subject, String publish, String section, String grade, int page, int rows);
+
+    Long count(String subject, String publish, String section, String grade);
 }

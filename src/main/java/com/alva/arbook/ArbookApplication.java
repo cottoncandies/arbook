@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.alva.arbook.dao")
 public class ArbookApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ArbookApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ArbookApplication.class, args);
+    }
 }

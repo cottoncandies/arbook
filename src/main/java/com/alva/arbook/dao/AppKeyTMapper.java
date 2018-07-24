@@ -43,4 +43,6 @@ public interface AppKeyTMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(AppKeyT record);
+
+    AppKeyT selectByAccessKey(String accessKey);
 }
