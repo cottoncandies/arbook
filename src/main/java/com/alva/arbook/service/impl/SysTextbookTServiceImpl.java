@@ -29,7 +29,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
 
     @Override
     public SysTextbookT selectByPrimaryKey(String szId) {
-        return null;
+        return sysTextbookTMapper.selectByPrimaryKey(szId);
     }
 
 
