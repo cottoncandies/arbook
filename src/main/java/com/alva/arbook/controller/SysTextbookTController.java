@@ -7,6 +7,7 @@ import com.alva.arbook.vo.TextBookVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,34 +30,43 @@ public class SysTextbookTController {
     @Autowired
     private AppKeyTService appKeyTService;
 
-
-    //String ak,授权Key
-    // String sub,学科
-    // String pub,出版社
-    // String s,学段：小学，初中，高中
-    // String g,年级
-    // int p, 页码
-    // int sz 分页大小
-
     @RequestMapping("/GetIndex")
     @ResponseBody
-    public Map GetIndex(String ak, String sub, String pub, String s, String g, int p, int sz) {
+    public Map GetIndex(String accessKey, String subject, String publish, String section, String grade, @RequestParam("page") int page, @RequestParam("limit") int limit) {
 
         Map<String, Object> map = new HashMap<>();
 
         //判断授权Key是否合法
-        if (appKeyTService.selectByAccessKey(ak) != null) {
-            List<TextBookVO> textBookVOList = sysTextbookTService.selectByCustom(sub, pub, s, g, p, sz);
+        if (appKeyTService.selectByAccessKey(accessKey) != null) {
+            List<TextBookVO> textBookVOList = sysTextbookTService.selectByCustom(subject, publish, section, grade, page, limit);
 
-            map.put("result", 0);
-            map.put("message", "提交成功");
-            map.put("total", sysTextbookTService.count(sub, pub, s, g));
-            map.put("length", textBookVOList.size());
+            map.put("code", 0);//查询状态
+            map.put("msg", "提交成功");//消息提示
+            map.put("count", sysTextbookTService.countByCustomQuery(subject, publish, section, grade));//查询总数
+            //map.put("length", textBookVOList.size());//当前记录数
             map.put("data", textBookVOList);
         } else {
             map.put("result", -1);
             map.put("message", "提交失败");
         }
+        return map;
+    }
+
+    @RequestMapping("/GetAll")
+    @ResponseBody
+    public Map GetIndex(@RequestParam("page") int p, @RequestParam("limit") int sz) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        //判断授权Key是否合法
+        List<TextBookVO> textBookVOList = sysTextbookTService.selectAll(p, sz);
+
+        map.put("code", 0);
+        map.put("msg", "提交成功");
+        map.put("count", sysTextbookTService.countAllTextBook());
+        //map.put("length", textBookVOList.size());
+        map.put("data", textBookVOList);
+
         return map;
     }
 
@@ -93,7 +103,7 @@ public class SysTextbookTController {
     }
 
     //文件下载相关代码
-    @RequestMapping("/download")
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
     public String downloadFile(HttpServletRequest request, HttpServletResponse response, String ak, @RequestParam("id") String bookId) {
         //判断授权Key是否合法
         if (appKeyTService.selectByAccessKey(ak) != null) {
@@ -106,9 +116,9 @@ public class SysTextbookTController {
                 if (file.exists()) {
                     response.setContentType("application/octet-stream");
                     try {
-                        response.addHeader("Content-Disposition", "attachment;fileName="+ URLEncoder.encode(fileName,"UTF-8"));// 设置文件名
+                        response.addHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));// 设置文件名
                         response.addHeader("Content-Length", String.valueOf(file.length()));
-                        response.addHeader("File-Name", URLEncoder.encode(fileName,"UTF-8"));
+                        response.addHeader("File-Name", URLEncoder.encode(fileName, "UTF-8"));
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }

@@ -34,8 +34,23 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
 
 
     @Override
-    public List<SysTextbookT> selectAll() {
-        return null;
+    public List<TextBookVO> selectAll(Integer page, Integer rows) {
+        List<SysTextbookT> sysTextbookTS = sysTextbookTMapper.selectAll((page - 1) * rows, rows);
+        //转化为VO
+        List<TextBookVO> textBookVOList = new ArrayList<>();
+        for (SysTextbookT sysTextbookT : sysTextbookTS) {
+            TextBookVO textBookVO = new TextBookVO();
+            textBookVO.setId(sysTextbookT.getSzId());
+            textBookVO.setCaption(sysTextbookT.getSzCaption());
+            textBookVO.setCover(sysTextbookT.getSzCover());
+            textBookVO.setEdition(sysTextbookT.getSzEdition());
+            textBookVO.setGrade(sysTextbookT.getSzGrade());
+            textBookVO.setMd5(sysTextbookT.getSzMd5());
+            textBookVO.setSection(sysTextbookT.getSzSection());
+            textBookVO.setSize(sysTextbookT.getNgSize());
+            textBookVOList.add(textBookVO);
+        }
+        return textBookVOList;
     }
 
     @Override
@@ -66,7 +81,12 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     }
 
     @Override
-    public Long count(String subject, String publish, String section, String grade) {
-        return sysTextbookTMapper.count(subject,publish,section,grade);
+    public Long countByCustomQuery(String subject, String publish, String section, String grade) {
+        return sysTextbookTMapper.countByCustomQuery(subject, publish, section, grade);
+    }
+
+    @Override
+    public Long countAllTextBook() {
+        return sysTextbookTMapper.countAllTextBook();
     }
 }

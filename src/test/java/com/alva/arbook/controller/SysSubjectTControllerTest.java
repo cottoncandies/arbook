@@ -31,7 +31,7 @@ public class SysSubjectTControllerTest {
 //        Long count = sysTextbookTService.count();
 //        System.out.println(count);
 
-        List<TextBookVO> textBookVOList = sysTextbookTService.selectByCustom("语文", "人民教育出版社", "初中", "七年级", 1, 2);
+        List<TextBookVO> textBookVOList = sysTextbookTService.selectByCustom("语文", "人民教育出版社",null, "十年级", 1, 10);
         System.out.println(textBookVOList.size());
     }
 }
