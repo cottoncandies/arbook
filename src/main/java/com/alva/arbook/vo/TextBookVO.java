@@ -92,4 +92,20 @@ public class TextBookVO {
     public void setSize(Long size) {
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        return "TextBookVO{" +
+                "id='" + id + '\'' +
+                ", caption='" + caption + '\'' +
+                ", cover='" + cover + '\'' +
+                ", edition='" + edition + '\'' +
+                ", section='" + section + '\'' +
+                ", grade='" + grade + '\'' +
+                ", subject='" + subject + '\'' +
+                ", publish='" + publish + '\'' +
+                ", md5='" + md5 + '\'' +
+                ", size=" + size +
+                '}';
+    }
 }

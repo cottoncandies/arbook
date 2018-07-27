@@ -30,9 +30,15 @@ public class SysTextbookTController {
     @Autowired
     private AppKeyTService appKeyTService;
 
+
+    @RequestMapping("/demo")
+    public String demo() {
+        return "/userdemo.html";
+    }
+
     @RequestMapping("/GetIndex")
     @ResponseBody
-    public Map GetIndex(String accessKey, String subject, String publish, String section, String grade, @RequestParam("page") int page, @RequestParam("limit") int limit) {
+    public Map GetIndex(@RequestParam("ak") String accessKey, String subject, String publish, String section, String grade, @RequestParam("page") int page, @RequestParam("limit") int limit) {
 
         Map<String, Object> map = new HashMap<>();
 
@@ -46,8 +52,8 @@ public class SysTextbookTController {
             //map.put("length", textBookVOList.size());//当前记录数
             map.put("data", textBookVOList);
         } else {
-            map.put("result", -1);
-            map.put("message", "提交失败");
+            map.put("code", -1);
+            map.put("msg", "提交失败");
         }
         return map;
     }

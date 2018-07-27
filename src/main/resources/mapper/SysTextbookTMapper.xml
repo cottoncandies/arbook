@@ -151,16 +151,16 @@
         LEFT JOIN sys_publishing_t publish
         ON publish.sz_id = textbook.sz_pub_id
         <where>
-            <if test="subject != null">
+            <if test="subject != null and subject !='' ">
                 subject.sz_caption=#{subject,jdbcType=VARCHAR}
             </if>
-            <if test="publish != null">
+            <if test="publish != null and publish !=''">
                 AND publish.sz_caption=#{publish,jdbcType=VARCHAR}
             </if>
-            <if test="section != null">
+            <if test="section != null and section !=''">
                 AND textbook.sz_section=#{section,jdbcType=VARCHAR}
             </if>
-            <if test="grade != null">
+            <if test="grade != null and grade !=''">
                 AND textbook.sz_grade=#{grade,jdbcType=VARCHAR}
             </if>
         </where>
