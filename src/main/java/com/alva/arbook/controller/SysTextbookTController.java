@@ -7,18 +7,19 @@ import com.alva.arbook.vo.TextBookVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 @Controller
 @RequestMapping("/ApiV1")
@@ -79,10 +80,12 @@ public class SysTextbookTController {
     // 单文件上传
     @RequestMapping("/upload")
     @ResponseBody
-    public String upload(@RequestParam("file") MultipartFile file) {
+    public Map upload(@RequestParam("file") MultipartFile file) {
+        Map<String, Object> map = new HashMap<>();
         try {
             if (file.isEmpty()) {
-                return "文件为空";
+                map.put("msg", "文件为空");
+                return map;
             }
             // 获取文件名
             String fileName = file.getOriginalFilename();
@@ -99,60 +102,67 @@ public class SysTextbookTController {
                 dest.getParentFile().mkdirs();// 新建文件夹
             }
             file.transferTo(dest);// 文件写入
-            return "上传成功";
+            map.put("msg", "上传成功");
+            return map;
         } catch (IllegalStateException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "上传失败";
+        map.put("msg", "上传失败");
+        return map;
     }
 
-    //文件下载相关代码
-    @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public String downloadFile(HttpServletRequest request, HttpServletResponse response, String ak, @RequestParam("id") String bookId) {
+    @RequestMapping("/download")
+    @ResponseBody
+    public Map contextLoads(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws Exception {
+        Map<String, Object> map = new HashMap<>();
         //判断授权Key是否合法
         if (appKeyTService.selectByAccessKey(ak) != null) {
+
             SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
-            String fileName = sysTextbookT.getSzCaption();// 设置文件名
+            String fileName = sysTextbookT.getSzCaption();// 查询文件名
+
             if (fileName != null) {
                 //设置文件路径
-                String realPath = sysTextbookT.getSzStore();// 设置文件下载路径
+                String realPath = sysTextbookT.getSzStore();// 查询文件的存放路径
                 File file = new File(realPath, fileName);
                 if (file.exists()) {
-                    response.setContentType("application/octet-stream");
+
+                    ZipOutputStream zipOut = null;    // 声明压缩流对象
+                    InputStream input = null;
                     try {
-                        response.addHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));// 设置文件名
-                        response.addHeader("Content-Length", String.valueOf(file.length()));
+                        //以下注释的两行内容会影响文件以zip格式下载
+                        //response.setContentType("application/zip");
+                        //response.addHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));// 设置文件名
+
                         response.addHeader("File-Name", URLEncoder.encode(fileName, "UTF-8"));
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-                    byte[] buffer = new byte[1024];
-                    FileInputStream fis = null;
-                    BufferedInputStream bis = null;
-                    try {
-                        fis = new FileInputStream(file);
-                        bis = new BufferedInputStream(fis);
-                        OutputStream os = response.getOutputStream();
-                        int i = bis.read(buffer);
-                        while (i != -1) {
-                            os.write(buffer, 0, i);
-                            i = bis.read(buffer);
+                        //response.setHeader("Content-Length", String.valueOf(file.length()));
+
+                        input = new FileInputStream(file);    // 定义文件的输入流
+                        OutputStream outputStream = response.getOutputStream();
+                        zipOut = new ZipOutputStream(outputStream);
+                        zipOut.putNextEntry(new ZipEntry(file.getName()));    // 设置ZipEntry对象
+
+                        int temp = 0;
+                        while ((temp = input.read()) != -1) {    // 读取内容
+                            zipOut.write(temp);    // 压缩输出
                         }
+                        map.put("msg", "success");
+                        return map;
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        if (bis != null) {
+                        if (input != null) {
                             try {
-                                bis.close();
+                                input.close();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         }
-                        if (fis != null) {
+                        if (zipOut != null) {
                             try {
-                                fis.close();
+                                zipOut.close();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -161,6 +171,7 @@ public class SysTextbookTController {
                 }
             }
         }
-        return null;
+        map.put("msg", "fail");
+        return map;
     }
 }
