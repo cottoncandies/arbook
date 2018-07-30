@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 @Controller
@@ -113,9 +112,9 @@ public class SysTextbookTController {
         return map;
     }
 
-    @RequestMapping("/download")
+    @RequestMapping("/GetData")
     @ResponseBody
-    public Map contextLoads(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws Exception {
+    public Map getData(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws Exception {
         Map<String, Object> map = new HashMap<>();
         //判断授权Key是否合法
         if (appKeyTService.selectByAccessKey(ak) != null) {
@@ -137,6 +136,64 @@ public class SysTextbookTController {
                         //response.addHeader("Content-Disposition", "attachment;fileName=" + URLEncoder.encode(fileName, "UTF-8"));// 设置文件名
 
                         response.addHeader("File-Name", URLEncoder.encode(fileName, "UTF-8"));
+                        //response.setHeader("Content-Length", String.valueOf(file.length()));
+                        input = new FileInputStream(file);    // 定义文件的输入流
+                        OutputStream outputStream = response.getOutputStream();
+                        zipOut = new ZipOutputStream(outputStream);
+                        zipOut.putNextEntry(new ZipEntry(file.getName()));    // 设置ZipEntry对象
+
+                        int temp = 0;
+                        while ((temp = input.read()) != -1) {    // 读取内容
+                            zipOut.write(temp);    // 压缩输出
+                        }
+                        map.put("msg", "success");
+                        return map;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (input != null) {
+                            try {
+                                input.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (zipOut != null) {
+                            try {
+                                zipOut.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        map.put("msg", "fail");
+        return map;
+    }
+
+
+    @RequestMapping("/GetCover")
+    @ResponseBody
+    public Map getCover(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        //判断授权Key是否合法
+        if (appKeyTService.selectByAccessKey(ak) != null) {
+
+            SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
+            String fileCoverName = sysTextbookT.getSzCover();// 查询教材封面名
+
+            if (fileCoverName != null) {
+                //设置文件路径
+                String realPath = sysTextbookT.getSzStore();// 查询文件的存放路径
+                File file = new File(realPath, fileCoverName);
+                if (file.exists()) {
+
+                    ZipOutputStream zipOut = null;    // 声明压缩流对象
+                    InputStream input = null;
+                    try {
+                        response.addHeader("File-Name", URLEncoder.encode(fileCoverName, "UTF-8"));
                         //response.setHeader("Content-Length", String.valueOf(file.length()));
 
                         input = new FileInputStream(file);    // 定义文件的输入流
