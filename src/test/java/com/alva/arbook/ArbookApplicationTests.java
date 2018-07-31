@@ -5,11 +5,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 @RunWith(SpringRunner.class)
@@ -19,8 +17,8 @@ public class ArbookApplicationTests {
     @Test
     public void contextLoads() throws Exception {
         // 所有异常抛出
-        File file = new File("E://aa.txt");    // 定义要压缩的文件
-        File zipFile = new File("E://aa.zip");    // 定义压缩文件名称
+        File file = new File("E://wzh/book/初中语文1.pdf");    // 定义要压缩的文件
+        File zipFile = new File("ee.zip");    // 定义压缩文件名称
         InputStream input = new FileInputStream(file);    // 定义文件的输入流
         ZipOutputStream zipOut = null;    // 声明压缩流对象
         zipOut = new ZipOutputStream(new FileOutputStream(zipFile));
@@ -32,7 +30,28 @@ public class ArbookApplicationTests {
         }
         input.close();    // 关闭输入流
         zipOut.close();    // 关闭输出流
+
+        //读取zip文件流的大小
+        ZipInputStream zipIn = null;
+        try {
+            zipIn = new ZipInputStream(new FileInputStream(zipFile));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ZipEntry zipEntry;
+        while ((zipEntry = zipIn.getNextEntry()) != null) {
+            zipIn.closeEntry();
+            if (!zipEntry.isDirectory()) {
+                String name = zipEntry.getName();
+                long size = zipEntry.getSize();
+                long compd = zipEntry.getCompressedSize();
+                System.out.printf("%s , size=%d, compressed size=%d\r\n", name, size, compd);
+            }
+        }
+        zipIn.close();
+
     }
 }
+
 
 
