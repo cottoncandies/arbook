@@ -3,11 +3,9 @@ package com.alva.arbook.service.impl;
 import com.alva.arbook.dao.SysTextbookTMapper;
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.service.SysTextbookTService;
-import com.alva.arbook.vo.TextBookVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,23 +32,8 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
 
 
     @Override
-    public List<TextBookVO> selectAll(Integer page, Integer rows) {
-        List<SysTextbookT> sysTextbookTS = sysTextbookTMapper.selectAll((page - 1) * rows, rows);
-        //转化为VO
-        List<TextBookVO> textBookVOList = new ArrayList<>();
-        for (SysTextbookT sysTextbookT : sysTextbookTS) {
-            TextBookVO textBookVO = new TextBookVO();
-            textBookVO.setId(sysTextbookT.getSzId());
-            textBookVO.setCaption(sysTextbookT.getSzCaption());
-            textBookVO.setCover(sysTextbookT.getSzCover());
-            textBookVO.setEdition(sysTextbookT.getSzEdition());
-            textBookVO.setGrade(sysTextbookT.getSzGrade());
-            textBookVO.setMd5(sysTextbookT.getSzMd5());
-            textBookVO.setSection(sysTextbookT.getSzSection());
-            textBookVO.setSize(sysTextbookT.getNgSize());
-            textBookVOList.add(textBookVO);
-        }
-        return textBookVOList;
+    public List<SysTextbookT> selectAll(Integer page, Integer rows) {
+        return sysTextbookTMapper.selectAll((page - 1) * rows, rows);
     }
 
     @Override
@@ -59,25 +42,8 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     }
 
     @Override
-    public List<TextBookVO> selectByCustom(String subject, String publish, String section, String grade, int page, int rows) {
-        List<SysTextbookT> sysTextbookTS = sysTextbookTMapper.selectByCustom(subject, publish, section, grade, (page - 1) * rows, rows);
-        //转化为VO
-        List<TextBookVO> textBookVOList = new ArrayList<>();
-        for (SysTextbookT sysTextbookT : sysTextbookTS) {
-            TextBookVO textBookVO = new TextBookVO();
-            textBookVO.setId(sysTextbookT.getSzId());
-            textBookVO.setPublish(sysTextbookT.getPublish().getSzCaption());
-            textBookVO.setSubject(sysTextbookT.getSubject().getSzCaption());
-            textBookVO.setCaption(sysTextbookT.getSzCaption());
-            textBookVO.setCover(sysTextbookT.getSzCover());
-            textBookVO.setEdition(sysTextbookT.getSzEdition());
-            textBookVO.setGrade(sysTextbookT.getSzGrade());
-            textBookVO.setMd5(sysTextbookT.getSzMd5());
-            textBookVO.setSection(sysTextbookT.getSzSection());
-            textBookVO.setSize(sysTextbookT.getNgSize());
-            textBookVOList.add(textBookVO);
-        }
-        return textBookVOList;
+    public List<SysTextbookT> selectByCustom(String subject, String publish, String section, String grade, int page, int rows) {
+        return sysTextbookTMapper.selectByCustom(subject, publish, section, grade, (page - 1) * rows, rows);
     }
 
     @Override

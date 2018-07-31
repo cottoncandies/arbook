@@ -23,11 +23,11 @@
         <result column="ts_updated" jdbcType="TIMESTAMP" property="tsUpdated"/>
         <result column="nt_row_state" jdbcType="INTEGER" property="ntRowState"/>
         <result column="nt_row_version" jdbcType="INTEGER" property="ntRowVersion"/>
-        <association property="publish" javaType="com.alva.arbook.entity.SysPublishingT">
+        <association property="sysPublishingT" javaType="com.alva.arbook.entity.SysPublishingT">
             <result column="publish_id" jdbcType="VARCHAR" property="szId"/>
             <result column="publish_caption" jdbcType="VARCHAR" property="szCaption"/>
         </association>
-        <association property="subject" javaType="com.alva.arbook.entity.SysSubjectT">
+        <association property="sysSubjectT" javaType="com.alva.arbook.entity.SysSubjectT">
             <result column="subject_id" jdbcType="VARCHAR" property="szId"/>
             <result column="subject_caption" jdbcType="VARCHAR" property="szCaption"/>
         </association>

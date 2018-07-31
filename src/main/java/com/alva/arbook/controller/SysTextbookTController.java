@@ -3,7 +3,6 @@ package com.alva.arbook.controller;
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.service.AppKeyTService;
 import com.alva.arbook.service.SysTextbookTService;
-import com.alva.arbook.vo.TextBookVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,19 +27,19 @@ public class SysTextbookTController {
     @Autowired
     private AppKeyTService appKeyTService;
 
-    //根据条件查询教材
+    //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
     @ResponseBody
     public Map GetIndex(@RequestParam("ak") String accessKey, String subject, String publish, String section, String grade, @RequestParam("page") int page, @RequestParam("limit") int limit) {
         Map<String, Object> map = new HashMap<>();
         //判断授权Key是否合法
         if (appKeyTService.selectByAccessKey(accessKey) != null) {
-            List<TextBookVO> textBookVOList = sysTextbookTService.selectByCustom(subject, publish, section, grade, page, limit);
+            List<SysTextbookT> textbookTS = sysTextbookTService.selectByCustom(subject, publish, section, grade, page, limit);
             map.put("code", 0);//查询状态
             map.put("msg", "提交成功");//消息提示
             map.put("count", sysTextbookTService.countByCustomQuery(subject, publish, section, grade));//查询总数
-            //map.put("length", textBookVOList.size());//当前记录数
-            map.put("data", textBookVOList);
+            map.put("length", textbookTS.size());//当前记录数
+            map.put("data", textbookTS);
         } else {
             map.put("code", -1);
             map.put("msg", "提交失败");
@@ -48,22 +47,17 @@ public class SysTextbookTController {
         return map;
     }
 
-    //查询所有教材
+    //查询所有教材(单表查询)
     @RequestMapping("/GetAll")
     @ResponseBody
     public Map GetIndex(@RequestParam("page") int p, @RequestParam("limit") int sz) {
-
         Map<String, Object> map = new HashMap<>();
-
-        //判断授权Key是否合法
-        List<TextBookVO> textBookVOList = sysTextbookTService.selectAll(p, sz);
-
+        List<SysTextbookT> textbookTS = sysTextbookTService.selectAll(p, sz);
         map.put("code", 0);
         map.put("msg", "提交成功");
         map.put("count", sysTextbookTService.countAllTextBook());
-        //map.put("length", textBookVOList.size());
-        map.put("data", textBookVOList);
-
+        map.put("length", textbookTS.size());
+        map.put("data", textbookTS);
         return map;
     }
 
@@ -153,6 +147,7 @@ public class SysTextbookTController {
             }
         }
     }
+
     //获取教材文件
     @RequestMapping(value = "/GetData", method = RequestMethod.GET)
     public void getData(HttpServletResponse res, String ak, @RequestParam("id") String bookId) {

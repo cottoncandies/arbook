@@ -1,52 +1,46 @@
 package com.alva.arbook.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@JsonIgnoreProperties({"szSubjectId", "sysSubjectT", "szPubId", "sysPublishingT", "szInsti", "szStore", "szTag", "tsCreated", "tsUpdated", "ntRowState", "ntRowVersion"})
 public class SysTextbookT implements Serializable {
-
+    @JsonProperty("id")
     private String szId;
-
+    @JsonProperty("caption")
     private String szCaption;
-
+    @JsonProperty("cover")
     private String szCover;
-
+    @JsonProperty("edition")
     private String szEdition;
-
+    @JsonProperty("section")
     private String szSection;
-
+    @JsonProperty("grade")
     private String szGrade;
 
     private String szSubjectId;
 
-    private SysSubjectT subject;
+    private SysSubjectT sysSubjectT;
 
-    public SysSubjectT getSubject() {
-        return subject;
-    }
-
-    public void setSubject(SysSubjectT subject) {
-        this.subject = subject;
-    }
-
-    public SysPublishingT getPublish() {
-        return publish;
-    }
-
-    public void setPublish(SysPublishingT publish) {
-        this.publish = publish;
-    }
+    @JsonProperty("subject")
+    private String subjectCaption;
 
     private String szPubId;
 
-    private SysPublishingT publish;
+    private SysPublishingT sysPublishingT;
+
+    @JsonProperty("publish")
+    private String publishCaption;
 
     private String szInsti;
 
     private String szStore;
-
+    @JsonProperty("md5")
     private String szMd5;
-
+    @JsonProperty("size")
     private Long ngSize;
 
     private String szTag;
@@ -61,8 +55,43 @@ public class SysTextbookT implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    //setter and getter
     public String getSzId() {
         return szId;
+    }
+
+    public SysSubjectT getSysSubjectT() {
+        return sysSubjectT;
+    }
+
+    public void setSysSubjectT(SysSubjectT sysSubjectT) {
+        this.sysSubjectT = sysSubjectT;
+    }
+
+    public String getSubjectCaption() {
+        //修改默认的get方法
+        return sysSubjectT.getSzCaption();
+    }
+
+    public void setSubjectCaption(String subjectCaption) {
+        this.subjectCaption = subjectCaption;
+    }
+
+    public SysPublishingT getSysPublishingT() {
+        return sysPublishingT;
+    }
+
+    public void setSysPublishingT(SysPublishingT sysPublishingT) {
+        this.sysPublishingT = sysPublishingT;
+    }
+
+    public String getPublishCaption() {
+        //修改默认的get方法
+        return sysPublishingT.getSzCaption();
+    }
+
+    public void setPublishCaption(String publishCaption) {
+        this.publishCaption = publishCaption;
     }
 
     /**
