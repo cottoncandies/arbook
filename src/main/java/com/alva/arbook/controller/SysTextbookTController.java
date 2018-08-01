@@ -98,7 +98,7 @@ public class SysTextbookTController {
     }
 
     //获取教材文件封面
-    @RequestMapping(value = "/GetCover", method = RequestMethod.GET)
+    @RequestMapping(value = "/GetCover")
     public void getCover(HttpServletResponse res, String ak, @RequestParam("id") String bookId) {
         //1判断授权Key是否合法
         if (ak != null && ak != "" && appKeyTService.selectByAccessKey(ak) != null) {
@@ -149,7 +149,7 @@ public class SysTextbookTController {
     }
 
     //获取教材文件
-    @RequestMapping(value = "/GetData", method = RequestMethod.GET)
+    @RequestMapping(value = "/GetData")
     public void getData(HttpServletResponse res, String ak, @RequestParam("id") String bookId) {
         //1判断授权Key是否合法
         if (ak != null && ak != "" && appKeyTService.selectByAccessKey(ak) != null) {
