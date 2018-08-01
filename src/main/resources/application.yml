@@ -1,3 +1,30 @@
 spring:
+  ## postgres ##
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/arbook
+    username: postgres
+    password: postgres
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  ## 文件上传 ##
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+      resolve-lazily: false
+      #location:
+  ## 部署环境 ##
   profiles:
-    active: prod
+    active: test
+## server ##
+server:
+  servlet:
+    context-path: /arbook
+## mybatis ##
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
