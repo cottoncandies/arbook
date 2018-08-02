@@ -30,12 +30,6 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         return sysTextbookTMapper.selectByPrimaryKey(szId);
     }
 
-
-    @Override
-    public List<SysTextbookT> selectAll(Integer page, Integer rows) {
-        return sysTextbookTMapper.selectAll((page - 1) * rows, rows);
-    }
-
     @Override
     public int updateByPrimaryKey(SysTextbookT record) {
         return 0;
@@ -51,8 +45,4 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         return sysTextbookTMapper.countByCustomQuery(subject, publish, section, grade);
     }
 
-    @Override
-    public Long countAllTextBook() {
-        return sysTextbookTMapper.countAllTextBook();
-    }
 }

@@ -6,7 +6,6 @@ import com.alva.arbook.service.SysTextbookTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,20 +43,6 @@ public class SysTextbookTController {
             map.put("code", -1);
             map.put("msg", "提交失败");
         }
-        return map;
-    }
-
-    //查询所有教材(单表查询)
-    @RequestMapping("/GetAll")
-    @ResponseBody
-    public Map GetIndex(@RequestParam("page") int p, @RequestParam("limit") int sz) {
-        Map<String, Object> map = new HashMap<>();
-        List<SysTextbookT> textbookTS = sysTextbookTService.selectAll(p, sz);
-        map.put("code", 0);
-        map.put("msg", "提交成功");
-        map.put("count", sysTextbookTService.countAllTextBook());
-        map.put("length", textbookTS.size());
-        map.put("data", textbookTS);
         return map;
     }
 
