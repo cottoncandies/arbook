@@ -9,7 +9,7 @@ public class FileConfig {
 
     private String baseExportPath;
 
-    private String baseUploadtPath;
+    private String baseUploadPath;
 
     public String getExportPath() {
         return baseExportPath;
@@ -20,10 +20,10 @@ public class FileConfig {
     }
 
     public String getBaseUploadtPath() {
-        return baseUploadtPath;
+        return baseUploadPath;
     }
 
     public void setBaseUploadtPath(String baseUploadtPath) {
-        this.baseUploadtPath = baseUploadtPath;
+        this.baseUploadPath = baseUploadtPath;
     }
 }

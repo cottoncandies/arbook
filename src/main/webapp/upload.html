@@ -10,45 +10,45 @@
 </head>
 <body>
 
-<a class="layui-btn" href="ApiV1/GetData?ak=111&id=1" rel="external nofollow" >教材下载</a>
+<a class="layui-btn" href="ApiV1/GetData?ak=111&id=1" rel="external nofollow">教材下载</a>
 <br/>
-<a class="layui-btn" href="ApiV1/GetCover?ak=111&id=1" rel="external nofollow" >封面下载</a>
+<a class="layui-btn" href="ApiV1/GetCover?ak=111&id=1" rel="external nofollow">封面下载</a>
 <div class="layui-upload">
     <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
     <button type="button" class="layui-btn" id="test9">开始上传</button>
 </div>
 
-    <script src="lib/layui/layui.js" charset="utf-8"></script>
-    <script>
-        layui.use('upload', function(){
-            var $ = layui.jquery
-                ,upload = layui.upload;
+<script src="lib/layui/layui.js" charset="utf-8"></script>
+<script>
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
 
 
-            //选完文件后不自动上传
-            upload.render({
-                elem: '#test8'
-                ,url: 'ApiV1//upload'
-                ,accept:'file'
-                ,auto: false
-                //,multiple: true
-                ,bindAction: '#test9'
-                ,done: function(res){
-                    //如果上传失败
-                    // if(res.code > 0){
-                    //     return layer.msg('上传失败');
-                    // }
-                    // //上传成功
-                    // if(res.code = 0){
-                    //     return layer.msg('upload success');
-                    // }
-                    console.log(res.code)
-                }
-            });
-
-
+        //选完文件后不自动上传
+        upload.render({
+            elem: '#test8'
+            , url: 'ApiV1//upload'
+            , accept: 'file'
+            , auto: false
+            //,multiple: true
+            , bindAction: '#test9'
+            , done: function (res) {
+                //如果上传失败
+                // if(res.code > 0){
+                //     return layer.msg('上传失败');
+                // }
+                // //上传成功
+                // if(res.code = 0){
+                //     return layer.msg('upload success');
+                // }
+                console.log(res.code)
+            }
         });
-    </script>
+
+
+    });
+</script>
 
 
 </body>

@@ -1,9 +1,7 @@
 package com.alva.arbook.controller;
 
-import com.alva.arbook.entity.SysOrgT;
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.service.AppKeyTService;
-import com.alva.arbook.service.SysOrgTService;
 import com.alva.arbook.service.SysTextbookTService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +28,12 @@ public class SysTextbookTController {
     @Autowired
     private AppKeyTService appKeyTService;
 
-    @Value("${file.baseExportPath}")
+    @Value("${baseExportPath}")
     private String baseExportPath;
 
+    @Value("${baseUploadPath}")
+    private String baseUploadPath;
+    
     //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
     @ResponseBody
@@ -67,7 +66,7 @@ public class SysTextbookTController {
         Map<String, Object> map = new HashMap<>();
 
         //确保导出目录文件夹的唯一性(命名采用导出目录/学校/导出时间)
-        String exportPath = baseExportPath ;
+        String exportPath = baseExportPath;
         File exportFile = new File(exportPath);
         //创建导出目录文件夹
         if (!exportFile.exists()) {
