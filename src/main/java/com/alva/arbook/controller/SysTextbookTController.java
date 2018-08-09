@@ -1,9 +1,13 @@
 package com.alva.arbook.controller;
 
+import com.alva.arbook.entity.SysOrgT;
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.service.AppKeyTService;
+import com.alva.arbook.service.SysOrgTService;
 import com.alva.arbook.service.SysTextbookTService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +31,9 @@ public class SysTextbookTController {
 
     @Autowired
     private AppKeyTService appKeyTService;
+
+    @Value("${file.baseExportPath}")
+    private String baseExportPath;
 
     //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
@@ -45,6 +54,43 @@ public class SysTextbookTController {
         }
         return map;
     }
+
+    /*文件导出的核心代码
+    File file = new File("E:/wzh/book/初中语文1.zip");
+    String path = "E:/wzh/aa.zip";
+    File desFile = new File(path);
+    FileUtils.copyFile(file, desFile);
+    */
+    @RequestMapping("/exportBookList")
+    @ResponseBody
+    public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds) throws IOException {
+        Map<String, Object> map = new HashMap<>();
+
+        //确保导出目录文件夹的唯一性(命名采用导出目录/学校/导出时间)
+        String exportPath = baseExportPath ;
+        File exportFile = new File(exportPath);
+        //创建导出目录文件夹
+        if (!exportFile.exists()) {
+            exportFile.mkdirs();
+        }
+        //遍历导出
+        for (String bookId : bookIds) {
+            SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
+            String fileName = sysTextbookT.getSzCaption();// 查询教材文件名
+            String realPath = sysTextbookT.getSzStore();// 查询教材存放位置
+            File file = new File(realPath, fileName);
+            if (file.exists()) {
+                File desFile = new File(exportPath + "/" + fileName);
+                FileUtils.copyFile(file, desFile);
+            } else {
+                map.put("export", "文件" + fileName + "不存在");
+            }
+        }
+        map.put("msg", "所有教材已导出到目录" + exportPath);
+
+        return map;
+    }
+
 
     // 单文件上传
     @RequestMapping("/upload")
@@ -148,7 +194,7 @@ public class SysTextbookTController {
                 byte[] buff = new byte[1024];
                 BufferedInputStream bis = null;
                 OutputStream os = null;
-                //4下载文件
+                //4下载文件封面
                 try {
                     res.setContentType("application/octet-stream");
                     res.setHeader("content-type", "application/octet-stream");
