@@ -7,6 +7,7 @@ com\alva\arbook\controller\SysTextbookTController.class
 com\alva\arbook\service\SysTextbookTService.class
 com\alva\arbook\ArbookApplication.class
 com\alva\arbook\dao\AppKeyTMapper.class
+com\alva\arbook\entity\SysUserT.class
 com\alva\arbook\config\FileConfig.class
 com\alva\arbook\service\impl\SysOrgTServiceImpl.class
 com\alva\arbook\entity\SysOrgT.class
@@ -14,6 +15,7 @@ com\alva\arbook\service\AppKeyTService.class
 com\alva\arbook\service\impl\SysTextbookTServiceImpl.class
 com\alva\arbook\dao\SysSubjectTMapper.class
 com\alva\arbook\entity\SysSubjectT.class
+com\alva\arbook\dao\SysUserTMapper.class
 com\alva\arbook\service\impl\AppKeyTServiceImpl.class
 com\alva\arbook\entity\SysPublishingT.class
 com\alva\arbook\entity\AppKeyT.class
