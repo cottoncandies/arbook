@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ok-admin | å¾èµçåå°æ¨¡ç</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="ok-admin v1.0,ok-adminç½ç«åå°æ¨¡ç,åå°æ¨¡çä¸è½½,åå°ç®¡çç³»ç»æ¨¡ç,HTMLåå°æ¨¡çä¸è½½">
+    <meta name="description" content="ok-admin v1.0ï¼é¡¾åæä¹ï¼å¾èµçåå°æ¨¡çï¼å®æ¯ä¸æ¬¾åºäºLayuiæ¡æ¶çè½»éçº§æå¹³åä¸å®å¨åè´¹å¼æºçç½ç«åå°ç®¡çç³»ç»æ¨¡æ¿ï¼éåä¸­å°åCMSåå°ç³»ç»ã">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="css/okadmin.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_693759_zroiq6woob6gvi.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!--å¤´é¨å¯¼èª-->
+    <div class="layui-header">
+        <div class="layui-logo">ok-admin v1.0</div>
+        <div class="menu-switch">
+            <i class="iconfont icon-caidan"></i>
+        </div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item layui-this"><a href="">æ§å¶å°<span class="layui-badge">9</span></a></li>
+            <li class="layui-nav-item"><a href="">äº§å</a></li>
+            <li class="layui-nav-item"><a href="">å¤§æ°æ®</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">å¶å®ç³»ç»</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">é®ä»¶ç®¡ç</a></dd>
+                    <dd><a href="">æ¶æ¯ç®¡ç</a></dd>
+                    <dd><a href="">ææç®¡ç</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="images/head.jpg" class="layui-nav-img">
+                    bobi
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">ä¸ªäººä¸­å¿<span class="layui-badge-dot"></span></a></dd>
+                    <dd><a href="">åºæ¬èµæ</a></dd>
+                    <dd><a href="">å®å¨è®¾ç½®</a></dd>
+                    <dd><a href="">éå®è´¦æ·</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">éåº</a></li>
+        </ul>
+    </div>
+    <!--å·¦ä¾§å¯¼èªåºå-->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">
+                        <i class="layui-icon">&#xe62a;</i> å¸¸ç¨é¡µé¢
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" path="getindex.html" tab-id="1">æææ¥è¯¢</a></dd>
+                        <dd><a href="javascript:;" path="upload.html" tab-id="2">ææä¸è½½</a></dd>
+                        <dd><a href="javascript:;" path="login.html" tab-id="3">ç»éé¡µé¢</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="3">404é¡µé¢</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="4">500é¡µé¢</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="5">403é¡µé¢</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon">&#xe62c;</i> å¾è¡¨é¡µé¢
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="6">æçº¿å¾</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="7">æ±ç¶å¾</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="8">é·è¾¾å¾</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="9">ç­åå¾</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="10">ä»ªè¡¨å¾</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="11">é¥¼å¾</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="12">å°å¾</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon">&#xe646;</i> å­ä½å¾æ 
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" path="font-layui.html" tab-id="13">Layuiåç½®å¾æ åº</a></dd>
+                        <dd><a href="javascript:;" path="font-iconfont.html" tab-id="14">é¿éå·´å·´å¾æ åº</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon">&#xe716;</i> ç³»ç»ç®¡ç
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="15">ç³»ç»è®¾ç½®</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="16">å±è½è¯</a></dd>
+                        <dd><a href="javascript:;" path="xxxx.html" tab-id="17">ç³»ç»æ¥å¿</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="layui-icon">&#xe655;</i> æä»¶ç®¡ç
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" path="upload.html" tab-id="15">æä»¶ä¸è½½</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- åå®¹ä¸»ä½åºå -->
+    <div class="content-body">
+        <div class="layui-tab layui-tab-brief" lay-filter="ok-tab" lay-allowClose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this"><i class="layui-icon">&#xe68e;</i> æ§å¶å°</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src='welcome.html' frameborder="0" scrolling="yes" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--åºé¨ä¿¡æ¯-->
+    <div class="layui-footer">
+        Copyright Â©2018 ok-admin v1.0 All Rights Reserved
+        <button class="layui-btn layui-btn-danger layui-btn-xs">æèµ ä½è</button>
+    </div>
+</div>
+<!--jsé»è¾-->
+<script src="lib/layui/layui.js"></script>
+<script>
+    layui.use(['element', 'layer'], function () {
+        var element = layui.element;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+        /**
+         * å·¦è¾¹èåæ¾ç¤º/éèåè½
+         * @type {boolean}
+         */
+        $(".menu-switch").click(function () {
+            if ($(".layui-layout-admin .layui-side").css("left") == '0px') {
+                $(".layui-layout-admin .layui-side").animate({left: "-200px"});
+                $(".layui-layout-admin .content-body").animate({left: "0px"});
+                $(".layui-layout-admin .layui-footer").animate({left: "0px"});
+            } else {
+                $(".layui-layout-admin .layui-side").animate({left: "0px"});
+                $(".layui-layout-admin .content-body").animate({left: "200px"});
+                $(".layui-layout-admin .layui-footer").animate({left: "200px"});
+            }
+        });
+
+        /**
+         * ç¹å»å·¦è¾¹èåå¨å³è¾¹æ·»å éé¡¹å¡
+         */
+        $(".layui-nav-child").find("dd").click(function () {
+            var title = $(this).text();
+            var path = $(this).children('a').attr('path');
+            var tabId = $(this).children('a').attr('tab-id');
+            // å»éå¤éé¡¹å¡
+            for (var i = 0; i < $('.ok-frame').length; i++) {
+                if ($('.ok-frame').eq(i).attr('tab-id') == tabId) {
+                    element.tabChange("ok-tab", tabId);
+                    event.stopPropagation();
+                    return;
+                }
+            }
+            // æ·»å éé¡¹å¡
+            element.tabAdd("ok-tab", {
+                title: title,
+                content: "<iframe src='" + path + "' tab-id='" + tabId + "' class='ok-frame' frameborder='0' scrolling='yes' width='100%' height='100%'></iframe>",
+                id: tabId
+            });
+            // åæ¢éé¡¹å¡
+            element.tabChange("ok-tab", tabId);
+        });
+
+        /**
+         * æèµ ä½è
+         */
+        $(".layui-footer button").click(function () {
+            layer.tab({
+                area: ["330px", "350px"],
+                tab: [{
+                    title: "æ¯ä»å®",
+                    content: "<img src='images/zfb.jpg' width='200' height='300' style='margin-left: 60px'>"
+                }, {
+                    title: "å¾®ä¿¡",
+                    content: "<img src='images/wx.jpg' width='200' height='300' style='margin-left: 60px'>"
+                }]
+            });
+        });
+    });
+</script>
+</body>
+</html>

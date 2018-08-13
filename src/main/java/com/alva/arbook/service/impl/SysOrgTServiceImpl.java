@@ -3,15 +3,15 @@ package com.alva.arbook.service.impl;
 import com.alva.arbook.dao.SysOrgTMapper;
 import com.alva.arbook.entity.SysOrgT;
 import com.alva.arbook.service.SysOrgTService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class SysOrgTServiceImpl implements SysOrgTService {
 
-    @Autowired
+    @Resource
     private SysOrgTMapper sysOrgTMapper;
 
     @Override

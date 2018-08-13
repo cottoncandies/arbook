@@ -16,6 +16,9 @@ DROP TABLE IF EXISTS "sys_textbook_t" CASCADE
 DROP TABLE IF EXISTS "sys_export_t" CASCADE
 ;
 
+DROP TABLE IF EXISTS "sys_user_t" CASCADE
+;
+
 CREATE TABLE "app_key_t"
 (
 	"sz_id" varchar(36)	 NOT NULL,
@@ -68,6 +71,7 @@ CREATE TABLE "sys_textbook_t"
 	"sz_edition" varchar(63)	,
 	"sz_section" varchar(31)	 NOT NULL,
 	"sz_grade" varchar(31)	 NOT NULL,
+	"nt_term" integer NOT NULL DEFAULT 0,
 	"sz_subject_id" varchar(36)	 NOT NULL,
 	"sz_pub_id" varchar(36)	 NOT NULL,
 	"sz_insti" varchar(15)	 NOT NULL DEFAULT '633',
@@ -88,6 +92,19 @@ CREATE TABLE "sys_export_t"
 	"sz_directory" varchar(127)	 NOT NULL UNIQUE ,
 	"sz_comment" varchar(255)	,
 	"sz_operator" varchar(255)	,
+	"ts_created" timestamp NOT NULL,
+	"ts_updated" timestamp NOT NULL,
+	"nt_row_state" integer NOT NULL DEFAULT 1,
+	"nt_row_version" integer NOT NULL DEFAULT 1
+)
+;
+
+CREATE TABLE "sys_user_t"
+(
+	"sz_id" varchar(36)	 NOT NULL,
+	"sz_email" varchar(127)	 NOT NULL UNIQUE ,
+	"sz_password" varchar(255)	,
+	"sz_phone" varchar(255)	,
 	"ts_created" timestamp NOT NULL,
 	"ts_updated" timestamp NOT NULL,
 	"nt_row_state" integer NOT NULL DEFAULT 1,
@@ -116,5 +133,9 @@ ALTER TABLE "sys_textbook_t" ADD CONSTRAINT "sys_textbook__pk"
 ;
 
 ALTER TABLE "sys_export_t" ADD CONSTRAINT "sys_export__pk"
+	PRIMARY KEY ("sz_id")
+;
+
+ALTER TABLE "sys_user_t" ADD CONSTRAINT "sys_user__pk"
 	PRIMARY KEY ("sz_id")
 ;

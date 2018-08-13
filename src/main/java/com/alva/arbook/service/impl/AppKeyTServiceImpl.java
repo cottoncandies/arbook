@@ -3,15 +3,15 @@ package com.alva.arbook.service.impl;
 import com.alva.arbook.dao.AppKeyTMapper;
 import com.alva.arbook.entity.AppKeyT;
 import com.alva.arbook.service.AppKeyTService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class AppKeyTServiceImpl implements AppKeyTService {
 
-    @Autowired
+    @Resource
     private AppKeyTMapper appKeyTMapper;
 
     @Override

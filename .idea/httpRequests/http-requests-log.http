@@ -1,0 +1,14 @@
+GET http://localhost:8989/arbook/ApiV1/readJson
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8989/arbook
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-13T055303.200.html
+
+###
+

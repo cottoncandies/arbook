@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 
-@JsonIgnoreProperties({"szSubjectId", "sysSubjectT", "szPubId", "sysPublishingT", "szInsti", "szStore", "szTag", "tsCreated", "tsUpdated", "ntRowState", "ntRowVersion"})
+@JsonIgnoreProperties({"szSubjectId", "sysSubjectT", "szPubId", "sysPublishingT", "szInsti", "szStore", "szTag", "tsCreated", "tsUpdated", "ntRowState", "ntRowVersion", "catalog"})
 public class SysTextbookT implements Serializable {
     @JsonProperty("id")
     private String szId;
@@ -20,6 +20,8 @@ public class SysTextbookT implements Serializable {
     private String szSection;
     @JsonProperty("grade")
     private String szGrade;
+    @JsonProperty("term")
+    private String ntTerm;
 
     private String szSubjectId;
 
@@ -52,6 +54,35 @@ public class SysTextbookT implements Serializable {
     private Integer ntRowState;
 
     private Integer ntRowVersion;
+    private String catalog;
+
+    public String getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(String catalog) {
+        this.catalog = catalog;
+    }
+
+    public SysTextbookT() {
+    }
+
+    ;
+
+    public SysTextbookT(String szId, String szCaption, String szCover, String szEdition, String szSection, String szGrade, String ntTerm, String szSubjectId, String szPubId, String szStore, String szMd5, Long ngSize) {
+        this.szId = szId;
+        this.szCaption = szCaption;
+        this.szCover = szCover;
+        this.szEdition = szEdition;
+        this.szSection = szSection;
+        this.szGrade = szGrade;
+        this.ntTerm = ntTerm;
+        this.szSubjectId = szSubjectId;
+        this.szPubId = szPubId;
+        this.szStore = szStore;
+        this.szMd5 = szMd5;
+        this.ngSize = ngSize;
+    }
 
     private static final long serialVersionUID = 1L;
 
@@ -213,6 +244,14 @@ public class SysTextbookT implements Serializable {
      */
     public void setSzGrade(String szGrade) {
         this.szGrade = szGrade == null ? null : szGrade.trim();
+    }
+
+    public String getNtTerm() {
+        return ntTerm;
+    }
+
+    public void setNtTerm(String ntTerm) {
+        this.ntTerm = ntTerm;
     }
 
     /**
@@ -475,6 +514,7 @@ public class SysTextbookT implements Serializable {
         sb.append(", szEdition=").append(szEdition);
         sb.append(", szSection=").append(szSection);
         sb.append(", szGrade=").append(szGrade);
+        sb.append(", ntTerm=").append(ntTerm);
         sb.append(", szSubjectId=").append(szSubjectId);
         sb.append(", szPubId=").append(szPubId);
         sb.append(", szInsti=").append(szInsti);
