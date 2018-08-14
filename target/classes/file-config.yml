@@ -1,3 +1,4 @@
 file:
   baseExportPath: E:/wzh/download
   baseUploadPath: E:/wzh/upload
+  tempUploadPath: E:/wzh/tempupload

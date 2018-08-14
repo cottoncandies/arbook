@@ -54,4 +54,9 @@
         select sz_id, sz_caption
         from sys_subject_t
     </select>
+    <select id="selectIdBySubjectName" resultType="String" parameterType="String">
+        select sz_id
+        from sys_subject_t
+        WHERE sz_caption = #{subjectName}
+    </select>
 </mapper>

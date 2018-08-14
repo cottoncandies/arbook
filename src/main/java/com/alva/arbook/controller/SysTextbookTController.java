@@ -2,14 +2,18 @@ package com.alva.arbook.controller;
 
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.service.AppKeyTService;
+import com.alva.arbook.service.SysPublishingTService;
+import com.alva.arbook.service.SysSubjectTService;
 import com.alva.arbook.service.SysTextbookTService;
+import com.alva.arbook.transform.JsonTextbook;
 import com.alva.arbook.util.MD5Util;
+import com.alva.arbook.util.ReadFile;
+import com.alva.arbook.util.ZipUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,8 +45,14 @@ public class SysTextbookTController {
     @Value("${baseUploadPath}")
     private String baseUploadPath;
 
-    @Value(value = "classpath:default.json")
-    private Resource resource;
+    @Value("${tempUploadPath}")
+    private String tempUploadPath;
+
+    @Autowired
+    private SysSubjectTService sysSubjectTService;
+
+    @Autowired
+    private SysPublishingTService sysPublishingTService;
 
     //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
@@ -100,37 +110,45 @@ public class SysTextbookTController {
     @PostMapping(value = "/upload")
     public Map upload(@RequestParam("file") MultipartFile file) {
 
-//        "id": "5ab9ee053db2b526f810a1bd",
-//                "cover":"0000.jpg",
-//                "caption": "八年级物理下",
-//                "edition": "2013版",
-//                "section": "初中",
-//                "grade": "八年级",
-//                "subject": "物理",
-//                "term": "下学期",
-//                "publish": "人民教育出版社",
-        //读取教材文件中的json文件获取上面的属性
         Map<String, Object> map = new HashMap<>();
         try {
             // 获取文件名
             String fileName = file.getOriginalFilename();
             // 获取文件的后缀名
             String extension = FilenameUtils.getExtension(fileName);
-            //文件重命名
+            // 文件重命名
             String newFileName = UUID.randomUUID().toString().replaceAll("-", "") + "." + extension;
-            String path = baseUploadPath + "/" + newFileName;
+            // 临时存储路径
+            String path = tempUploadPath + "/" + newFileName;
             File dest = new File(path);
             if (!dest.getParentFile().exists()) {
                 dest.getParentFile().mkdirs();
             }
-            // 上传文件
+            // 上传临时文件
             file.transferTo(dest);
-            //计算文件MD5
+            // 计算文件MD5
             String md5 = MD5Util.getMD5(dest);
-            SysTextbookT textbook = new SysTextbookT("afa", "yuwen", "000.jpg", "diyiban",
-                    "xioaxue", "sannianji", "下学期", "1", "1",
-                    path, md5, file.getSize());
-            sysTextbookTService.insert(textbook);
+            // 文件大小
+            long fileSize = file.getSize();
+
+            //读取教材json文件内容
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonTextbook jsonTextbook = objectMapper.readValue(dest, JsonTextbook.class);
+            String subject = jsonTextbook.getSubject();
+            String grade = jsonTextbook.getGrade();
+            String publish = jsonTextbook.getPublish();
+
+            // 真实存储路径
+            String store = baseUploadPath + "/" + subject + "/" + grade + "/" + publish + "/" + newFileName;
+            File destFile = new File(store);
+            if (!destFile.getParentFile().exists()) {
+                dest.getParentFile().mkdirs();
+            }
+            // 上传文件
+            file.transferTo(destFile);
+            // 将数据存入数据库
+            sysTextbookTService.insert(jsonTextbook, new SysTextbookT(store, md5, fileSize)
+            );
 
             map.put("msg", "上传成功");
         } catch (Exception e) {
@@ -165,28 +183,26 @@ public class SysTextbookTController {
 
     @RequestMapping(value = "/readJson")
     public void readJson() throws IOException {
-        String json = "{\n" +
-                "    \"id\": \"5ab9ee053db2b526f810a1bd\",\n" +
-                "    \"cover\":\"0000.jpg\",\n" +
-                "    \"caption\": \"八年级物理下\",\n" +
-                "    \"edition\": \"2013版\",\n" +
-                "    \"section\": \"初中\",\n" +
-                "    \"grade\": \"八年级\",\n" +
-                "    \"subject\": \"物理\",\n" +
-                "    \"term\": \"下学期\",\n" +
-                "    \"publish\": \"人民教育出版社\",\n" +
-                "    \"catalog\":\"000a.jpg,000b.jpg\"\n" +
-                "}";
-        ObjectMapper objectMapper = new ObjectMapper();
-        SysTextbookT sysTextbookT = objectMapper.readValue(json,
-                SysTextbookT.class);
 
-        System.out.println(sysTextbookT);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        JsonTextbook jsonTextbook = objectMapper.readValue(new File("E:/wzh/下载/八年级物理下/__meta.json"), JsonTextbook.class);
+//
+//        System.out.println(jsonTextbook);
+//        System.out.println(jsonTextbook.getCaption().equals("八年级物理下"));
+
+        /*System.out.println(sysTextbookT);
         sysTextbookT.setSzSubjectId("111");
         sysTextbookT.setSzPubId("222");
         sysTextbookT.setSzMd5("aaa");
         sysTextbookT.setNgSize(999L);
-        sysTextbookT.setSzStore("aaaaaaa");
-        sysTextbookTService.insert(sysTextbookT);
+        sysTextbookT.setSzStore("aaaaaaa");*/
+        //sysTextbookTService.insert(sysTextbookT);
+
+        try {
+            //ZipUtil.readZipFile("E:/wzh/下载/八年级物理下.zip");
+            //ReadFile.read();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -44,4 +44,6 @@ public interface SysSubjectTMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(SysSubjectT record);
+
+    String selectIdBySubjectName(String subjectName);
 }

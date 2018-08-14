@@ -54,4 +54,9 @@
         select sz_id, sz_caption
         from sys_publishing_t
     </select>
+    <select id="selectIdByPublishName" resultType="String" parameterType="String">
+        select sz_id
+        from sys_publishing_t
+        WHERE sz_caption = #{publishName}
+    </select>
 </mapper>

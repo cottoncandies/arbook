@@ -44,4 +44,6 @@ public interface SysPublishingTMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(SysPublishingT record);
+
+    String selectIdByPublishName(String publishName);
 }

@@ -21,7 +21,7 @@ public class SysTextbookT implements Serializable {
     @JsonProperty("grade")
     private String szGrade;
     @JsonProperty("term")
-    private String ntTerm;
+    private Integer ntTerm;
 
     private String szSubjectId;
 
@@ -54,6 +54,7 @@ public class SysTextbookT implements Serializable {
     private Integer ntRowState;
 
     private Integer ntRowVersion;
+
     private String catalog;
 
     public String getCatalog() {
@@ -67,18 +68,7 @@ public class SysTextbookT implements Serializable {
     public SysTextbookT() {
     }
 
-    ;
-
-    public SysTextbookT(String szId, String szCaption, String szCover, String szEdition, String szSection, String szGrade, String ntTerm, String szSubjectId, String szPubId, String szStore, String szMd5, Long ngSize) {
-        this.szId = szId;
-        this.szCaption = szCaption;
-        this.szCover = szCover;
-        this.szEdition = szEdition;
-        this.szSection = szSection;
-        this.szGrade = szGrade;
-        this.ntTerm = ntTerm;
-        this.szSubjectId = szSubjectId;
-        this.szPubId = szPubId;
+    public SysTextbookT(String szStore, String szMd5, Long ngSize) {
         this.szStore = szStore;
         this.szMd5 = szMd5;
         this.ngSize = ngSize;
@@ -246,11 +236,11 @@ public class SysTextbookT implements Serializable {
         this.szGrade = szGrade == null ? null : szGrade.trim();
     }
 
-    public String getNtTerm() {
+    public Integer getNtTerm() {
         return ntTerm;
     }
 
-    public void setNtTerm(String ntTerm) {
+    public void setNtTerm(Integer ntTerm) {
         this.ntTerm = ntTerm;
     }
 
