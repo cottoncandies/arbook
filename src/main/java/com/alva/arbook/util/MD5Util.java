@@ -33,4 +33,18 @@ public class MD5Util {
         }
     }
 
+    public static String getMD5(FileInputStream fileInputStream) {
+        try {
+            MessageDigest MD5 = MessageDigest.getInstance("MD5");
+            byte[] buffer = new byte[8192];
+            int length;
+            while ((length = fileInputStream.read(buffer)) != -1) {
+                MD5.update(buffer, 0, length);
+            }
+            return new String(Hex.encodeHex(MD5.digest()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

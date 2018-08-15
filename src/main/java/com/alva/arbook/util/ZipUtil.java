@@ -1,36 +1,51 @@
 package com.alva.arbook.util;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class ZipUtil {
-    public static void readZipFile(String fileName) throws Exception {
-        //新建读取zip流
-        ZipInputStream zip = new ZipInputStream(new FileInputStream(fileName));
-
-        BufferedReader buf = new BufferedReader(new InputStreamReader(zip));
-
-        //此类用于表示 ZIP 文件条目
-        ZipEntry Entry;
-
-
-        while ((Entry = zip.getNextEntry()) != null) {
-            System.out.println(Entry.getName());
-
-            String str;
-            while ((str = buf.readLine()) != null)
-                System.out.println(str + "\n");
-
-            //关闭当前 ZIP条目并定位流以读取下一个条目
-            zip.closeEntry();
+    public static Object readZipJsonToObject(File file, Class<? extends Object> valueType) {
+        BufferedInputStream is = null;
+        ZipEntry entry;
+        ZipFile zipfile = null;
+        try {
+            zipfile = new ZipFile(file, Charset.forName("gbk"));
+            Enumeration e = zipfile.entries();
+            while (e.hasMoreElements()) {
+                entry = (ZipEntry) e.nextElement();
+                if (entry.toString().endsWith("__meta.json")) {
+                    is = new BufferedInputStream(zipfile.getInputStream(entry));//获取输入流
+                    //读取教材json文件内容
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    return objectMapper.readValue(is, valueType);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (zipfile != null) {
+                try {
+                    zipfile.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        //流关闭
-        buf.close();
-        zip.close();
+        return null;
     }
 }
 

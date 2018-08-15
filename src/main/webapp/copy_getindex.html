@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="css/scroll-bar.css">
+    <link rel="stylesheet" href="css/sub-page.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_693759_wytlyqhtdtj1nhfr.css">
+</head>
+<body>
+<div class="ok-body">
+    <!--面包屑导航区域-->
+    <div class="ok-body-breadcrumb">
+            <span class="layui-breadcrumb">
+                <a><cite>首页</cite></a>
+                <a><cite>常用页面</cite></a>
+                <a><cite>教材查询</cite></a>
+            </span>
+        <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+        </a>
+    </div>
+    <!--模糊搜索区域-->
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 ok-search">
+            <select name="subject" lay-verify="" id="subject">
+                <option value="">请选择学科</option>
+            </select>
+            <select name="publish" lay-verify="" id="publish">
+                <option value="">请选择出版社</option>
+            </select>
+            <select name="section" lay-verify="" id="section">
+                <option value="">请选择学段</option>
+            </select>
+            <select name="grade" lay-verify="" id="grade">
+                <option value="">请选择年级</option>
+            </select>
+            <button class="layui-btn" lay-submit="" lay-filter="search">
+                <i class="layui-icon layui-icon-search">查询</i>
+            </button>
+        </form>
+    </div>
+    <!--工具栏-->
+    <okToolbar>
+        <button class="layui-btn layui-btn-normal" id="batchEnabled">
+            <i class="iconfont icon-shangsheng"></i>批量导出
+        </button>
+        <span>共有数据：<i id="countNum"></i> 条</span>
+    </okToolbar>
+    <!--数据表格-->
+    <table class="layui-hide" id="tableId" lay-filter="tableFilter"></table>
+</div>
+<!--js逻辑-->
+<script src="lib/layui/layui.js"></script>
+<script>
+
+    //记录选中的数据:做缓存使用,作为参数传递给后台,然后生成pdf ,压缩
+    var ids = new Array();
+    //当前表格中的全部数据:在表格的checkbox全选的时候没有得到数据, 因此用全局存放变量
+    var table_data = new Array();
+
+    layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
+        var element = layui.element;
+        var table = layui.table;
+        var form = layui.form;
+        var $ = layui.jquery;
+        var laydate = layui.laydate;
+
+        form.on('submit(search)', function () {
+            var subject = $('#subject').val();
+            var publish = $('#publish').val();
+            var section = $('#section').val();
+            var grade = $('#grade').val();
+
+            table.render({
+                elem: '#tableId',
+                url: 'ApiV1/GetIndex',
+                where: {
+                    'ak': 111,
+                    'subject': subject,
+                    'publish': publish,
+                    'section': section,
+                    'grade': grade
+                },
+                method: 'post',
+                limit: 5,
+                page: true,
+                even: true,
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'id', title: 'ID', width: 80, sort: true},
+                    {field: 'caption', title: '教材名称', width: 300},
+                    {field: 'cover', title: '封面文件名', width: 100},
+                    {field: 'edition', title: '教材版本', width: 100},
+                    {field: 'section', title: '学段', width: 85},
+                    {field: 'grade', title: '年级', width: 100},
+                    {field: 'publish', title: '出版社', width: 300},
+                    {field: 'subject', title: '学科', width: 100},
+                    {field: 'md5', title: '文件的MD5值', width: 100},
+                    {field: 'size', title: '文件大小', width: 100},
+                    {title: '操作', width: 200, templet: '#operationTpl', align: 'center'}
+                ]],
+                done: function (res, curr, count) {
+                    $("#countNum").text(count);
+
+
+                    //数据表格加载完成时调用此函数
+                    //如果是异步请求数据方式，res即为你接口返回的信息。
+                    //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+
+                    //设置全部数据到全局变量
+                    table_data = res.data;
+
+                    //在缓存中找到id ,然后设置data表格中的选中状态
+                    //循环所有数据，找出对应关系，设置checkbox选中状态
+                    for (var i = 0; i < res.data.length; i++) {
+                        for (var j = 0; j < ids.length; j++) {
+                            //数据id和要勾选的id相同时checkbox选中
+                            if (res.data[i].id == ids[j]) {
+                                //这里才是真正的有效勾选
+                                res.data[i]["LAY_CHECKED"] = 'true';
+                                //找到对应数据改变勾选样式，呈现出选中效果
+                                var index = res.data[i]['LAY_TABLE_INDEX'];
+                                $('.layui-table-fixed-l tr[data-index=' + index + '] input[type="checkbox"]').prop('checked', true);
+                                $('.layui-table-fixed-l tr[data-index=' + index + '] input[type="checkbox"]').next().addClass('layui-form-checked');
+                            }
+                        }
+                    }
+                    //设置全选checkbox的选中状态，只有改变LAY_CHECKED的值， table.checkStatus才能抓取到选中的状态
+                    var checkStatus = table.checkStatus('my-table');
+                    if (checkStatus.isAll) {
+                        $(' .layui-table-header th[data-field="0"] input[type="checkbox"]').prop('checked', true);
+                        $('.layui-table-header th[data-field="0"] input[type="checkbox"]').next().addClass('layui-form-checked');
+                    }
+                    //得到所有数据
+                    console.log(res);
+                    //得到当前页码
+                    console.log(curr);
+                    //得到数据总量
+                    console.log(count);
+
+
+                }
+            })
+            return false;
+        })
+
+
+        //复选框选中监听,将选中的id 设置到缓存数组,或者删除缓存数组
+        table.on('checkbox(tableFilter)', function (obj) {
+            if (obj.checked == true) {
+                if (obj.type == 'one') {
+                    ids.push(obj.data.id);
+                } else {
+                    for (var i = 0; i < table_data.length; i++) {
+                        ids.push(table_data[i].id);
+                    }
+                }
+            } else {
+                if (obj.type == 'one') {
+                    for (var i = 0; i < ids.length; i++) {
+                        if (ids[i] == obj.data.id) {
+                            ids.remove(i);
+                        }
+                    }
+                } else {
+                    for (var i = 0; i < ids.length; i++) {
+                        for (var j = 0; j < table_data.length; j++) {
+                            if (ids[i] == table_data[j].id) {
+                                ids.remove(i);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        //删除数组自定义函数
+        Array.prototype.remove = function (dx) {
+            if (isNaN(dx) || dx > this.length) {
+                return false;
+            }
+            for (var i = 0, n = 0; i < this.length; i++) {
+                if (this[i] != this[dx]) {
+                    this[n++] = this[i]
+                }
+            }
+            this.length -= 1
+        }
+
+        table.on('tool(tableFilter)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            if (layEvent === 'edit') {
+                layer.open({
+                    title: '编辑用户',
+                    type: 2,
+                    shade: false,
+                    maxmin: true,
+                    shade: 0.5,
+                    area: ['90%', '90%'],
+                    content: 'user-edit.html',
+                    zIndex: layer.zIndex,
+                    end: function () {
+                        // $(".layui-laypage-btn")[0].click();
+                    }
+                });
+            } else if (layEvent === 'del') {
+                layer.confirm("确定要删除吗？", {skin: 'layui-layer-lan', icon: 2, title: '提示', anim: 6}, function () {
+                    layer.msg("操作成功！", {icon: 1, time: 1000});
+                });
+            }
+        });
+
+        $("#batchEnabled").click(function () {
+            var msg;
+            layer.confirm("确定要批量导出吗？", {skin: 'layui-layer-lan', icon: 3, title: '提示', anim: 1}, function () {
+                $.post("ApiV1/exportBookList", {bookIds: ids}, function (data) {
+                    msg=data;
+                })
+                layer.msg(msg, {icon: 1, time: 1000});
+            });
+        })
+
+        $("#addUser").click(function () {
+            layer.open({
+                title: '添加用户',
+                type: 2,
+                shade: false,
+                maxmin: true,
+                shade: 0.5,
+                anim: 4,
+                area: ['90%', '90%'],
+                content: 'user-edit.html',
+                zIndex: layer.zIndex,
+                // skin: 'layui-layer-molv', // 皮肤
+                end: function () {
+                    // $(".layui-laypage-btn")[0].click();
+                }
+            });
+        })
+    })
+</script>
+<!--模板-->
+<script type="text/html" id="statusTpl">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|停用" {{ d.status== 0
+           ? 'checked' : ''}}>
+</script>
+<script type="text/html" id="roleTpl">
+    {{ d.role == 0 ? '管理员' : '普通用户    '}}
+</script>
+<script type="text/html" id="operationTpl">
+    <a href="javascript:;" title="编辑" lay-event="edit"><i class="layui-icon">&#xe642;</i></a>
+    <a href="javascript:;" title="删除" lay-event="del"><i class="layui-icon">&#xe640;</i></a>
+</script>
+</body>
+</html>
