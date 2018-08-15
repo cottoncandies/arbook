@@ -7,8 +7,6 @@ import com.alva.arbook.service.SysSubjectTService;
 import com.alva.arbook.service.SysTextbookTService;
 import com.alva.arbook.transform.JsonTextbook;
 import com.alva.arbook.util.MD5Util;
-import com.alva.arbook.util.ReadFile;
-import com.alva.arbook.util.ZipUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -22,12 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.nio.charset.Charset;
+import java.util.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 @RestController
 @RequestMapping("/ApiV1")
@@ -78,9 +77,16 @@ public class SysTextbookTController {
         return map;
     }
 
+    /**
+     * @param bookIds   导出教材列表
+     * @param directory 用户定义的导出目录
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/exportBookList")
     public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds,
                               String directory) throws IOException {
+
         Map<String, Object> map = new HashMap<>();
         //确保导出目录文件夹的唯一性
         String exportPath = baseExportPath;
@@ -94,24 +100,28 @@ public class SysTextbookTController {
             SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
             String fileName = sysTextbookT.getSzCaption();// 查询教材文件名
             String realPath = sysTextbookT.getSzStore();// 查询教材存放位置
-            File file = new File(realPath, fileName);
+            File file = new File(realPath);
             if (file.exists()) {
-                File desFile = new File(exportPath + "/" + fileName);
+                File desFile = new File(exportPath + "/" + directory +"/"+ fileName + ".zip");
                 FileUtils.copyFile(file, desFile);
             } else {
                 map.put("export", "文件" + fileName + "不存在");
             }
         }
-        map.put("msg", "教材已导出到目录" + exportPath);
+        map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
         return map;
     }
 
     // 单文件上传
     @PostMapping(value = "/upload")
     public Map upload(@RequestParam("file") MultipartFile file) {
-
         Map<String, Object> map = new HashMap<>();
+        JsonTextbook jsonTextbook = null;
+        String subject = null;
+        String grade = null;
+        String publish = null;
         try {
+
             // 获取文件名
             String fileName = file.getOriginalFilename();
             // 获取文件的后缀名
@@ -130,22 +140,38 @@ public class SysTextbookTController {
             String md5 = MD5Util.getMD5(dest);
             // 文件大小
             long fileSize = file.getSize();
+            // 获取zipEntrty的输入流
+            BufferedInputStream is = null;
+            ZipEntry entry;
+            ZipFile zipfile = new ZipFile(dest, Charset.forName("gbk"));
+            Enumeration e = zipfile.entries();
+            while (e.hasMoreElements()) {
+                entry = (ZipEntry) e.nextElement();
+                if (entry.toString().endsWith("__meta.json")) {
+                    is = new BufferedInputStream(zipfile.getInputStream(entry));//获取输入流
+                    //读取教材json文件内容
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    jsonTextbook = objectMapper.readValue(is, JsonTextbook.class);
+                    subject = jsonTextbook.getSubject();
+                    grade = jsonTextbook.getGrade();
+                    publish = jsonTextbook.getPublish();
 
-            //读取教材json文件内容
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonTextbook jsonTextbook = objectMapper.readValue(dest, JsonTextbook.class);
-            String subject = jsonTextbook.getSubject();
-            String grade = jsonTextbook.getGrade();
-            String publish = jsonTextbook.getPublish();
+                }
+            }
+            if (is != null) {
+                is.close();
+            }
+            zipfile.close();
 
             // 真实存储路径
             String store = baseUploadPath + "/" + subject + "/" + grade + "/" + publish + "/" + newFileName;
             File destFile = new File(store);
             if (!destFile.getParentFile().exists()) {
-                dest.getParentFile().mkdirs();
+                destFile.getParentFile().mkdirs();
             }
-            // 上传文件
-            file.transferTo(destFile);
+            destFile.createNewFile();
+            // 复制文件
+            FileUtils.copyFile(dest, destFile);
             // 将数据存入数据库
             sysTextbookTService.insert(jsonTextbook, new SysTextbookT(store, md5, fileSize)
             );
@@ -178,31 +204,6 @@ public class SysTextbookTController {
                 ServletOutputStream outputStream = response.getOutputStream();
                 outputStream.write(FileUtils.readFileToByteArray(file));
             }
-        }
-    }
-
-    @RequestMapping(value = "/readJson")
-    public void readJson() throws IOException {
-
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        JsonTextbook jsonTextbook = objectMapper.readValue(new File("E:/wzh/下载/八年级物理下/__meta.json"), JsonTextbook.class);
-//
-//        System.out.println(jsonTextbook);
-//        System.out.println(jsonTextbook.getCaption().equals("八年级物理下"));
-
-        /*System.out.println(sysTextbookT);
-        sysTextbookT.setSzSubjectId("111");
-        sysTextbookT.setSzPubId("222");
-        sysTextbookT.setSzMd5("aaa");
-        sysTextbookT.setNgSize(999L);
-        sysTextbookT.setSzStore("aaaaaaa");*/
-        //sysTextbookTService.insert(sysTextbookT);
-
-        try {
-            //ZipUtil.readZipFile("E:/wzh/下载/八年级物理下.zip");
-            //ReadFile.read();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

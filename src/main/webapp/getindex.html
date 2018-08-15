@@ -56,7 +56,7 @@
     <!--工具栏-->
     <okToolbar>
         <button class="layui-btn layui-btn-normal" id="batchEnabled">
-            <i class="iconfont icon-shangsheng"></i>批量启用
+            <i class="iconfont icon-shangsheng"></i>批量导出
         </button>
         <button class="layui-btn layui-btn-warm" id="batchDisabled">
             <i class="iconfont icon-web-icon-"></i>批量停用
@@ -111,12 +111,12 @@
                 cols: [[
                     {type: 'checkbox'},
                     {field: 'id', title: 'ID', width: 80, sort: true},
-                    {field: 'caption', title: '教材名称', width: 100},
+                    {field: 'caption', title: '教材名称', width: 300},
                     {field: 'cover', title: '封面文件名', width: 100},
                     {field: 'edition', title: '教材版本', width: 100},
                     {field: 'section', title: '学段', width: 85},
                     {field: 'grade', title: '年级', width: 100},
-                    {field: 'publish', title: '出版社', width: 100},
+                    {field: 'publish', title: '出版社', width: 300},
                     {field: 'subject', title: '学科', width: 100},
                     {field: 'md5', title: '文件的MD5值', width: 100},
                     {field: 'size', title: '文件大小', width: 100},
@@ -235,11 +235,12 @@
         });
 
         $("#batchEnabled").click(function () {
-            layer.confirm("确定要批量启用吗？", {skin: 'layui-layer-lan', icon: 3, title: '提示', anim: 1}, function () {
+            var msg;
+            layer.confirm("确定要批量导出吗？", {skin: 'layui-layer-lan', icon: 3, title: '提示', anim: 1}, function () {
                 $.post("ApiV1/exportBookList", {bookIds: ids}, function (data) {
-                    console.log(data);
+                    msg=data;
                 })
-                layer.msg("操作成功！", {icon: 1, time: 1000});
+                layer.msg(msg, {icon: 1, time: 1000});
             });
         })
 

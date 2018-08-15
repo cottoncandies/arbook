@@ -113,6 +113,9 @@
             <if test="grade != null and grade !=''">
                 AND textbook.sz_grade=#{grade,jdbcType=VARCHAR}
             </if>
+            <if test="1==1">
+                AND textbook.nt_row_state=1
+            </if>
         </where>
         offset #{offset,jdbcType=INTEGER}
         limit #{limit,jdbcType=INTEGER}
@@ -144,6 +147,9 @@
             </if>
             <if test="grade != null and grade !=''">
                 AND textbook.sz_grade=#{grade,jdbcType=VARCHAR}
+            </if>
+            <if test="1==1">
+                AND textbook.nt_row_state=1
             </if>
         </where>
         ) AS count_table

@@ -1,3 +1,68 @@
+GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds[]=5ab9ee053db2b526f810a1bd&directory=我的
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-15T024707.200.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds[]=5ab9ee053db2b526f810a1bd&directory=我的
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-15T024557.200.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds[]=5ab9ee053db2b526f810a1bd&bookIds[]=1&directory=我的
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-15T024527.500.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds=5ab9ee053db2b526f810a1bd&bookIds=1&directory=我的
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-15T024456.400.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds=5ab9ee053db2b526f810a1bd&bookIds=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-15T024016.500.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds=5ab9ee053db2b526f810a1bd
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-15T023917.200.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds=5ab9ee053db2b526f810a1bd
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-15T023630.200.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/exportBookList
+Accept: */*
+Cache-Control: no-cache
+bookIds: 5ab9ee053db2b526f810a1bd
+
+<> 2018-08-15T023457.500.json
+
+###
+
 GET http://localhost:8989/arbook/ApiV1/readJson
 Accept: */*
 Cache-Control: no-cache

@@ -54,6 +54,7 @@
         select sz_id, sz_caption
         from sys_subject_t
     </select>
+    <!--根据学科名查询学科id-->
     <select id="selectIdBySubjectName" resultType="String" parameterType="String">
         select sz_id
         from sys_subject_t

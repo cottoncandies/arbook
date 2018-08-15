@@ -112,6 +112,7 @@ CREATE TABLE "sys_user_t"
 )
 ;
 
+
 ALTER TABLE "app_key_t" ADD CONSTRAINT "app_key__pk"
 	PRIMARY KEY ("sz_id")
 ;

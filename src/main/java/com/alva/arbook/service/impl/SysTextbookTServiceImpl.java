@@ -62,6 +62,12 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         sysTextbookT.setSzTag(" ");
         sysTextbookT.setTsCreated(new Date());
         sysTextbookT.setTsUpdated(new Date());
+        sysTextbookT.setSzId(jsonTextbook.getId());
+        sysTextbookT.setSzCaption(jsonTextbook.getCaption());
+        sysTextbookT.setSzCover(jsonTextbook.getCover());
+        sysTextbookT.setSzEdition(jsonTextbook.getEdition());
+        sysTextbookT.setSzSection(jsonTextbook.getSection());
+        sysTextbookT.setSzGrade(jsonTextbook.getGrade());
         return sysTextbookTMapper.insert(sysTextbookT);
     }
 

@@ -44,6 +44,6 @@ public interface SysPublishingTMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(SysPublishingT record);
-
+    // 根据出版社名查询出版社id
     String selectIdByPublishName(String publishName);
 }

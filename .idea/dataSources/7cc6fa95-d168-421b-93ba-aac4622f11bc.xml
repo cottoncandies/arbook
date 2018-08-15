@@ -57,8 +57,8 @@
     </role>
     <schema id="13" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-08-10.15:29:30.763</IntrospectionTimestamp>
-      <IntrospectionStateNumber>2725</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-08-15.15:36:51.011</IntrospectionTimestamp>
+      <IntrospectionStateNumber>2756</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -99,11 +99,11 @@
     </table>
     <table id="24" parent="13" name="sys_textbook_t">
       <ObjectId>770688</ObjectId>
-      <StateNumber>2724</StateNumber>
+      <StateNumber>2736</StateNumber>
     </table>
     <table id="25" parent="13" name="sys_user_t">
-      <ObjectId>770676</ObjectId>
-      <StateNumber>2720</StateNumber>
+      <ObjectId>770710</ObjectId>
+      <StateNumber>2755</StateNumber>
     </table>
     <column id="26" parent="19" name="sz_id">
       <Position>1</Position>
@@ -442,11 +442,11 @@
     </column>
     <column id="76" parent="24" name="nt_term">
       <Position>7</Position>
-      <DataType>integer|0</DataType>
+      <DataType>varchar(63)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2724</StateNumber>
+      <StateNumber>2736</StateNumber>
       <DefaultExpression>0</DefaultExpression>
-      <TypeId>23</TypeId>
+      <TypeId>1043</TypeId>
     </column>
     <column id="77" parent="24" name="sz_subject_id">
       <Position>8</Position>
@@ -543,47 +543,47 @@
       <Position>1</Position>
       <DataType>varchar(36)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="91" parent="25" name="sz_email">
       <Position>2</Position>
       <DataType>varchar(127)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="92" parent="25" name="sz_comment">
+    <column id="92" parent="25" name="sz_password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="93" parent="25" name="sz_operator">
+    <column id="93" parent="25" name="sz_phone">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="94" parent="25" name="ts_created">
       <Position>5</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="95" parent="25" name="ts_updated">
       <Position>6</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="96" parent="25" name="nt_row_state">
       <Position>7</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <DefaultExpression>1</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -591,28 +591,28 @@
       <Position>8</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2720</StateNumber>
+      <StateNumber>2755</StateNumber>
       <DefaultExpression>1</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <index id="98" parent="25" name="sys_user__pk">
-      <ObjectId>770686</ObjectId>
+      <ObjectId>770720</ObjectId>
       <ColNames>sz_id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="99" parent="25" name="sys_user_t_sz_email_key">
-      <ObjectId>770684</ObjectId>
+      <ObjectId>770718</ObjectId>
       <ColNames>sz_email</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="100" parent="25" name="sys_user__pk">
-      <ObjectId>770687</ObjectId>
+      <ObjectId>770721</ObjectId>
       <ColNames>sz_id</ColNames>
       <UnderlyingIndexName>sys_user__pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <key id="101" parent="25" name="sys_user_t_sz_email_key">
-      <ObjectId>770685</ObjectId>
+      <ObjectId>770719</ObjectId>
       <ColNames>sz_email</ColNames>
       <UnderlyingIndexName>sys_user_t_sz_email_key</UnderlyingIndexName>
     </key>
