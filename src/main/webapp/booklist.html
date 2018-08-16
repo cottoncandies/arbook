@@ -11,31 +11,20 @@
 </head>
 <body>
 <div class="ok-body">
-    <!--面包屑导航区域-->
-    <div class="ok-body-breadcrumb">
-            <span class="layui-breadcrumb">
-                <a><cite>首页</cite></a>
-                <a><cite>常用页面</cite></a>
-                <a><cite>教材查询</cite></a>
-            </span>
-        <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" title="刷新">
-            <i class="layui-icon layui-icon-refresh"></i>
-        </a>
-    </div>
     <!--模糊搜索区域-->
     <div class="layui-row">
         <form class="layui-form layui-col-md12 ok-search">
-            <select name="subject" lay-verify="" id="subject">
-                <option value="">请选择学科</option>
+            <label class="layui-form-label">请选择学科:</label>
+            <select name="subject" lay-filter="selectSubject" lay-verify="" id="subject">
             </select>
-            <select name="publish" lay-verify="" id="publish">
-                <option value="">请选择出版社</option>
+            <label class="layui-form-label">请选择出版社:</label>
+            <select name="publish" lay-filter="selectPublish" lay-verify="" id="publish">
             </select>
-            <select name="section" lay-verify="" id="section">
-                <option value="">请选择学段</option>
+            <label class="layui-form-label">请选择学段:</label>
+            <select name="section" lay-filter="selectSection" lay-verify="" id="section">
             </select>
-            <select name="grade" lay-verify="" id="grade">
-                <option value="">请选择年级</option>
+            <label class="layui-form-label">请选择年级:</label>
+            <select name="grade" lay-filter="selectGrade" lay-verify="" id="grade">
             </select>
             <button class="layui-btn" lay-submit="" lay-filter="search">
                 <i class="layui-icon layui-icon-search">查询</i>
@@ -68,9 +57,68 @@
         var $ = layui.jquery;
         var laydate = layui.laydate;
 
+        /*加载学科下拉框选项*/
+        $.ajax({
+            type: 'get',
+            url: 'selectSubject',
+            dataType:  'json',
+            success: function(data){
+                $("#subject").html("");
+                $.each(data, function(idx, val) {
+                    var option1 = $("<option>").val(val.id).text(val.subject);
+                    $("#subject").append($("<option>"));
+                    $("#subject").append(option1);
+                    form.render('select');
+                });
+            }
+        });
+
+        /*加载出版社下拉框选项*/
+        $.ajax({
+            type: 'get',
+            url: 'selectPublish',
+            dataType:  'json',
+            success: function(data){
+                $("#publish").html("");
+                $.each(data, function(idx, val) {
+                    var option1 = $("<option>").val(val.id).text(val.publish);
+                    $("#publish").append($("<option>"));
+                    $("#publish").append(option1);
+                    form.render('select');
+                });
+            }
+        });
+
+        /*加载学段和年级下拉框选项*/
+        $.ajax({
+            type: 'get',
+            url: 'ApiV1/selectDistinctSectionAndGrade',
+            dataType:  'json',
+            success: function(data){
+                $("#section").html("");
+                $("#grade").html("");
+                var sections = data.sections;
+                var grades = data.grades;
+                $.each(sections, function(idx, val) {
+                    var option1 = $("<option>").val(val).text(val);
+                    $("#section").append($("<option>"));
+                    $("#section").append(option1);
+                    form.render('select');
+                });
+                $.each(grades, function(idx, val) {
+                    var option2 = $("<option>").val(val).text(val);
+                    $("#grade").append($("<option>"));
+                    $("#grade").append(option2);
+                    form.render('select');
+                });
+            }
+        });
+
+
+        /*点击查询按钮触发事件*/
         form.on('submit(search)', function () {
-            var subject = $('#subject').val();
-            var publish = $('#publish').val();
+            var subjectId = $('#subject').val();
+            var publishId = $('#publish').val();
             var section = $('#section').val();
             var grade = $('#grade').val();
 
@@ -79,13 +127,13 @@
                 url: 'ApiV1/GetIndex',
                 where: {
                     'ak': 111,
-                    'subject': subject,
-                    'publish': publish,
+                    'subjectId': subjectId,
+                    'publishId': publishId,
                     'section': section,
                     'grade': grade
                 },
                 method: 'post',
-                limit: 5,
+                limit: 20,
                 page: true,
                 even: true,
                 cols: [[
@@ -104,7 +152,6 @@
                 ]],
                 done: function (res, curr, count) {
                     $("#countNum").text(count);
-
 
                     //数据表格加载完成时调用此函数
                     //如果是异步请求数据方式，res即为你接口返回的信息。
@@ -134,19 +181,10 @@
                         $(' .layui-table-header th[data-field="0"] input[type="checkbox"]').prop('checked', true);
                         $('.layui-table-header th[data-field="0"] input[type="checkbox"]').next().addClass('layui-form-checked');
                     }
-                    //得到所有数据
-                    console.log(res);
-                    //得到当前页码
-                    console.log(curr);
-                    //得到数据总量
-                    console.log(count);
-
-
                 }
             })
             return false;
         })
-
 
         //复选框选中监听,将选中的id 设置到缓存数组,或者删除缓存数组
         table.on('checkbox(tableFilter)', function (obj) {
@@ -213,33 +251,23 @@
                 });
             }
         });
-
+        /*点击批量导出按钮触发事件*/
         $("#batchEnabled").click(function () {
-            var msg;
-            layer.confirm("确定要批量导出吗？", {skin: 'layui-layer-lan', icon: 3, title: '提示', anim: 1}, function () {
-                $.post("ApiV1/exportBookList", {bookIds: ids}, function (data) {
-                    msg=data;
-                })
-                layer.msg(msg, {icon: 1, time: 1000});
-            });
-        })
-
-        $("#addUser").click(function () {
-            layer.open({
-                title: '添加用户',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                shade: 0.5,
-                anim: 4,
-                area: ['90%', '90%'],
-                content: 'user-edit.html',
-                zIndex: layer.zIndex,
-                // skin: 'layui-layer-molv', // 皮肤
-                end: function () {
-                    // $(".layui-laypage-btn")[0].click();
-                }
-            });
+            if(ids.length == 0){
+                layer.msg("请选择导出的文件!");
+            }else{
+                layer.prompt({title: '导出文件名'},function(val, index){
+                    var directory = val;
+                    layer.close(index);
+                    layer.confirm("确定要批量导出吗？", {skin: 'layui-layer-lan', icon: 3, title: '提示', anim: 1}, function () {
+                        var index = layer.load();
+                        $.post("ApiV1/exportBookList", {bookIds: ids,directory:directory}, function (data) {
+                            layer.close(index);
+                            layer.msg(data.msg,{ time: 5000 });
+                        })
+                    });
+                });
+            }
         })
     })
 </script>

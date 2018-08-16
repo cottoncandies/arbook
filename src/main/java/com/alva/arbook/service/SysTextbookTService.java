@@ -15,8 +15,12 @@ public interface SysTextbookTService {
 
     int updateByPrimaryKey(SysTextbookT record);
 
-    List<SysTextbookT> selectByCustom(String subject, String publish, String section, String grade, int page, int rows);
+    List<SysTextbookT> selectByCustom(String subjectId, String publishId, String section, String grade, int page, int rows);
 
-    Long countByCustomQuery(String subject, String publish, String section, String grade);
+    Long countByCustomQuery(String subjectId, String publishId, String section, String grade);
+
+    List<String> selectDistinctSection();
+
+    List<String> selectDistinctGrade();
 
 }

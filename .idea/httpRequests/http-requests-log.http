@@ -1,3 +1,19 @@
+GET http://localhost:8989/arbook/ApiV1/selectDistinctSectionAndGrade
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-16T044710.200.json
+
+###
+
+GET http://localhost:8989/arbook/ApiV1/selectDistinctSectionAndGrade
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-16T044434.404.json
+
+###
+
 GET http://localhost:8989/arbook/ApiV1/exportBookList?bookIds[]=5ab9ee053db2b526f810a1bd&directory=我的
 Accept: */*
 Cache-Control: no-cache

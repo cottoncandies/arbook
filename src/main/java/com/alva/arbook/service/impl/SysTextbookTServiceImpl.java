@@ -82,13 +82,23 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     }
 
     @Override
-    public List<SysTextbookT> selectByCustom(String subject, String publish, String section, String grade, int page, int rows) {
-        return sysTextbookTMapper.selectByCustom(subject, publish, section, grade, (page - 1) * rows, rows);
+    public List<SysTextbookT> selectByCustom(String subjectId, String publishId, String section, String grade, int page, int rows) {
+        return sysTextbookTMapper.selectByCustom(subjectId, publishId, section, grade, (page - 1) * rows, rows);
     }
 
     @Override
-    public Long countByCustomQuery(String subject, String publish, String section, String grade) {
-        return sysTextbookTMapper.countByCustomQuery(subject, publish, section, grade);
+    public Long countByCustomQuery(String subjectId, String publishId, String section, String grade) {
+        return sysTextbookTMapper.countByCustomQuery(subjectId, publishId, section, grade);
+    }
+
+    @Override
+    public List<String> selectDistinctSection() {
+        return sysTextbookTMapper.selectDistinctSection();
+    }
+
+    @Override
+    public List<String> selectDistinctGrade() {
+        return sysTextbookTMapper.selectDistinctGrade();
     }
 
 }

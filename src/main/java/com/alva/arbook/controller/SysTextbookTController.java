@@ -10,10 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
@@ -47,18 +44,18 @@ public class SysTextbookTController {
     //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
     public Map GetIndex(@RequestParam("ak") String accessKey,
-                        String subject,
-                        String publish,
+                        String subjectId,
+                        String publishId,
                         String section,
                         String grade,
                         @RequestParam("page") int page,
                         @RequestParam("limit") int limit) {
         Map<String, Object> map = new HashMap<>();
         if (appKeyTService.selectByAccessKey(accessKey) != null) {
-            List<SysTextbookT> textbookTS = sysTextbookTService.selectByCustom(subject, publish, section, grade, page, limit);
+            List<SysTextbookT> textbookTS = sysTextbookTService.selectByCustom(subjectId, publishId, section, grade, page, limit);
             map.put("code", 0);//查询状态
             map.put("msg", "提交成功");//消息提示
-            map.put("count", sysTextbookTService.countByCustomQuery(subject, publish, section, grade));//查询总数
+            map.put("count", sysTextbookTService.countByCustomQuery(subjectId, publishId, section, grade));//查询总数
             map.put("length", textbookTS.size());//当前记录数
             map.put("data", textbookTS);
         } else {
@@ -102,7 +99,7 @@ public class SysTextbookTController {
         return map;
     }
 
-    //获取教材
+    // 获取教材
     @RequestMapping(value = "/GetData")
     public void getData(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws IOException {
         //授权Key是否合法
@@ -175,6 +172,17 @@ public class SysTextbookTController {
             map.put("msg", "上传失败");
             map.put("code", 1);
         }
+        return map;
+    }
+
+    // 查询年级和学段
+    @GetMapping("/selectDistinctSectionAndGrade")
+    public Map selectDistinctSectionAndGrade(){
+        Map<String,Object> map = new HashMap<>();
+        List<String> sections = sysTextbookTService.selectDistinctSection();
+        List<String> grades = sysTextbookTService.selectDistinctGrade();
+        map.put("sections",sections);
+        map.put("grades",grades);
         return map;
     }
 }

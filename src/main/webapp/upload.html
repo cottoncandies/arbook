@@ -12,7 +12,7 @@
 
 <div class="layui-upload">
     <button type="button" class="layui-btn layui-btn-normal" id="selectUploadFile">选择文件</button>
-    <button type="button" class="layui-btn" id="bindButton">开始上传</button>
+    <button type="button" class="layui-btn" id="UploadFileButton">开始上传</button>
 </div>
 
 <script src="lib/layui/layui.js" charset="utf-8"></script>
@@ -28,13 +28,21 @@
             , accept: 'file'
             , auto: false
             //,multiple: true
-            , bindAction: '#bindButton'
+            , bindAction: '#UploadFileButton'
+            ,before: function(obj){
+                layer.load();
+            }
             , done: function (res,index,upload) {
+                layer.closeAll('loading');
                 if(res.code == 0){
                     layer.msg('上传成功');
                 }else{
                     layer.msg('上传失败,请稍后重试');
                 }
+            }
+            ,error: function(){//请求异常回调
+                layer.closeAll('loading');
+                layer.msg('网络异常，请稍后重试！');
             }
         });
     });

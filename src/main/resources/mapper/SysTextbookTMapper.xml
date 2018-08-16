@@ -21,11 +21,11 @@
         <result column="nt_row_state" jdbcType="INTEGER" property="ntRowState"/>
         <result column="nt_row_version" jdbcType="INTEGER" property="ntRowVersion"/>
         <association property="sysPublishingT" javaType="com.alva.arbook.entity.SysPublishingT">
-            <result column="publish_id" jdbcType="VARCHAR" property="szId"/>
+            <id column="publish_id" jdbcType="VARCHAR" property="szId"/>
             <result column="publish_caption" jdbcType="VARCHAR" property="szCaption"/>
         </association>
         <association property="sysSubjectT" javaType="com.alva.arbook.entity.SysSubjectT">
-            <result column="subject_id" jdbcType="VARCHAR" property="szId"/>
+            <id column="subject_id" jdbcType="VARCHAR" property="szId"/>
             <result column="subject_caption" jdbcType="VARCHAR" property="szCaption"/>
         </association>
     </resultMap>
@@ -101,11 +101,11 @@
         LEFT JOIN sys_publishing_t publish
         ON publish.sz_id = textbook.sz_pub_id
         <where>
-            <if test="subject != null and subject !='' ">
-                subject.sz_caption=#{subject,jdbcType=VARCHAR}
+            <if test="subjectId != null and subjectId !='' ">
+                subject.sz_id=#{subjectId,jdbcType=VARCHAR}
             </if>
-            <if test="publish != null and publish !=''">
-                AND publish.sz_caption=#{publish,jdbcType=VARCHAR}
+            <if test="publishId != null and publishId !=''">
+                AND publish.sz_id=#{publishId,jdbcType=VARCHAR}
             </if>
             <if test="section != null and section !=''">
                 AND textbook.sz_section=#{section,jdbcType=VARCHAR}
@@ -136,11 +136,11 @@
         LEFT JOIN sys_publishing_t publish
         ON publish.sz_id = textbook.sz_pub_id
         <where>
-            <if test="subject != null and subject !='' ">
-                subject.sz_caption=#{subject,jdbcType=VARCHAR}
+            <if test="subjectId != null and subjectId !='' ">
+                subject.sz_id=#{subjectId,jdbcType=VARCHAR}
             </if>
-            <if test="publish != null and publish !=''">
-                AND publish.sz_caption=#{publish,jdbcType=VARCHAR}
+            <if test="publishId != null and publishId !=''">
+                AND publish.sz_id=#{publishId,jdbcType=VARCHAR}
             </if>
             <if test="section != null and section !=''">
                 AND textbook.sz_section=#{section,jdbcType=VARCHAR}
@@ -153,5 +153,15 @@
             </if>
         </where>
         ) AS count_table
+    </select>
+    <!--查询学段-->
+    <select id="selectDistinctSection" resultType="String">
+        select DISTINCT sz_section
+        from sys_textbook_t
+    </select>
+    <!--查询年级-->
+    <select id="selectDistinctGrade" resultType="String">
+        select DISTINCT sz_grade
+        from sys_textbook_t
     </select>
 </mapper>
