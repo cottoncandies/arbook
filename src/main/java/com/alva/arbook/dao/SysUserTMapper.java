@@ -43,4 +43,6 @@ public interface SysUserTMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(SysUserT record);
+
+    SysUserT selectByEmail(String szEmail);
 }

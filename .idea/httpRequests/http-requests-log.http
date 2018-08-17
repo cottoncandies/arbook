@@ -1,3 +1,59 @@
+GET http://localhost:8989/arbook/checkLogin?email=fasf&password=adfsf
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-17T112853.200.json
+
+###
+
+GET http://localhost:8989/arbook/checkLogin?email=fasf&password=adfsf
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-17T112753.404.json
+
+###
+
+GET http://localhost:8989/arbook/checkLogin?email=fasf&password=adfsf
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-17T112706.404.json
+
+###
+
+GET http://localhost:8989/arbook/checkLogin?email=fasf&password=adfsf
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-17T112518.404.json
+
+###
+
+GET http://localhost:8989/arbook/checkLogin?email=fasf&password=adfsf
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-17T112455.404.json
+
+###
+
+GET http://localhost:8989/arbook/checkLogin?email=fasf&password=adfsf
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-17T112441.404.json
+
+###
+
+GET http://localhost:8989/arbook/checkLogin?email=fasf&password=adfsf
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-17T112358.404.json
+
+###
+
 GET http://localhost:8989/arbook/ApiV1/selectDistinctSectionAndGrade
 Accept: */*
 Cache-Control: no-cache

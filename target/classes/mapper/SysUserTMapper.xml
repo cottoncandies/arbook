@@ -72,4 +72,10 @@
     nt_row_version
     from sys_user_t
   </select>
+  <select id="selectByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select sz_id, sz_email, sz_password, sz_phone, ts_created, ts_updated, nt_row_state,
+    nt_row_version
+    from sys_user_t
+    where sz_email = #{szEmail,jdbcType=VARCHAR}
+  </select>
 </mapper>

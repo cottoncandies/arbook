@@ -5,6 +5,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/arbook
     username: postgres
     password: postgres
+    type: com.alibaba.druid.pool.DruidDataSource
+
   mvc:
     view:
       prefix: /

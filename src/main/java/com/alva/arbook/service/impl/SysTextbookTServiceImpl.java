@@ -29,8 +29,9 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     private SysPublishingTService sysPublishingTService;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = RuntimeException.class)
     public int deleteByPrimaryKey(String szId) {
-        return 0;
+        return sysTextbookTMapper.deleteByPrimaryKey(szId);
     }
 
     @Override

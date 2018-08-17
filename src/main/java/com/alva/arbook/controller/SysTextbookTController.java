@@ -1,7 +1,10 @@
 package com.alva.arbook.controller;
 
+import com.alva.arbook.entity.SysExportT;
 import com.alva.arbook.entity.SysTextbookT;
+import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.AppKeyTService;
+import com.alva.arbook.service.SysExportTService;
 import com.alva.arbook.service.SysTextbookTService;
 import com.alva.arbook.transform.JsonTextbook;
 import com.alva.arbook.util.MD5Util;
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,6 +36,9 @@ public class SysTextbookTController {
     @Autowired
     private AppKeyTService appKeyTService;
 
+    @Autowired
+    private SysExportTService sysExportTService;
+
     @Value("${baseExportPath}")
     private String baseExportPath;
 
@@ -40,6 +47,9 @@ public class SysTextbookTController {
 
     @Value("${tempUploadPath}")
     private String tempUploadPath;
+
+    @Value("${sessionLoginUser}")
+    private String sessionLoginUser;
 
     //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
@@ -73,29 +83,40 @@ public class SysTextbookTController {
      */
     @RequestMapping("/exportBookList")
     public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds,
-                              String directory) throws IOException {
+                              String directory,
+                              HttpSession session) throws IOException {
         Map<String, Object> map = new HashMap<>();
-        //确保导出目录文件夹的唯一性
         String exportPath = baseExportPath;
-        File exportFile = new File(exportPath);
-        //创建导出目录文件夹
-        if (!exportFile.exists()) {
-            exportFile.mkdirs();
-        }
-        //遍历导出
-        for (String bookId : bookIds) {
-            SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
-            String fileName = sysTextbookT.getSzCaption();// 查询教材文件名
-            String realPath = sysTextbookT.getSzStore();// 查询教材存放位置
-            File file = new File(realPath);
-            if (file.exists()) {
-                File desFile = new File(exportPath + "/" + directory + "/" + fileName + ".zip");
-                FileUtils.copyFile(file, desFile);
-            } else {
-                map.put("export", "文件" + fileName + "不存在");
+        //确保导出目录文件夹的唯一性
+        if (sysExportTService.selectByDirectory(directory) != null) {
+            map.put("msg", "导出文件名已存在,请重新设置");
+        } else {
+            File exportFile = new File(exportPath);
+            //创建导出目录文件夹
+            if (!exportFile.exists()) {
+                exportFile.mkdirs();
             }
+            //遍历导出
+            for (String bookId : bookIds) {
+                SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
+                String fileName = sysTextbookT.getSzCaption();// 查询教材文件名
+                String realPath = sysTextbookT.getSzStore();// 查询教材存放位置
+                File file = new File(realPath);
+                if (file.exists()) {
+                    File desFile = new File(exportPath + "/" + directory + "/" + fileName + ".zip");
+                    FileUtils.copyFile(file, desFile);
+                } else {
+                    map.put("msg", "没有此文件" + fileName);
+                }
+            }
+            // 将导出信息添加到数据库
+            SysExportT sysExportT = new SysExportT();
+            SysUserT sysUserT = (SysUserT)session.getAttribute(sessionLoginUser);
+            sysExportT.setSzDirectory(directory);
+            sysExportT.setSzOperator(sysUserT.getSzEmail());
+            sysExportTService.insert(sysExportT);
+            map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
         }
-        map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
         return map;
     }
 
@@ -124,10 +145,9 @@ public class SysTextbookTController {
 
     // 单文件上传
     @PostMapping(value = "/upload")
-    public Map upload(@RequestParam("file") MultipartFile file) {
+    public Map upload(MultipartFile file) {
         Map<String, Object> map = new HashMap<>();
         try {
-
             // 获取文件名
             String fileName = file.getOriginalFilename();
             // 获取文件的后缀名
@@ -177,12 +197,18 @@ public class SysTextbookTController {
 
     // 查询年级和学段
     @GetMapping("/selectDistinctSectionAndGrade")
-    public Map selectDistinctSectionAndGrade(){
-        Map<String,Object> map = new HashMap<>();
+    public Map selectDistinctSectionAndGrade() {
+        Map<String, Object> map = new HashMap<>();
         List<String> sections = sysTextbookTService.selectDistinctSection();
         List<String> grades = sysTextbookTService.selectDistinctGrade();
-        map.put("sections",sections);
-        map.put("grades",grades);
+        map.put("sections", sections);
+        map.put("grades", grades);
         return map;
+    }
+
+    // 逻辑删除教材
+    @RequestMapping("/deleteBook")
+    public void deleteByPrimaryKey(String bookId) {
+        sysTextbookTService.deleteByPrimaryKey(bookId);
     }
 }

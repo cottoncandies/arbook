@@ -44,13 +44,23 @@ INSERT INTO sys_textbook_t(sz_id, sz_caption, sz_edition, sz_section, sz_grade, 
   ('14','初中语文14.zip','第一版','初中','七年级','1','1','E:/wzh/book','文件的MD5校验和','存储其他的信息（暂未定义）',now(),now())
 ;
 INSERT INTO sys_textbook_t(sz_id, sz_caption, sz_edition, sz_section, sz_grade, sz_subject_id, sz_pub_id, sz_store, sz_md5, sz_tag, ts_created, ts_updated) VALUES
-  ('21','高中语文11.zip','第一版','高中','十年级','1','1','E:/wzh/book','文件的MD5校验和','存储其他的信息（暂未定义）',now(),now());
+  ('21','高中语文11.zip','第一版','高中','十年级','1','1','E:/wzh/book','文件的MD5校验和','存储其他的信息（暂未定义）',now(),now())
+;
+INSERT INTO sys_textbook_t(sz_id, sz_caption, sz_edition, sz_section, sz_grade, sz_subject_id, sz_pub_id, sz_store, sz_md5, sz_tag, ts_created, ts_updated) VALUES
+  ('31','高中生物11.zip','第一版','高中','十年级','1','1','E:/wzh/book','文件的MD5校验和','存储其他的信息（暂未定义）',now(),now())
+;
 
 /*导出*/
 INSERT INTO sys_export_t(sz_id,sz_directory,sz_comment,sz_operator,ts_created,ts_updated) VALUES
   ('1','E:/wzh/aa','第一次导入','阿凡达',now(),now()),
   ('2','E:/wzh/bb','第一次导入','黄飞鸿',now(),now())
 ;
+/*用户*/
+INSERT INTO sys_user_t(sz_id,sz_email,sz_password,sz_phone,ts_created,ts_updated) VALUES
+  ('1','zhangsan@163.com','123456','13811112222',now(),now()),
+  ('2','lisi@163.com','123456','13833334444',now(),now())
+;
+
 
 
 
