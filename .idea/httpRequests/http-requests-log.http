@@ -1,3 +1,43 @@
+GET http://localhost:8989/arbook/login?emial=lisi@163.com&password=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-20T070632.200.json
+
+###
+
+GET http://localhost:8989/arbook/login?emial=lisi@163.com&password=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-20T070538.200.json
+
+###
+
+GET http://localhost:8989/arbook/login?emial=zhangsan@163.com&password=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-20T070504.200.json
+
+###
+
+GET http://localhost:8989/arbook/login?emial=zhangsan@163.com&password=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-20T070452.200.json
+
+###
+
+GET http://localhost:8989/arbook/login?emial=111&password=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-08-20T070435.200.json
+
+###
+
 GET http://localhost:8989/arbook/ApiV1/GetIndex?ak=111&page=1&limit=20
 Accept: */*
 Cache-Control: no-cache

@@ -151,7 +151,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         SysExportT sysExportT = new SysExportT();
         SysUserT sysUserT = (SysUserT) session.getAttribute(sessionLoginUser);
         sysExportT.setSzDirectory(directory);
-        //sysExportT.setSzOperator(sysUserT.getSzEmail());
+        sysExportT.setSzOperator(sysUserT.getSzEmail());
         return sysExportT;
     }
 
