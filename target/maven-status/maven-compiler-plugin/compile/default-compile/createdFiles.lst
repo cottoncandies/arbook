@@ -1,12 +1,9 @@
-com\alva\arbook\controller\SysUserTController.class
 com\alva\arbook\controller\SysSubjectTController.class
-com\alva\arbook\config\UserLogin.class
 com\alva\arbook\service\SysSubjectTService.class
 com\alva\arbook\controller\SysPublishingTController.class
 com\alva\arbook\dao\SysOrgTMapper.class
 com\alva\arbook\entity\SysExportT.class
 com\alva\arbook\dao\SysPublishingTMapper.class
-com\alva\arbook\service\impl\SysUserTMapperServiceImpl.class
 com\alva\arbook\transform\JsonTextbook.class
 com\alva\arbook\service\impl\SysExportTServiceImpl.class
 com\alva\arbook\service\SysTextbookTService.class
@@ -35,5 +32,4 @@ com\alva\arbook\entity\SysOrgT.class
 com\alva\arbook\service\AppKeyTService.class
 com\alva\arbook\service\impl\SysTextbookTServiceImpl.class
 com\alva\arbook\util\MD5Util.class
-com\alva\arbook\service\SysUserTMapperService.class
 com\alva\arbook\entity\AppKeyT.class

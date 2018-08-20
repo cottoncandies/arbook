@@ -2,7 +2,7 @@ package com.alva.arbook.controller;
 
 import com.alva.arbook.entity.SysExportT;
 import com.alva.arbook.entity.SysTextbookT;
-import com.alva.arbook.entity.SysUserT;
+import com.alva.arbook.jsonresponse.ResponseBook;
 import com.alva.arbook.service.AppKeyTService;
 import com.alva.arbook.service.SysExportTService;
 import com.alva.arbook.service.SysTextbookTService;
@@ -62,12 +62,12 @@ public class SysTextbookTController {
                         @RequestParam("limit") int limit) {
         Map<String, Object> map = new HashMap<>();
         if (appKeyTService.selectByAccessKey(accessKey) != null) {
-            List<SysTextbookT> textbookTS = sysTextbookTService.selectByCustom(subjectId, publishId, section, grade, page, limit);
+            List<ResponseBook> responseBooks = sysTextbookTService.selectByCustom(subjectId, publishId, section, grade, page, limit);
             map.put("code", 0);//查询状态
             map.put("msg", "提交成功");//消息提示
             map.put("count", sysTextbookTService.countByCustomQuery(subjectId, publishId, section, grade));//查询总数
-            map.put("length", textbookTS.size());//当前记录数
-            map.put("data", textbookTS);
+            map.put("length", responseBooks.size());//当前记录数
+            map.put("data", responseBooks);
         } else {
             map.put("code", -1);
             map.put("msg", "提交失败");
@@ -83,37 +83,14 @@ public class SysTextbookTController {
      */
     @RequestMapping("/exportBookList")
     public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds,
-                              String directory,
-                              HttpSession session) throws IOException {
+                              String directory, HttpSession session) {
         Map<String, Object> map = new HashMap<>();
         String exportPath = baseExportPath;
         //确保导出目录文件夹的唯一性
         if (sysExportTService.selectByDirectory(directory) != null) {
             map.put("msg", "导出文件名已存在,请重新设置");
         } else {
-            File exportFile = new File(exportPath);
-            //创建导出目录文件夹
-            if (!exportFile.exists()) {
-                exportFile.mkdirs();
-            }
-            //遍历导出
-            for (String bookId : bookIds) {
-                SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
-                String fileName = sysTextbookT.getSzCaption();// 查询教材文件名
-                String realPath = sysTextbookT.getSzStore();// 查询教材存放位置
-                File file = new File(realPath);
-                if (file.exists()) {
-                    File desFile = new File(exportPath + "/" + directory + "/" + fileName + ".zip");
-                    FileUtils.copyFile(file, desFile);
-                } else {
-                    map.put("msg", "没有此文件" + fileName);
-                }
-            }
-            // 将导出信息添加到数据库
-            SysExportT sysExportT = new SysExportT();
-            SysUserT sysUserT = (SysUserT)session.getAttribute(sessionLoginUser);
-            sysExportT.setSzDirectory(directory);
-            sysExportT.setSzOperator(sysUserT.getSzEmail());
+            SysExportT sysExportT = sysTextbookTService.exportBookList(bookIds, directory, exportPath, session, sessionLoginUser);
             sysExportTService.insert(sysExportT);
             map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
         }
