@@ -37,7 +37,7 @@
         var $ = layui.jquery;
 
         form.on('submit(login)', function (data) {
-            $.post("checkLogin", $('#loginForm').serialize(), function (result) {
+            $.post("login", $('#loginForm').serialize(), function (result) {
                 if (result.success) {
                     location.href = "index.html";
                 } else {
