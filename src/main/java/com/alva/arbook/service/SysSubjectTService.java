@@ -15,6 +15,7 @@ public interface SysSubjectTService {
     List<SysSubjectT> selectAll();
 
     int updateByPrimaryKey(SysSubjectT record);
+
     // 根据学科名查询学科id
     String selectIdBySubjectName(String subjectName);
 }

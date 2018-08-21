@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>arbook后台管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="css/okadmin.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_693759_zroiq6woob6gvi.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!--头部导航-->
+    <div class="layui-header">
+        <div class="layui-logo">arbook-admin v1.0</div>
+        <div class="menu-switch">
+            <i class="iconfont icon-caidan"></i>
+        </div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item layui-this"><a href="">控制台</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <!--<li class="layui-nav-item">-->
+            <!--<a href="javascript:;">-->
+            <!--<img src="images/head.jpg" class="layui-nav-img">-->
+            <!--bobi-->
+            <!--</a>-->
+            <!--<dl class="layui-nav-child">-->
+            <!--<dd><a href="">个人中心<span class="layui-badge-dot"></span></a></dd>-->
+            <!--<dd><a href="">基本资料</a></dd>-->
+            <!--<dd><a href="">安全设置</a></dd>-->
+            <!--<dd><a href="">锁定账户</a></dd>-->
+            <!--</dl>-->
+            <!--</li>-->
+            <li class="layui-nav-item"><a id="exit" href="">退出</a></li>
+        </ul>
+    </div>
+    <!--左侧导航区域-->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">
+                        <i class="layui-icon">&#xe62a;</i> 常用页面
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" path="booklist.html" tab-id="1">教材查询</a></dd>
+                        <dd><a href="javascript:;" path="upload.html" tab-id="2">教材上传</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 内容主体区域 -->
+    <div class="content-body">
+        <div class="layui-tab layui-tab-brief" lay-filter="ok-tab" lay-allowClose="true">
+            <ul class="layui-tab-title">
+                <li class="layui-this"><i class="layui-icon">&#xe68e;</i> 控制台</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src='welcome.html' frameborder="0" scrolling="yes" width="100%" height="100%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--底部信息-->
+    <div class="layui-footer">
+        Copyright ©2018 arbook-admin v1.0 All Rights Reserved
+    </div>
+</div>
+<!--js逻辑-->
+<script src="lib/layui/layui.js"></script>
+<script>
+    layui.use(['element', 'layer'], function () {
+        var element = layui.element;
+        var $ = layui.jquery;
+        var layer = layui.layer;
+
+        /**
+         * 左边菜单显示/隐藏功能
+         * @type {boolean}
+         */
+        $(".menu-switch").click(function () {
+            if ($(".layui-layout-admin .layui-side").css("left") == '0px') {
+                $(".layui-layout-admin .layui-side").animate({left: "-200px"});
+                $(".layui-layout-admin .content-body").animate({left: "0px"});
+                $(".layui-layout-admin .layui-footer").animate({left: "0px"});
+            } else {
+                $(".layui-layout-admin .layui-side").animate({left: "0px"});
+                $(".layui-layout-admin .content-body").animate({left: "200px"});
+                $(".layui-layout-admin .layui-footer").animate({left: "200px"});
+            }
+        });
+
+        /**
+         * 点击左边菜单在右边添加选项卡
+         */
+        $(".layui-nav-child").find("dd").click(function () {
+            var title = $(this).text();
+            var path = $(this).children('a').attr('path');
+            var tabId = $(this).children('a').attr('tab-id');
+            // 去重复选项卡
+            for (var i = 0; i < $('.ok-frame').length; i++) {
+                if ($('.ok-frame').eq(i).attr('tab-id') == tabId) {
+                    element.tabChange("ok-tab", tabId);
+                    event.stopPropagation();
+                    return;
+                }
+            }
+            // 添加选项卡
+            element.tabAdd("ok-tab", {
+                title: title,
+                content: "<iframe src='" + path + "' tab-id='" + tabId + "' class='ok-frame' frameborder='0' scrolling='yes' width='100%' height='100%'></iframe>",
+                id: tabId
+            });
+            // 切换选项卡
+            element.tabChange("ok-tab", tabId);
+        });
+
+        // 退出登录
+        $('#exit').click(function () {
+            layer.confirm("确定退出系统吗？", {skin: 'layui-layer-lan', icon: 3, title: '提示', anim: 1}, function () {
+                location.href = "exit";
+            })
+            return false;
+        })
+    });
+</script>
+</body>
+</html>

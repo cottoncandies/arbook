@@ -28,4 +28,5 @@ public interface SysTextbookTService {
 
     SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session, String sessionLoginUser);
 
+    int editBook(ResponseBook book);
 }

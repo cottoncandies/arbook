@@ -13,6 +13,9 @@ public class ResponseBook {
     private String md5;
     private Long size;
 
+    public ResponseBook() {
+    }
+
     public ResponseBook(String id, String caption, String cover, String edition, String section, String grade, String publish, String subject, String md5, Long size) {
         this.id = id;
         this.caption = caption;
@@ -104,5 +107,21 @@ public class ResponseBook {
 
     public void setSize(Long size) {
         this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseBook{" +
+                "id='" + id + '\'' +
+                ", caption='" + caption + '\'' +
+                ", cover='" + cover + '\'' +
+                ", edition='" + edition + '\'' +
+                ", section='" + section + '\'' +
+                ", grade='" + grade + '\'' +
+                ", publish='" + publish + '\'' +
+                ", subject='" + subject + '\'' +
+                ", md5='" + md5 + '\'' +
+                ", size=" + size +
+                '}';
     }
 }

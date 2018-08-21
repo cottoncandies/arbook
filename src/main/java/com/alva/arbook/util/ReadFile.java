@@ -1,16 +1,5 @@
 package com.alva.arbook.util;
 
-import com.alva.arbook.transform.JsonTextbook;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.nio.charset.Charset;
-import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
 public class ReadFile {
     public static void main(String[] args) throws Exception {
 

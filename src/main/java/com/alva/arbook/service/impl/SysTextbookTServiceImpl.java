@@ -155,4 +155,13 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         return sysExportT;
     }
 
+    @Override
+    public int editBook(ResponseBook book) {
+        String subjectId = sysSubjectTMapper.selectIdBySubjectName(book.getSubject());
+        String publishId = sysPublishingTMapper.selectIdByPublishName(book.getPublish());
+        book.setSubject(subjectId);
+        book.setPublish(publishId);
+        return sysTextbookTMapper.editBook(book);
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.alva.arbook.dao;
 
 import com.alva.arbook.entity.SysTextbookT;
+import com.alva.arbook.jsonresponse.ResponseBook;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -45,4 +46,6 @@ public interface SysTextbookTMapper {
     List<String> selectDistinctSection();
 
     List<String> selectDistinctGrade();
+
+    int editBook(ResponseBook book);
 }

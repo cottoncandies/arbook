@@ -188,4 +188,17 @@ public class SysTextbookTController {
     public void deleteByPrimaryKey(String bookId) {
         sysTextbookTService.deleteByPrimaryKey(bookId);
     }
+
+    // 编辑教材
+    @PostMapping("/editBook")
+    public Map editBook(@RequestBody ResponseBook book) {
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            sysTextbookTService.editBook(book);
+            map.put("msg", "修改成功");
+        } catch (Exception e) {
+            map.put("msg", e.getMessage());
+        }
+        return map;
+    }
 }

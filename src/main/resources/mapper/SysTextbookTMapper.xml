@@ -73,6 +73,22 @@
         nt_row_version = #{ntRowVersion,jdbcType=INTEGER}
         where sz_id = #{szId,jdbcType=VARCHAR}
     </update>
+
+    <update id="editBook" parameterType="com.alva.arbook.jsonresponse.ResponseBook">
+        update sys_textbook_t
+        set sz_caption = #{caption,jdbcType=VARCHAR},
+        sz_cover = #{cover,jdbcType=VARCHAR},
+        sz_edition = #{edition,jdbcType=VARCHAR},
+        sz_section = #{section,jdbcType=VARCHAR},
+        sz_grade = #{grade,jdbcType=VARCHAR},
+        sz_subject_id = #{subject,jdbcType=VARCHAR},
+        sz_pub_id = #{publish,jdbcType=VARCHAR},
+        sz_md5 = #{md5,jdbcType=VARCHAR},
+        ng_size = #{size,jdbcType=BIGINT},
+        ts_updated = now()
+        where sz_id = #{id,jdbcType=VARCHAR}
+    </update>
+
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         <!--
           WARNING - @mbg.generated
