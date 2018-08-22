@@ -36,7 +36,6 @@ public class SysSubjectT implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", szId=").append(szId);
         sb.append(", szCaption=").append(szCaption);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
     }

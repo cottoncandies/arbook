@@ -1,5 +1,6 @@
 package com.alva.arbook.controller;
 
+import com.alva.arbook.dto.UserDTO;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysUserTService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,10 @@ public class SysUserTController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Map<String, Object> login(String email, String password, HttpSession session) {
+    public Map<String, Object> login(UserDTO userDTO, HttpSession session) {
         Map<String, Object> result = new HashMap<String, Object>();
         try {
-            SysUserT loginUser = sysUserTService.login(email, password);
+            SysUserT loginUser = sysUserTService.login(userDTO);
             session.setAttribute(sessionLoginUser, loginUser);
             result.put("success", true);
         } catch (Exception e) {

@@ -37,7 +37,6 @@ public class SysTextbookT implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //setter and getter
     public String getSzId() {
         return szId;
     }
@@ -102,7 +101,6 @@ public class SysTextbookT implements Serializable {
         this.szEdition = szEdition == null ? null : szEdition.trim();
     }
 
-
     public String getSzSection() {
         return szSection;
     }
@@ -131,11 +129,9 @@ public class SysTextbookT implements Serializable {
         return szInsti;
     }
 
-
     public void setSzInsti(String szInsti) {
         this.szInsti = szInsti == null ? null : szInsti.trim();
     }
-
 
     public String getSzStore() {
         return szStore;
@@ -149,7 +145,6 @@ public class SysTextbookT implements Serializable {
         return szMd5;
     }
 
-
     public void setSzMd5(String szMd5) {
         this.szMd5 = szMd5 == null ? null : szMd5.trim();
     }
@@ -158,16 +153,13 @@ public class SysTextbookT implements Serializable {
         return ngSize;
     }
 
-
     public void setNgSize(Long ngSize) {
         this.ngSize = ngSize;
     }
 
-
     public String getSzTag() {
         return szTag;
     }
-
 
     public void setSzTag(String szTag) {
         this.szTag = szTag == null ? null : szTag.trim();
@@ -198,16 +190,13 @@ public class SysTextbookT implements Serializable {
         this.ntRowState = ntRowState;
     }
 
-
     public Integer getNtRowVersion() {
         return ntRowVersion;
     }
 
-
     public void setNtRowVersion(Integer ntRowVersion) {
         this.ntRowVersion = ntRowVersion;
     }
-
 
     public String getCatalog() {
         return catalog;
@@ -219,31 +208,28 @@ public class SysTextbookT implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", szId=").append(szId);
-        sb.append(", szCaption=").append(szCaption);
-        sb.append(", szCover=").append(szCover);
-        sb.append(", szEdition=").append(szEdition);
-        sb.append(", szSection=").append(szSection);
-        sb.append(", szGrade=").append(szGrade);
-        sb.append(", ntTerm=").append(ntTerm);
-        sb.append(", subject=").append(sysSubjectT);
-        sb.append(", publish=").append(sysPublishingT);
-        sb.append(", szInsti=").append(szInsti);
-        sb.append(", szStore=").append(szStore);
-        sb.append(", szMd5=").append(szMd5);
-        sb.append(", ngSize=").append(ngSize);
-        sb.append(", szTag=").append(szTag);
-        sb.append(", tsCreated=").append(tsCreated);
-        sb.append(", tsUpdated=").append(tsUpdated);
-        sb.append(", ntRowState=").append(ntRowState);
-        sb.append(", ntRowVersion=").append(ntRowVersion);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "SysTextbookT{" +
+                "szId='" + szId + '\'' +
+                ", szCaption='" + szCaption + '\'' +
+                ", szCover='" + szCover + '\'' +
+                ", szEdition='" + szEdition + '\'' +
+                ", szSection='" + szSection + '\'' +
+                ", szGrade='" + szGrade + '\'' +
+                ", ntTerm=" + ntTerm +
+                ", szSubjectId='" + szSubjectId + '\'' +
+                ", sysSubjectT=" + sysSubjectT +
+                ", szPubId='" + szPubId + '\'' +
+                ", sysPublishingT=" + sysPublishingT +
+                ", szInsti='" + szInsti + '\'' +
+                ", szStore='" + szStore + '\'' +
+                ", szMd5='" + szMd5 + '\'' +
+                ", ngSize=" + ngSize +
+                ", szTag='" + szTag + '\'' +
+                ", tsCreated=" + tsCreated +
+                ", tsUpdated=" + tsUpdated +
+                ", ntRowState=" + ntRowState +
+                ", ntRowVersion=" + ntRowVersion +
+                ", catalog='" + catalog + '\'' +
+                '}';
     }
-
 }

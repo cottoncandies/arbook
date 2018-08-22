@@ -4,7 +4,6 @@ com\alva\arbook\controller\SysPublishingTController.class
 com\alva\arbook\dao\SysOrgTMapper.class
 com\alva\arbook\entity\SysExportT.class
 com\alva\arbook\dao\SysPublishingTMapper.class
-com\alva\arbook\transform\JsonTextbook.class
 com\alva\arbook\service\impl\SysExportTServiceImpl.class
 com\alva\arbook\service\SysTextbookTService.class
 com\alva\arbook\entity\SysUserT.class
@@ -26,6 +25,7 @@ com\alva\arbook\controller\SysTextbookTController.class
 com\alva\arbook\service\SysPublishingTService.class
 com\alva\arbook\ArbookApplication.class
 com\alva\arbook\dao\AppKeyTMapper.class
+com\alva\arbook\dto\TextbookQueryDTO.class
 com\alva\arbook\config\FileConfig.class
 com\alva\arbook\service\impl\SysOrgTServiceImpl.class
 com\alva\arbook\entity\SysOrgT.class

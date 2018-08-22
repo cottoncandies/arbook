@@ -5,10 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 public class SysPublishingT implements Serializable {
-
     @JsonProperty("id")
     private String szId;
-
     @JsonProperty("publish")
     private String szCaption;
 
@@ -38,7 +36,6 @@ public class SysPublishingT implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", szId=").append(szId);
         sb.append(", szCaption=").append(szCaption);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
     }

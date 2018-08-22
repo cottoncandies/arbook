@@ -1,14 +1,17 @@
 package com.alva.arbook.service.impl;
 
-import com.alva.arbook.dao.SysExportTMapper;
 import com.alva.arbook.dao.SysPublishingTMapper;
 import com.alva.arbook.dao.SysSubjectTMapper;
 import com.alva.arbook.dao.SysTextbookTMapper;
-import com.alva.arbook.entity.*;
-import com.alva.arbook.jsonresponse.ResponseBook;
+import com.alva.arbook.dto.TextbookDTO;
+import com.alva.arbook.dto.TextbookQueryDTO;
+import com.alva.arbook.entity.SysExportT;
+import com.alva.arbook.entity.SysTextbookT;
+import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysTextbookTService;
-import com.alva.arbook.transform.JsonTextbook;
+import com.alva.arbook.vo.TextbookVO;
 import org.apache.commons.io.FileUtils;
+import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -36,7 +39,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     private SysPublishingTMapper sysPublishingTMapper;
 
     @Resource
-    private SysExportTMapper sysExportTMapper;
+    private DozerBeanMapper mapper;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = RuntimeException.class)
@@ -46,10 +49,10 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = RuntimeException.class)
-    public int insert(JsonTextbook jsonTextbook, SysTextbookT sysTextbookT) {
-        String term = jsonTextbook.getTerm();
-        String publishName = jsonTextbook.getPublish();
-        String subjectName = jsonTextbook.getSubject();
+    public int insert(TextbookDTO TextbookDTO, SysTextbookT sysTextbookT) {
+        String term = TextbookDTO.getTerm();
+        String publishName = TextbookDTO.getPublish();
+        String subjectName = TextbookDTO.getSubject();
         String subjectId = sysSubjectTMapper.selectIdBySubjectName(subjectName);
         String publishId = sysPublishingTMapper.selectIdByPublishName(publishName);
         switch (term) {
@@ -73,12 +76,12 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         sysTextbookT.setSzTag(" ");
         sysTextbookT.setTsCreated(new Date());
         sysTextbookT.setTsUpdated(new Date());
-        sysTextbookT.setSzId(jsonTextbook.getId());
-        sysTextbookT.setSzCaption(jsonTextbook.getCaption());
-        sysTextbookT.setSzCover(jsonTextbook.getCover());
-        sysTextbookT.setSzEdition(jsonTextbook.getEdition());
-        sysTextbookT.setSzSection(jsonTextbook.getSection());
-        sysTextbookT.setSzGrade(jsonTextbook.getGrade());
+        sysTextbookT.setSzId(TextbookDTO.getId());
+        sysTextbookT.setSzCaption(TextbookDTO.getCaption());
+        sysTextbookT.setSzCover(TextbookDTO.getCover());
+        sysTextbookT.setSzEdition(TextbookDTO.getEdition());
+        sysTextbookT.setSzSection(TextbookDTO.getSection());
+        sysTextbookT.setSzGrade(TextbookDTO.getGrade());
         return sysTextbookTMapper.insert(sysTextbookT);
     }
 
@@ -93,25 +96,21 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     }
 
     @Override
-    public List<ResponseBook> selectByCustom(String subjectId, String publishId, String section, String grade, int page, int rows) {
-        List<ResponseBook> responseBooks = new ArrayList<>();
-        List<SysTextbookT> textbookTS = sysTextbookTMapper.selectByCustom(subjectId, publishId, section, grade, (page - 1) * rows, rows);
-
+    public List<TextbookVO> selectByCustom(TextbookQueryDTO textbookQueryDTO) {
+        List<TextbookVO> textbookVOS = new ArrayList<>();
+        Integer offset = (textbookQueryDTO.getPage() - 1) * textbookQueryDTO.getLimit();
+        textbookQueryDTO.setPage(offset);
+        List<SysTextbookT> textbookTS = sysTextbookTMapper.selectByCustom(textbookQueryDTO);
         for (SysTextbookT textbookT : textbookTS) {
-            SysSubjectT sysSubjectT = sysSubjectTMapper.selectByPrimaryKey(textbookT.getSzSubjectId());
-            String subject = sysSubjectT.getSzCaption();
-            SysPublishingT sysPublishingT = sysPublishingTMapper.selectByPrimaryKey(textbookT.getSzPubId());
-            String publish = sysPublishingT.getSzCaption();
-            ResponseBook responseBook = new ResponseBook(textbookT.getSzId(), textbookT.getSzCaption(), textbookT.getSzCover(), textbookT.getSzEdition(), textbookT.getSzSection(),
-                    textbookT.getSzGrade(), publish, subject, textbookT.getSzMd5(), textbookT.getNgSize());
-            responseBooks.add(responseBook);
+            TextbookVO textbookVO = mapper.map(textbookT, TextbookVO.class);
+            textbookVOS.add(textbookVO);
         }
-        return responseBooks;
+        return textbookVOS;
     }
 
     @Override
-    public Long countByCustomQuery(String subjectId, String publishId, String section, String grade) {
-        return sysTextbookTMapper.countByCustomQuery(subjectId, publishId, section, grade);
+    public Long countByCustomQuery(TextbookQueryDTO textbookQueryDTO) {
+        return sysTextbookTMapper.countByCustomQuery(textbookQueryDTO);
     }
 
     @Override
@@ -151,17 +150,18 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         SysExportT sysExportT = new SysExportT();
         SysUserT sysUserT = (SysUserT) session.getAttribute(sessionLoginUser);
         sysExportT.setSzDirectory(directory);
-        sysExportT.setSzOperator(sysUserT.getSzEmail());
+        //sysExportT.setSzOperator(sysUserT.getSzEmail());
         return sysExportT;
     }
 
     @Override
-    public int editBook(ResponseBook book) {
-        String subjectId = sysSubjectTMapper.selectIdBySubjectName(book.getSubject());
-        String publishId = sysPublishingTMapper.selectIdByPublishName(book.getPublish());
-        book.setSubject(subjectId);
-        book.setPublish(publishId);
-        return sysTextbookTMapper.editBook(book);
+    public int editBook(TextbookVO textbookVO) {
+        String subjectId = sysSubjectTMapper.selectIdBySubjectName(textbookVO.getSubject());
+        String publishId = sysPublishingTMapper.selectIdByPublishName(textbookVO.getPublish());
+        SysTextbookT sysTextbookT = mapper.map(textbookVO, SysTextbookT.class);
+        sysTextbookT.setSzSubjectId(subjectId);
+        sysTextbookT.setSzPubId(publishId);
+        return sysTextbookTMapper.editBook(sysTextbookT);
     }
 
 }

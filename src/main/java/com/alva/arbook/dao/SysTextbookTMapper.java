@@ -1,7 +1,8 @@
 package com.alva.arbook.dao;
 
+import com.alva.arbook.dto.TextbookQueryDTO;
 import com.alva.arbook.entity.SysTextbookT;
-import com.alva.arbook.jsonresponse.ResponseBook;
+import com.alva.arbook.vo.TextbookVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -39,13 +40,13 @@ public interface SysTextbookTMapper {
      */
     int updateByPrimaryKey(SysTextbookT record);
 
-    List<SysTextbookT> selectByCustom(@Param("subjectId") String subjectId, @Param("publishId") String publishId, @Param("section") String section, @Param("grade") String grade, @Param("offset") Integer offset, @Param("limit") Integer limit);
+    List<SysTextbookT> selectByCustom(TextbookQueryDTO textbookQueryDTO);
 
-    Long countByCustomQuery(@Param("subjectId") String subjectId, @Param("publishId") String publishId, @Param("section") String section, @Param("grade") String grade);
+    Long countByCustomQuery(TextbookQueryDTO textbookQueryDTO);
 
     List<String> selectDistinctSection();
 
     List<String> selectDistinctGrade();
 
-    int editBook(ResponseBook book);
+    int editBook(SysTextbookT sysTextbookT);
 }

@@ -1,32 +1,32 @@
-package com.alva.arbook.jsonresponse;
+package com.alva.arbook.dto;
 
-public class ResponseBook {
+public class TextbookDTO {
+
     private String id;
-    private String caption;
     private String cover;
+    private String caption;
     private String edition;
     private String section;
     private String grade;
-    //private Integer term;
-    private String publish;
     private String subject;
-    private String md5;
-    private Long size;
+    private String term;
+    private String publish;
+    private String catalog;
 
-    public ResponseBook() {
+    public TextbookDTO() {
     }
 
-    public ResponseBook(String id, String caption, String cover, String edition, String section, String grade, String publish, String subject, String md5, Long size) {
+    public TextbookDTO(String id, String cover, String caption, String edition, String section, String grade, String subject, String term, String publish, String catalog) {
         this.id = id;
-        this.caption = caption;
         this.cover = cover;
+        this.caption = caption;
         this.edition = edition;
         this.section = section;
         this.grade = grade;
-        this.publish = publish;
         this.subject = subject;
-        this.md5 = md5;
-        this.size = size;
+        this.term = term;
+        this.publish = publish;
+        this.catalog = catalog;
     }
 
     public String getId() {
@@ -37,20 +37,20 @@ public class ResponseBook {
         this.id = id;
     }
 
-    public String getCaption() {
-        return caption;
-    }
-
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
-
     public String getCover() {
         return cover;
     }
 
     public void setCover(String cover) {
         this.cover = cover;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
     public String getEdition() {
@@ -77,14 +77,6 @@ public class ResponseBook {
         this.grade = grade;
     }
 
-    public String getPublish() {
-        return publish;
-    }
-
-    public void setPublish(String publish) {
-        this.publish = publish;
-    }
-
     public String getSubject() {
         return subject;
     }
@@ -93,35 +85,43 @@ public class ResponseBook {
         this.subject = subject;
     }
 
-    public String getMd5() {
-        return md5;
+    public String getTerm() {
+        return term;
     }
 
-    public void setMd5(String md5) {
-        this.md5 = md5;
+    public void setTerm(String term) {
+        this.term = term;
     }
 
-    public Long getSize() {
-        return size;
+    public String getPublish() {
+        return publish;
     }
 
-    public void setSize(Long size) {
-        this.size = size;
+    public void setPublish(String publish) {
+        this.publish = publish;
+    }
+
+    public String getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(String catalog) {
+        this.catalog = catalog;
     }
 
     @Override
     public String toString() {
-        return "ResponseBook{" +
+        return "TextbookDTO{" +
                 "id='" + id + '\'' +
-                ", caption='" + caption + '\'' +
                 ", cover='" + cover + '\'' +
+                ", caption='" + caption + '\'' +
                 ", edition='" + edition + '\'' +
                 ", section='" + section + '\'' +
                 ", grade='" + grade + '\'' +
-                ", publish='" + publish + '\'' +
                 ", subject='" + subject + '\'' +
-                ", md5='" + md5 + '\'' +
-                ", size=" + size +
+                ", term='" + term + '\'' +
+                ", publish='" + publish + '\'' +
+                ", catalog='" + catalog + '\'' +
                 '}';
     }
 }

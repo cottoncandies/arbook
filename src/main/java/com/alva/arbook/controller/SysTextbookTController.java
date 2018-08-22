@@ -1,14 +1,15 @@
 package com.alva.arbook.controller;
 
+import com.alva.arbook.dto.TextbookDTO;
+import com.alva.arbook.dto.TextbookQueryDTO;
 import com.alva.arbook.entity.SysExportT;
 import com.alva.arbook.entity.SysTextbookT;
-import com.alva.arbook.jsonresponse.ResponseBook;
 import com.alva.arbook.service.AppKeyTService;
 import com.alva.arbook.service.SysExportTService;
 import com.alva.arbook.service.SysTextbookTService;
-import com.alva.arbook.transform.JsonTextbook;
 import com.alva.arbook.util.MD5Util;
 import com.alva.arbook.util.ZipUtil;
+import com.alva.arbook.vo.TextbookVO;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,21 +54,15 @@ public class SysTextbookTController {
 
     //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
-    public Map GetIndex(@RequestParam("ak") String accessKey,
-                        String subjectId,
-                        String publishId,
-                        String section,
-                        String grade,
-                        @RequestParam("page") int page,
-                        @RequestParam("limit") int limit) {
+    public Map GetIndex(@RequestParam("ak") String accessKey, TextbookQueryDTO textbookQueryDTO) {
         Map<String, Object> map = new HashMap<>();
         if (appKeyTService.selectByAccessKey(accessKey) != null) {
-            List<ResponseBook> responseBooks = sysTextbookTService.selectByCustom(subjectId, publishId, section, grade, page, limit);
+            List<TextbookVO> textbookVOS = sysTextbookTService.selectByCustom(textbookQueryDTO);
             map.put("code", 0);//查询状态
             map.put("msg", "提交成功");//消息提示
-            map.put("count", sysTextbookTService.countByCustomQuery(subjectId, publishId, section, grade));//查询总数
-            map.put("length", responseBooks.size());//当前记录数
-            map.put("data", responseBooks);
+            map.put("count", sysTextbookTService.countByCustomQuery(textbookQueryDTO));//查询总数
+            map.put("length", textbookVOS.size());//当前记录数
+            map.put("data", textbookVOS);
         } else {
             map.put("code", -1);
             map.put("msg", "提交失败");
@@ -75,15 +70,9 @@ public class SysTextbookTController {
         return map;
     }
 
-    /**
-     * @param bookIds   导出教材列表
-     * @param directory 用户定义的导出目录
-     * @return
-     * @throws IOException
-     */
+    // 批量导出教材
     @RequestMapping("/exportBookList")
-    public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds,
-                              String directory, HttpSession session) {
+    public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds, String directory, HttpSession session) {
         Map<String, Object> map = new HashMap<>();
         String exportPath = baseExportPath;
         //确保导出目录文件夹的唯一性
@@ -144,10 +133,10 @@ public class SysTextbookTController {
             // 文件大小
             long fileSize = file.getSize();
             //读取教材zip中的json文件
-            JsonTextbook jsonTextbook = (JsonTextbook) ZipUtil.readZipJsonToObject(dest, JsonTextbook.class);
-            String subject = jsonTextbook.getSubject();
-            String grade = jsonTextbook.getGrade();
-            String publish = jsonTextbook.getPublish();
+            TextbookDTO TextbookDTO = (TextbookDTO) ZipUtil.readZipJsonToObject(dest, TextbookDTO.class);
+            String subject = TextbookDTO.getSubject();
+            String grade = TextbookDTO.getGrade();
+            String publish = TextbookDTO.getPublish();
             // 真实存储路径
             String store = baseUploadPath + "/" + subject + "/" + grade + "/" + publish + "/" + newFileName;
             File destFile = new File(store);
@@ -158,7 +147,7 @@ public class SysTextbookTController {
             // 复制文件
             FileUtils.copyFile(dest, destFile);
             // 将数据存入数据库
-            sysTextbookTService.insert(jsonTextbook, new SysTextbookT(store, md5, fileSize)
+            sysTextbookTService.insert(TextbookDTO, new SysTextbookT(store, md5, fileSize)
             );
             // 删除临时文件
             dest.delete();
@@ -191,7 +180,7 @@ public class SysTextbookTController {
 
     // 编辑教材
     @PostMapping("/editBook")
-    public Map editBook(@RequestBody ResponseBook book) {
+    public Map editBook(@RequestBody TextbookVO book) {
         HashMap<String, Object> map = new HashMap<>();
         try {
             sysTextbookTService.editBook(book);

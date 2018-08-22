@@ -1,32 +1,32 @@
-package com.alva.arbook.transform;
+package com.alva.arbook.vo;
 
-public class JsonTextbook {
-
+public class TextbookVO {
     private String id;
-    private String cover;
     private String caption;
+    private String cover;
     private String edition;
     private String section;
     private String grade;
-    private String subject;
-    private String term;
+    //private Integer term;
     private String publish;
-    private String catalog;
+    private String subject;
+    private String md5;
+    private Long size;
 
-    public JsonTextbook() {
+    public TextbookVO() {
     }
 
-    public JsonTextbook(String id, String cover, String caption, String edition, String section, String grade, String subject, String term, String publish, String catalog) {
+    public TextbookVO(String id, String caption, String cover, String edition, String section, String grade, String publish, String subject, String md5, Long size) {
         this.id = id;
-        this.cover = cover;
         this.caption = caption;
+        this.cover = cover;
         this.edition = edition;
         this.section = section;
         this.grade = grade;
-        this.subject = subject;
-        this.term = term;
         this.publish = publish;
-        this.catalog = catalog;
+        this.subject = subject;
+        this.md5 = md5;
+        this.size = size;
     }
 
     public String getId() {
@@ -37,20 +37,20 @@ public class JsonTextbook {
         this.id = id;
     }
 
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
-
     public String getCaption() {
         return caption;
     }
 
     public void setCaption(String caption) {
         this.caption = caption;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
     public String getEdition() {
@@ -77,22 +77,6 @@ public class JsonTextbook {
         this.grade = grade;
     }
 
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getTerm() {
-        return term;
-    }
-
-    public void setTerm(String term) {
-        this.term = term;
-    }
-
     public String getPublish() {
         return publish;
     }
@@ -101,27 +85,43 @@ public class JsonTextbook {
         this.publish = publish;
     }
 
-    public String getCatalog() {
-        return catalog;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setCatalog(String catalog) {
-        this.catalog = catalog;
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
     }
 
     @Override
     public String toString() {
-        return "JsonTextbook{" +
+        return "TextbookVO{" +
                 "id='" + id + '\'' +
-                ", cover='" + cover + '\'' +
                 ", caption='" + caption + '\'' +
+                ", cover='" + cover + '\'' +
                 ", edition='" + edition + '\'' +
                 ", section='" + section + '\'' +
                 ", grade='" + grade + '\'' +
-                ", subject='" + subject + '\'' +
-                ", term='" + term + '\'' +
                 ", publish='" + publish + '\'' +
-                ", catalog='" + catalog + '\'' +
+                ", subject='" + subject + '\'' +
+                ", md5='" + md5 + '\'' +
+                ", size=" + size +
                 '}';
     }
 }
