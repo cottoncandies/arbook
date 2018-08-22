@@ -9,9 +9,9 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 @MapperScan("com.alva.arbook.dao")
 @PropertySource(value = "classpath:file-config.yml")
-@PropertySource(value = "classpath:user-login.yml")
 public class ArbookApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(ArbookApplication.class, args);
     }
+
 }

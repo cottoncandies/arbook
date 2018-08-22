@@ -49,9 +49,6 @@ public class SysTextbookTController {
     @Value("${tempUploadPath}")
     private String tempUploadPath;
 
-    @Value("${sessionLoginUser}")
-    private String sessionLoginUser;
-
     //根据条件查询教材(联表查询)
     @RequestMapping("/GetIndex")
     public Map GetIndex(@RequestParam("ak") String accessKey, TextbookQueryDTO textbookQueryDTO) {
@@ -79,14 +76,14 @@ public class SysTextbookTController {
         if (sysExportTService.selectByDirectory(directory) != null) {
             map.put("msg", "导出文件名已存在,请重新设置");
         } else {
-            SysExportT sysExportT = sysTextbookTService.exportBookList(bookIds, directory, exportPath, session, sessionLoginUser);
+            SysExportT sysExportT = sysTextbookTService.exportBookList(bookIds, directory, exportPath, session);
             sysExportTService.insert(sysExportT);
             map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
         }
         return map;
     }
 
-    // 获取教材
+    // 下载教材(单文件下载)
     @RequestMapping(value = "/GetData")
     public void getData(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws IOException {
         //授权Key是否合法

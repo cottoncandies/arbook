@@ -27,7 +27,7 @@ public interface SysTextbookTService {
 
     List<String> selectDistinctGrade();
 
-    SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session, String sessionLoginUser);
+    SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session);
 
     int editBook(TextbookVO textbookVO);
 }

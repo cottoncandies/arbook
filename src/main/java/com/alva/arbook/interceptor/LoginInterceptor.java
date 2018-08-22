@@ -1,14 +1,10 @@
 package com.alva.arbook.interceptor;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-
-    @Value("${sessionLoginUser}")
-    private String sessionLoginUser;
 
 //    @Override
 //    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

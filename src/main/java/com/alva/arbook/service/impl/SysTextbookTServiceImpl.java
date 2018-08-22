@@ -125,7 +125,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
 
     @Override
     @Transactional
-    public SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session, String sessionLoginUser) {
+    public SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session) {
         File exportFile = new File(exportPath);
         //创建导出目录文件夹
         if (!exportFile.exists()) {
@@ -148,7 +148,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         }
         // 将导出信息添加到数据库
         SysExportT sysExportT = new SysExportT();
-        SysUserT sysUserT = (SysUserT) session.getAttribute(sessionLoginUser);
+        SysUserT sysUserT = (SysUserT) session.getAttribute("user");
         sysExportT.setSzDirectory(directory);
         //sysExportT.setSzOperator(sysUserT.getSzEmail());
         return sysExportT;

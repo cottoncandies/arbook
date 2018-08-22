@@ -4,8 +4,8 @@ import com.alva.arbook.dto.UserDTO;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysUserTService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,28 +19,24 @@ public class SysUserTController {
     @Autowired
     private SysUserTService sysUserTService;
 
-    @Value("${sessionLoginUser}")
-    private String sessionLoginUser;
-
     @RequestMapping("/login")
     @ResponseBody
-    public Map<String, Object> login(UserDTO userDTO, HttpSession session) {
-        Map<String, Object> result = new HashMap<String, Object>();
+    public Map login(UserDTO userDTO, Model model) {
+        HashMap<String, Object> map = new HashMap<>();
         try {
-            SysUserT loginUser = sysUserTService.login(userDTO);
-            session.setAttribute(sessionLoginUser, loginUser);
-            result.put("success", true);
+            SysUserT sysUserT = sysUserTService.login(userDTO);
+            map.put("user", sysUserT);
+            map.put("success", true);
         } catch (Exception e) {
-            result.put("success", false);
-            result.put("message", e.getMessage());
+            map.put("success", false);
+            map.put("message", e.getMessage());
         }
-
-        return result;
+        return map;
     }
 
     @RequestMapping("/exit")
     public String exit(HttpSession session) {
-        session.removeAttribute(sessionLoginUser);
+        session.removeAttribute("user");
         session.invalidate();
         return "redirect:/login.html";
     }
