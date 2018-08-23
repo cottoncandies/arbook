@@ -90,7 +90,7 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
             even: true,
             cols: [[
                 {type: 'checkbox'},
-                {field: 'id', title: 'ID', width: 80, sort: true, edit: 'text'},
+                {field: 'id', title: 'ID', width: 80, sort: true},
                 {field: 'caption', title: '教材名称', edit: 'text'},
                 {field: 'cover', title: '封面文件'},
                 {field: 'edition', title: '教材版本'},
@@ -99,7 +99,9 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
                 {field: 'publish', title: '出版社'},
                 {field: 'subject', title: '学科'},
                 {field: 'md5', title: '文件的MD5值'},
-                {field: 'size', title: '文件大小'}, {title: '操作', templet: '#operationTpl', align: 'center'}
+                {field: 'size', title: '文件大小'},
+                // {title: '操作', templet: '#operationTpl', align: 'center'}
+                {field:'right', title: '操作',toolbar:"#operationTpl"}
             ]],
             done: function (res, curr, count) {
                 $("#countNum").text(count);

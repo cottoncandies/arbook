@@ -3,6 +3,8 @@ package com.alva.arbook.controller;
 import com.alva.arbook.dto.UserDTO;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysUserTService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +26,9 @@ public class SysUserTController {
     public Map login(UserDTO userDTO, Model model) {
         HashMap<String, Object> map = new HashMap<>();
         try {
+
             SysUserT sysUserT = sysUserTService.login(userDTO);
-            map.put("user", sysUserT);
+            model.addAttribute("user", sysUserT);
             map.put("success", true);
         } catch (Exception e) {
             map.put("success", false);

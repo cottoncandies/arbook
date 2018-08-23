@@ -26,7 +26,6 @@ com\alva\arbook\service\SysPublishingTService.class
 com\alva\arbook\ArbookApplication.class
 com\alva\arbook\dao\AppKeyTMapper.class
 com\alva\arbook\dto\TextbookQueryDTO.class
-com\alva\arbook\config\FileConfig.class
 com\alva\arbook\service\impl\SysOrgTServiceImpl.class
 com\alva\arbook\entity\SysOrgT.class
 com\alva\arbook\service\AppKeyTService.class
