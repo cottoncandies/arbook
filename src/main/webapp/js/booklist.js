@@ -92,7 +92,7 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
                 {type: 'checkbox'},
                 {field: 'id', title: 'ID', width: 80, sort: true},
                 {field: 'caption', title: '教材名称', edit: 'text'},
-                {field: 'cover', title: '封面文件'},
+                {field: 'cover', title: '封面文件',templet:'<div><img id="img" src="images/{{ d.cover}}"></div>',style:'height:48px;width:48px;line-height:48px!important;'},
                 {field: 'edition', title: '教材版本'},
                 {field: 'section', title: '学段'},
                 {field: 'grade', title: '年级'},
@@ -100,12 +100,10 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
                 {field: 'subject', title: '学科'},
                 {field: 'md5', title: '文件的MD5值'},
                 {field: 'size', title: '文件大小'},
-                // {title: '操作', templet: '#operationTpl', align: 'center'}
-                {field: 'right', title: '操作', toolbar: "#operationTpl"}
+                {field: 'right', title: '操作', toolbar: "#operationTpl", align: 'center'}
             ]],
             done: function (res, curr, count) {
                 $("#countNum").text(count);
-
                 //数据表格加载完成时调用此函数
                 //如果是异步请求数据方式，res即为你接口返回的信息。
                 //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
@@ -223,5 +221,5 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
                 });
             });
         }
-    })
+    });
 })
