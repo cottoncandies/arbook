@@ -89,16 +89,14 @@
 
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select textbook.sz_id, textbook.sz_caption, textbook.sz_cover, textbook.sz_edition, textbook.sz_section,
-        textbook.sz_grade, textbook.nt_term, textbook.sz_subject_id, textbook.sz_pub_id,
-        textbook.sz_insti, textbook.sz_store, textbook.sz_md5, textbook.ng_size, textbook.sz_tag,
-        textbook.ts_created, textbook.ts_updated, textbook.nt_row_state,textbook.nt_row_version,
-        subject.sz_id AS subject_id, subject.sz_caption AS subject_caption,
-        publish.sz_id AS publish_id, publish.sz_caption AS publish_caption
+            textbook.sz_grade, textbook.nt_term, textbook.sz_subject_id, textbook.sz_pub_id,
+            textbook.sz_insti, textbook.sz_store, textbook.sz_md5, textbook.ng_size, textbook.sz_tag,
+            textbook.ts_created, textbook.ts_updated, textbook.nt_row_state,textbook.nt_row_version,
+            subject.sz_id AS subject_id, subject.sz_caption AS subject_caption,
+            publish.sz_id AS publish_id, publish.sz_caption AS publish_caption
         from sys_textbook_t textbook
-        LEFT JOIN sys_subject_t subject
-        ON subject.sz_id = textbook.sz_subject_id
-        LEFT JOIN sys_publishing_t publish
-        ON publish.sz_id = textbook.sz_pub_id
+          LEFT JOIN sys_subject_t subject ON subject.sz_id = textbook.sz_subject_id
+          LEFT JOIN sys_publishing_t publish ON publish.sz_id = textbook.sz_pub_id
         where textbook.sz_id = #{szId,jdbcType=VARCHAR}
     </select>
     <!--根据条件联表查询(三表)并分页-->
@@ -110,10 +108,8 @@
         subject.sz_id AS subject_id, subject.sz_caption AS subject_caption,
         publish.sz_id AS publish_id, publish.sz_caption AS publish_caption
         from sys_textbook_t textbook
-        LEFT JOIN sys_subject_t subject
-        ON subject.sz_id = textbook.sz_subject_id
-        LEFT JOIN sys_publishing_t publish
-        ON publish.sz_id = textbook.sz_pub_id
+        LEFT JOIN sys_subject_t subject ON subject.sz_id = textbook.sz_subject_id
+        LEFT JOIN sys_publishing_t publish ON publish.sz_id = textbook.sz_pub_id
         <where>
             <if test="subjectId != null and subjectId !='' ">
                 subject.sz_id=#{subjectId,jdbcType=VARCHAR}
@@ -136,8 +132,7 @@
     </select>
     <!--根据条件查询(三表)到的图书总数-->
     <select id="countByCustomQuery" resultType="Long">
-        select count(*) from
-        (
+        select count(*) from(
         select textbook.sz_id, textbook.sz_caption, textbook.sz_cover, textbook.sz_edition, textbook.sz_section,
         textbook.sz_grade, textbook.nt_term, textbook.sz_subject_id, textbook.sz_pub_id,
         textbook.sz_insti, textbook.sz_store, textbook.sz_md5, textbook.ng_size, textbook.sz_tag,
@@ -145,10 +140,8 @@
         subject.sz_id AS subject_id, subject.sz_caption AS subject_caption,
         publish.sz_id AS publish_id, publish.sz_caption AS publish_caption
         from sys_textbook_t textbook
-        LEFT JOIN sys_subject_t subject
-        ON subject.sz_id = textbook.sz_subject_id
-        LEFT JOIN sys_publishing_t publish
-        ON publish.sz_id = textbook.sz_pub_id
+        LEFT JOIN sys_subject_t subject ON subject.sz_id = textbook.sz_subject_id
+        LEFT JOIN sys_publishing_t publish ON publish.sz_id = textbook.sz_pub_id
         <where>
             <if test="subjectId != null and subjectId !='' ">
                 subject.sz_id=#{subjectId,jdbcType=VARCHAR}

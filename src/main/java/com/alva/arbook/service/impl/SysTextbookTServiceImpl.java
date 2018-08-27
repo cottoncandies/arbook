@@ -123,35 +123,58 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
         return sysTextbookTMapper.selectDistinctGrade();
     }
 
+    /*
+    将教材导出到用户指定目录
+    导出成功后将导出信息添加到数据库
+    添加导出信息失败时删除已导出的教材
+     */
     @Override
-    @Transactional
     public SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session) {
-        File exportFile = new File(exportPath);
-        //创建导出目录文件夹
-        if (!exportFile.exists()) {
-            exportFile.mkdirs();
+        boolean isDownload = true;
+        File desFile = null;
+        try {
+            File exportFile = new File(exportPath);
+            //创建导出目录文件夹
+            if (!exportFile.exists()) {
+                exportFile.mkdirs();
+            }
+            //遍历导出
+            for (String bookId : bookIds) {
+                SysTextbookT sysTextbookT = sysTextbookTMapper.selectByPrimaryKey(bookId);
+                String fileName = sysTextbookT.getSzCaption();// 查询教材文件名
+                String realPath = sysTextbookT.getSzStore();// 查询教材存放位置
+                File file = new File(realPath);
+                if (file.exists()) {
+                    desFile = new File(exportPath + "/" + directory + "/" + fileName + ".zip");
+                    try {
+                        FileUtils.copyFile(file, desFile);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            isDownload = false;
+            e.printStackTrace();
         }
-        //遍历导出
-        for (String bookId : bookIds) {
-            SysTextbookT sysTextbookT = sysTextbookTMapper.selectByPrimaryKey(bookId);
-            String fileName = sysTextbookT.getSzCaption();// 查询教材文件名
-            String realPath = sysTextbookT.getSzStore();// 查询教材存放位置
-            File file = new File(realPath);
-            if (file.exists()) {
-                File desFile = new File(exportPath + "/" + directory + "/" + fileName + ".zip");
+        if (isDownload) {
+            try {
+                // 将导出信息添加到数据库
+                SysExportT sysExportT = new SysExportT();
+                SysUserT sysUserT = (SysUserT) session.getAttribute("user");
+                sysExportT.setSzDirectory(directory);
+                sysExportT.setSzOperator(sysUserT.getSzEmail());
+                return sysExportT;
+            } catch (Exception e) {
+                desFile = new File(exportPath + "/" + directory);
                 try {
-                    FileUtils.copyFile(file, desFile);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    FileUtils.deleteDirectory(desFile);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
                 }
             }
         }
-        // 将导出信息添加到数据库
-        SysExportT sysExportT = new SysExportT();
-        SysUserT sysUserT = (SysUserT) session.getAttribute("user");
-        sysExportT.setSzDirectory(directory);
-        //sysExportT.setSzOperator(sysUserT.getSzEmail());
-        return sysExportT;
+        return null;
     }
 
     @Override

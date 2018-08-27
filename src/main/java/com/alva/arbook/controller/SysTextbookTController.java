@@ -76,9 +76,14 @@ public class SysTextbookTController {
         if (sysExportTService.selectByDirectory(directory) != null) {
             map.put("msg", "导出文件名已存在,请重新设置");
         } else {
-            SysExportT sysExportT = sysTextbookTService.exportBookList(bookIds, directory, exportPath, session);
-            sysExportTService.insert(sysExportT);
-            map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
+            Object o = sysTextbookTService.exportBookList(bookIds, directory, exportPath, session);
+            if (o != null) {
+                SysExportT sysExportT = (SysExportT) o;
+                sysExportTService.insert(sysExportT);
+                map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
+            } else {
+                map.put("msg", "操作失败!!!请登录系统后重新操作");
+            }
         }
         return map;
     }

@@ -101,7 +101,7 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
                 {field: 'md5', title: '文件的MD5值'},
                 {field: 'size', title: '文件大小'},
                 // {title: '操作', templet: '#operationTpl', align: 'center'}
-                {field:'right', title: '操作',toolbar:"#operationTpl"}
+                {field: 'right', title: '操作', toolbar: "#operationTpl"}
             ]],
             done: function (res, curr, count) {
                 $("#countNum").text(count);

@@ -3,11 +3,8 @@ package com.alva.arbook.controller;
 import com.alva.arbook.dto.UserDTO;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysUserTService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,12 +20,12 @@ public class SysUserTController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Map login(UserDTO userDTO, Model model) {
+    public Map login(UserDTO userDTO, HttpSession session) {
         HashMap<String, Object> map = new HashMap<>();
         try {
 
             SysUserT sysUserT = sysUserTService.login(userDTO);
-            model.addAttribute("user", sysUserT);
+            session.setAttribute("user", sysUserT);
             map.put("success", true);
         } catch (Exception e) {
             map.put("success", false);

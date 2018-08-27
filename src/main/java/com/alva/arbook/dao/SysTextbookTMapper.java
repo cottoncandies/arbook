@@ -2,8 +2,6 @@ package com.alva.arbook.dao;
 
 import com.alva.arbook.dto.TextbookQueryDTO;
 import com.alva.arbook.entity.SysTextbookT;
-import com.alva.arbook.vo.TextbookVO;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
