@@ -1,5 +1,6 @@
 package com.alva.arbook.controller;
 
+import com.alva.arbook.annotation.LogAnnotation;
 import com.alva.arbook.dto.TextbookDTO;
 import com.alva.arbook.dto.TextbookQueryDTO;
 import com.alva.arbook.entity.SysExportT;
@@ -50,6 +51,7 @@ public class SysTextbookTController {
     private String tempUploadPath;
 
     //根据条件查询教材(联表查询)
+    @LogAnnotation(description = "查询教材信息")
     @RequestMapping("/GetIndex")
     public Map GetIndex(@RequestParam("ak") String accessKey, TextbookQueryDTO textbookQueryDTO) {
         Map<String, Object> map = new HashMap<>();
@@ -67,7 +69,7 @@ public class SysTextbookTController {
         return map;
     }
 
-    // 批量导出教材
+    @LogAnnotation(description = "批量导出教材")
     @RequestMapping("/exportBookList")
     public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds, String directory, HttpSession session) {
         Map<String, Object> map = new HashMap<>();
@@ -111,7 +113,7 @@ public class SysTextbookTController {
         }
     }
 
-    // 单文件上传
+    @LogAnnotation(description = "上传教材文件")
     @PostMapping(value = "/upload")
     public Map upload(MultipartFile file) {
         Map<String, Object> map = new HashMap<>();
@@ -174,13 +176,13 @@ public class SysTextbookTController {
         return map;
     }
 
-    // 逻辑删除教材
+    @LogAnnotation(description = "删除教材信息")
     @RequestMapping("/deleteBook")
     public void deleteByPrimaryKey(String bookId) {
         sysTextbookTService.deleteByPrimaryKey(bookId);
     }
 
-    // 编辑教材
+    @LogAnnotation(description = "编辑教材信息")
     @PostMapping("/editBook")
     public Map editBook(@RequestBody TextbookVO book) {
         HashMap<String, Object> map = new HashMap<>();

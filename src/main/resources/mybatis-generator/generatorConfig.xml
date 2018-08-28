@@ -28,7 +28,7 @@
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!-- 注释 -->
         <commentGenerator>
-            <property name="suppressAllComments" value="false"/><!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
             <property name="suppressDate" value="true"/> <!-- 是否生成注释代时间戳-->
         </commentGenerator>
         <!-- jdbc连接 -->
@@ -54,17 +54,7 @@
         </javaClientGenerator>
         <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
         <!--如果想生成一个表则tableName="table_name"-->
-        <table tableName="sys_user_t"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               enableDeleteByExample="true"
-               enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
-            <generatedKey column="sz_id" sqlStatement="Postgresql" identity="true"/>
-        </table>
-        <table tableName="sys_export_t"
+        <table tableName="sys_log_t"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"

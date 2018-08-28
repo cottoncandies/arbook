@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="css/scroll-bar.css">
+    <link rel="stylesheet" href="css/sub-page.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_693759_wytlyqhtdtj1nhfr.css">
+</head>
+<body>
+    <div class="ok-body">
+        <!--模糊搜索区域-->
+        <!--<div class="layui-row">-->
+            <!--<form class="layui-form layui-col-md12 ok-search">-->
+                <!--<input class="layui-input" placeholder="开始日期" autocomplete="off" id="startTime">-->
+                <!--<input class="layui-input" placeholder="截止日期" autocomplete="off" id="endTime">-->
+                <!--<input class="layui-input" placeholder="请输入用户名" autocomplete="off">-->
+                <!--<button class="layui-btn"  lay-submit="" lay-filter="search">-->
+                    <!--<i class="layui-icon layui-icon-search"></i>-->
+                <!--</button>-->
+            <!--</form>-->
+        <!--</div>-->
+        <div class="ok-body-breadcrumb">
+            <span>共有数据：<i id="countNum"></i> 条</span>
+            <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" title="刷新">
+                <i class="layui-icon layui-icon-refresh"></i>
+            </a>
+        </div>
+        <!--数据表格-->
+		<table class="layui-hide" id="logId" lay-filter="logFilter"></table>
+    </div>
+    <!--js逻辑-->
+    <script src="lib/layui/layui.js"></script>
+    <script>
+        layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
+            var element = layui.element;
+            var table = layui.table;
+			var form = layui.form;
+			var $ = layui.jquery;
+			var laydate = layui.laydate;
+			
+			table.render({
+				elem: '#logId',
+				url:'log/getlogs',
+				limit: 10,
+				page: true,
+				cols: [[
+					{field:'id', title:'日志主键'},
+					{field:'email', title:'操作用户'},
+					{field:'title', title: '操作内容'},
+					{field:'time', title:'操作时间'},
+					{field:'type', title:'日志类型'},
+					{field:'address', title:'请求地址'},
+					{field:'uri', title:'URI'},
+					{field:'method', title:'请求方式'},
+					{field:'params', title:'请求参数'},
+				]],
+				done: function(res, curr, count){
+					$("#countNum").text(count);
+				}
+			});
+        })
+    </script>
+</body>
+</html>

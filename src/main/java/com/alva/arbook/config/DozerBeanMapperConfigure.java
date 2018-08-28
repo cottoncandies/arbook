@@ -11,7 +11,10 @@ public class DozerBeanMapperConfigure {
     @Bean
     public DozerBeanMapper mapper() {
         DozerBeanMapper mapper = new DozerBeanMapper();
-        mapper.setMappingFiles(Arrays.asList("dozer/TextbookDOtoVO.xml", "dozer/UserDTOtoDO.xml"));
+        mapper.setMappingFiles(Arrays.asList(
+                "dozer/Textbook_DO_VO.xml",
+                "dozer/User_DTO_DO.xml",
+                "dozer/Log_DO_VO.xml"));
         return mapper;
     }
 }

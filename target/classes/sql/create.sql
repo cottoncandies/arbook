@@ -19,6 +19,9 @@ DROP TABLE IF EXISTS "sys_export_t" CASCADE
 DROP TABLE IF EXISTS "sys_user_t" CASCADE
 ;
 
+DROP TABLE IF EXISTS "sys_log_t" CASCADE
+;
+
 CREATE TABLE "app_key_t"
 (
 	"sz_id" varchar(36)	 NOT NULL,
@@ -112,6 +115,19 @@ CREATE TABLE "sys_user_t"
 )
 ;
 
+CREATE TABLE "sys_log_t"
+(
+	"sz_id" varchar(36)	NOT NULL,
+	"sz_type" varchar(255) ,
+	"sz_title" varchar(255)	,
+	"sz_remote_addr" varchar(255)	,
+	"sz_request_uri" varchar(255)	,
+	"sz_method" varchar(255),
+	"sz_params" varchar(255),
+	"ts_created" timestamp NOT NULL,
+	"sz_email" varchar(127) NOT NULL
+)
+;
 
 
 ALTER TABLE "app_key_t" ADD CONSTRAINT "app_key__pk"
@@ -139,5 +155,9 @@ ALTER TABLE "sys_export_t" ADD CONSTRAINT "sys_export__pk"
 ;
 
 ALTER TABLE "sys_user_t" ADD CONSTRAINT "sys_user__pk"
+	PRIMARY KEY ("sz_id")
+;
+
+ALTER TABLE "sys_log_t" ADD CONSTRAINT "sys_log__pk"
 	PRIMARY KEY ("sz_id")
 ;

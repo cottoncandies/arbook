@@ -74,6 +74,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--AOP-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
         <!--文件上传下载-->
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -134,7 +139,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <!--添加mybatis generator maven插件(每次启动都会覆盖原有文件并生成新的文件)-->
             <!--<plugin>
                 <groupId>org.mybatis.generator</groupId>
