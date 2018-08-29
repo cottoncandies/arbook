@@ -14,7 +14,8 @@ public class DozerBeanMapperConfigure {
         mapper.setMappingFiles(Arrays.asList(
                 "dozer/Textbook_DO_VO.xml",
                 "dozer/User_DTO_DO.xml",
-                "dozer/Log_DO_VO.xml"));
+                "dozer/Log_DO_VO.xml",
+                "dozer/User_DO_VO.xml"));
         return mapper;
     }
 }

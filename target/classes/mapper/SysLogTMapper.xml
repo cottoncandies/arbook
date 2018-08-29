@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alva.arbook.dao.SysLogTMapper">
+  <resultMap id="BaseResultMap" type="com.alva.arbook.entity.SysLogT">
+    <id column="sz_id" jdbcType="VARCHAR" property="szId" />
+    <result column="sz_type" jdbcType="VARCHAR" property="szType" />
+    <result column="sz_title" jdbcType="VARCHAR" property="szTitle" />
+    <result column="sz_remote_addr" jdbcType="VARCHAR" property="szRemoteAddr" />
+    <result column="sz_request_uri" jdbcType="VARCHAR" property="szRequestUri" />
+    <result column="sz_method" jdbcType="VARCHAR" property="szMethod" />
+    <result column="sz_params" jdbcType="VARCHAR" property="szParams" />
+    <result column="ts_created" jdbcType="TIMESTAMP" property="tsCreated" />
+    <result column="sz_email" jdbcType="VARCHAR" property="szEmail" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_log_t
+    where sz_id = #{szId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alva.arbook.entity.SysLogT">
+    insert into sys_log_t (sz_id, sz_type, sz_title, sz_remote_addr,
+      sz_request_uri, sz_method, sz_params, ts_created, sz_email)
+    values (#{szId,jdbcType=VARCHAR}, #{szType,jdbcType=VARCHAR}, #{szTitle,jdbcType=VARCHAR}, #{szRemoteAddr,jdbcType=VARCHAR},
+      #{szRequestUri,jdbcType=VARCHAR}, #{szMethod,jdbcType=VARCHAR}, #{szParams,jdbcType=VARCHAR},
+      #{tsCreated,jdbcType=TIMESTAMP}, #{szEmail,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.alva.arbook.entity.SysLogT">
+    update sys_log_t
+    set sz_type = #{szType,jdbcType=VARCHAR},
+      sz_title = #{szTitle,jdbcType=VARCHAR},
+      sz_remote_addr = #{szRemoteAddr,jdbcType=VARCHAR},
+      sz_request_uri = #{szRequestUri,jdbcType=VARCHAR},
+      sz_method = #{szMethod,jdbcType=VARCHAR},
+      sz_params = #{szParams,jdbcType=VARCHAR},
+      ts_created = #{tsCreated,jdbcType=TIMESTAMP},
+      sz_email = #{szEmail,jdbcType=VARCHAR}
+    where sz_id = #{szId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select sz_id, sz_type, sz_title, sz_remote_addr, sz_request_uri, sz_method, sz_params, 
+    ts_created, sz_email
+    from sys_log_t
+    where sz_id = #{szId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select sz_id, sz_type, sz_title, sz_remote_addr, sz_request_uri, sz_method, sz_params, 
+    ts_created, sz_email
+    from sys_log_t
+  </select>
+  <select id="selectAllByPage" resultMap="BaseResultMap">
+    select sz_id, sz_type, sz_title, sz_remote_addr, sz_request_uri, sz_method, sz_params,
+    ts_created, sz_email
+    from sys_log_t
+    offset #{offset,jdbcType=INTEGER}
+    limit #{limit,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllCount" resultType="java.lang.Long">
+    select count(*)
+    from sys_log_t
+  </select>
+</mapper>

@@ -46,4 +46,8 @@ public interface SysUserTMapper {
     int updateByPrimaryKey(SysUserT record);
 
     SysUserT selectByEmail(String szEmail);
+
+    SysUserT selectByPhone(String phone);
+
+    Long selectAllCount();
 }

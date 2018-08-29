@@ -4,8 +4,8 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
     <mapping>
-        <class-a>com.alva.arbook.entity.SysLogT</class-a>
-        <class-b>com.alva.arbook.vo.LogVO</class-b>
+        <class-a>com.alva.arbook.entity.SysUserT</class-a>
+        <class-b>com.alva.arbook.vo.UserVO</class-b>
         <field>
             <a>szId</a>
             <b>id</b>
@@ -15,32 +15,16 @@
             <b>email</b>
         </field>
         <field>
-            <a>szTitle</a>
-            <b>title</b>
+            <a>szPassword</a>
+            <b>password</b>
         </field>
         <field>
-            <a>szRemoteAddr</a>
-            <b>address</b>
-        </field>
-        <field>
-            <a>szRequestUri</a>
-            <b>uri</b>
-        </field>
-        <field>
-            <a>szMethod</a>
-            <b>method</b>
-        </field>
-        <field>
-            <a>szParams</a>
-            <b>params</b>
+            <a>szPhone</a>
+            <b>phone</b>
         </field>
         <field>
             <a>tsCreated</a>
-            <b>time</b>
-        </field>
-        <field>
-            <a>szType</a>
-            <b>type</b>
+            <b>createTime</b>
         </field>
     </mapping>
 </mappings>

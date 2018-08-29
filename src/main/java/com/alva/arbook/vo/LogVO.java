@@ -1,15 +1,15 @@
 package com.alva.arbook.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class LogVO {
     private String id;
     private String email;
     private String title;
-    @JsonFormat(pattern = "yyyy年MM月dd日 HH时mm分ss秒")
-    @DateTimeFormat(pattern = "yyyy年MM月dd日 HH时mm分ss秒")
-    private String time;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date time;
     private String type;
     private String address;
     private String uri;
@@ -19,19 +19,8 @@ public class LogVO {
     public LogVO() {
     }
 
-    public LogVO(String id, String email, String title, String time, String type, String address, String uri, String method, String params) {
-        this.id = id;
-        this.email = email;
-        this.title = title;
-        this.time = time;
-        this.type = type;
-        this.address = address;
-        this.uri = uri;
-        this.method = method;
-        this.params = params;
-    }
-
     public String getId() {
+
         return id;
     }
 
@@ -55,11 +44,11 @@ public class LogVO {
         this.title = title;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -109,7 +98,7 @@ public class LogVO {
                 "id='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", title='" + title + '\'' +
-                ", time='" + time + '\'' +
+                ", time=" + time +
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
                 ", uri='" + uri + '\'' +

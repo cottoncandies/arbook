@@ -60,8 +60,8 @@
     </role>
     <schema id="14" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-08-28.10:24:43.424</IntrospectionTimestamp>
-      <IntrospectionStateNumber>2873</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-08-29.14:55:30.291</IntrospectionTimestamp>
+      <IntrospectionStateNumber>2917</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -125,8 +125,8 @@
       <StateNumber>2854</StateNumber>
     </table>
     <table id="31" parent="14" name="sys_user_t">
-      <ObjectId>770710</ObjectId>
-      <StateNumber>2755</StateNumber>
+      <ObjectId>770755</ObjectId>
+      <StateNumber>2916</StateNumber>
     </table>
     <column id="32" parent="20" name="sz_id">
       <Position>1</Position>
@@ -725,47 +725,48 @@ role_id</ColNames>
       <Position>1</Position>
       <DataType>varchar(36)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2755</StateNumber>
+      <StateNumber>2916</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="122" parent="31" name="sz_email">
       <Position>2</Position>
       <DataType>varchar(127)|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2755</StateNumber>
+      <StateNumber>2916</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="123" parent="31" name="sz_password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>2755</StateNumber>
+      <StateNumber>2916</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="124" parent="31" name="sz_phone">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>2755</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>2916</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="125" parent="31" name="ts_created">
       <Position>5</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2755</StateNumber>
+      <StateNumber>2916</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="126" parent="31" name="ts_updated">
       <Position>6</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2755</StateNumber>
+      <StateNumber>2916</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="127" parent="31" name="nt_row_state">
       <Position>7</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2755</StateNumber>
+      <StateNumber>2916</StateNumber>
       <DefaultExpression>1</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -773,30 +774,40 @@ role_id</ColNames>
       <Position>8</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2755</StateNumber>
+      <StateNumber>2916</StateNumber>
       <DefaultExpression>1</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <index id="129" parent="31" name="sys_user__pk">
-      <ObjectId>770720</ObjectId>
+      <ObjectId>770767</ObjectId>
       <ColNames>sz_id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="130" parent="31" name="sys_user_t_sz_email_key">
-      <ObjectId>770718</ObjectId>
+      <ObjectId>770763</ObjectId>
       <ColNames>sz_email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="131" parent="31" name="sys_user__pk">
-      <ObjectId>770721</ObjectId>
+    <index id="131" parent="31" name="sys_user_t_sz_phone_key">
+      <ObjectId>770765</ObjectId>
+      <ColNames>sz_phone</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="132" parent="31" name="sys_user__pk">
+      <ObjectId>770768</ObjectId>
       <ColNames>sz_id</ColNames>
       <UnderlyingIndexName>sys_user__pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="132" parent="31" name="sys_user_t_sz_email_key">
-      <ObjectId>770719</ObjectId>
+    <key id="133" parent="31" name="sys_user_t_sz_email_key">
+      <ObjectId>770764</ObjectId>
       <ColNames>sz_email</ColNames>
       <UnderlyingIndexName>sys_user_t_sz_email_key</UnderlyingIndexName>
+    </key>
+    <key id="134" parent="31" name="sys_user_t_sz_phone_key">
+      <ObjectId>770766</ObjectId>
+      <ColNames>sz_phone</ColNames>
+      <UnderlyingIndexName>sys_user_t_sz_phone_key</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

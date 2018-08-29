@@ -207,6 +207,7 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
             });
         }
     });
+
     /*点击批量导出按钮触发事件*/
     $("#batchEnabled").click(function () {
         if (ids.length == 0) {

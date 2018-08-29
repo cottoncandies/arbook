@@ -107,7 +107,7 @@ CREATE TABLE "sys_user_t"
 	"sz_id" varchar(36)	 NOT NULL,
 	"sz_email" varchar(127)	 NOT NULL UNIQUE ,
 	"sz_password" varchar(255)	,
-	"sz_phone" varchar(255)	,
+	"sz_phone" varchar(255) NOT NULL UNIQUE	,
 	"ts_created" timestamp NOT NULL,
 	"ts_updated" timestamp NOT NULL,
 	"nt_row_state" integer NOT NULL DEFAULT 1,

@@ -4,15 +4,16 @@ import com.alva.arbook.annotation.LogAnnotation;
 import com.alva.arbook.dto.UserDTO;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysUserTService;
+import com.alva.arbook.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -32,6 +33,70 @@ public class SysUserTController {
         } catch (Exception e) {
             map.put("success", false);
             map.put("message", e.getMessage());
+        }
+        return map;
+    }
+
+    @RequestMapping("/test")
+    public String test(Model model,UserVO userVO) {
+        model.addAttribute("userVO",userVO);
+        return "user-edit";
+    }
+
+    @LogAnnotation(description = "查看用户")
+    @RequestMapping("/getusers")
+    @ResponseBody
+    public Map getusers() {
+        HashMap<String, Object> map = new HashMap<>();
+        List<UserVO> userVOS = sysUserTService.selectAll();
+        map.put("code", 0);//查询状态
+        map.put("msg", "成功");//消息提示
+        map.put("count", sysUserTService.selectAllCount());//查询总数
+        map.put("data", userVOS);
+        return map;
+    }
+
+    @LogAnnotation(description = "删除用户")
+    @RequestMapping("/deleteuser")
+    @ResponseBody
+    public void deleteuser(String id) {
+        sysUserTService.deleteByPrimaryKey(id);
+    }
+
+    @LogAnnotation(description = "添加用户")
+    @RequestMapping("/adduser")
+    @ResponseBody
+    public Map adduser(UserDTO userDTO) {
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            sysUserTService.insert(userDTO);
+            map.put("success", true);
+        } catch (Exception e) {
+            map.put("success", false);
+        }
+        return map;
+    }
+
+    @RequestMapping("/checkemail")
+    @ResponseBody
+    public Map checkemail(String email) {
+        HashMap<String, Object> map = new HashMap<>();
+        if (sysUserTService.selectByEmail(email) != null) {
+            map.put("success", true);
+        } else {
+            map.put("success", false);
+        }
+        return map;
+    }
+
+    @RequestMapping("/checkphone")
+    @ResponseBody
+    public Map checkphone(String phone) {
+        HashMap<String, Object> map = new HashMap<>();
+        if (sysUserTService.selectByPhone(phone) != null) {
+            map.put("success", true);
+        } else {
+            map.put("success", false);
         }
         return map;
     }
