@@ -52,8 +52,8 @@ public class SysUserTServiceImpl implements SysUserTService {
     }
 
     @Override
-    public List<UserVO> selectAll() {
-        List<SysUserT> sysUserTS = sysUserTMapper.selectAll();
+    public List<UserVO> selectAll(int page,int limit) {
+        List<SysUserT> sysUserTS = sysUserTMapper.selectAll((page-1)*limit,limit);
         List<UserVO> userVOS = new ArrayList<>();
         for (SysUserT sysUserT : sysUserTS) {
             UserVO userVO = mapper.map(sysUserT, UserVO.class);
@@ -63,8 +63,9 @@ public class SysUserTServiceImpl implements SysUserTService {
     }
 
     @Override
-    public int updateByPrimaryKey(SysUserT record) {
-        return 0;
+    public int updateByPrimaryKey(UserVO record) {
+        SysUserT sysUserT = mapper.map(record, SysUserT.class);
+        return sysUserTMapper.updateByPrimaryKey(sysUserT);
     }
 
     @Override

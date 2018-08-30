@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>编辑教材</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="css/scroll-bar.css">
+    <link rel="stylesheet" href="css/sub-page.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_693759_wytlyqhtdtj1nhfr.css">
+</head>
+<body>
+    <div class="ok-body">
+        <!--面包屑导航区域-->
+        <div class="ok-body-breadcrumb">
+            <!--<span class="layui-breadcrumb">
+                <a><cite>首页</cite></a>
+                <a><cite>常用页面</cite></a>
+                <a><cite>用户列表</cite></a>
+				<a><cite>编辑用户</cite></a>
+            </span>-->
+            <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" title="刷新">
+                <i class="layui-icon layui-icon-refresh"></i>
+            </a>
+        </div>
+
+		<!--form表单-->
+		<form class="layui-form ok-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label">教材名称</label>
+				<div class="layui-input-block">
+					<input type="hidden" class="id" name="id">
+					<input type="text" name="caption"  placeholder="请输入教材名称" autocomplete="off" class="layui-input caption" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">封面文件</label>
+				<div class="layui-input-block">
+					<input type="text" name="cover"  placeholder="请输入封面文件" autocomplete="off" class="layui-input cover" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">教材版本</label>
+				<div class="layui-input-block">
+					<input type="text" name="edition" placeholder="请输入教材版本" autocomplete="off" class="layui-input edition" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">学段</label>
+				<div class="layui-input-block">
+					<input type="text" name="section" placeholder="请输入学段" autocomplete="off" class="layui-input section" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">年级</label>
+				<div class="layui-input-block">
+					<input type="text" name="grade" placeholder="请输入年级" autocomplete="off" class="layui-input grade" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">出版社</label>
+				<div class="layui-input-block">
+					<input type="text" name="publish" placeholder="请输入出版社" autocomplete="off" class="layui-input publish" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">学科</label>
+				<div class="layui-input-block">
+					<input type="text" name="subject" placeholder="请输入学科" autocomplete="off" class="layui-input subject" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">文件的MD5值</label>
+				<div class="layui-input-block">
+					<input type="text" name="md5" placeholder="请输入文件的MD5值" autocomplete="off" class="layui-input md5" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">文件大小</label>
+				<div class="layui-input-block">
+					<input type="text" name="size" placeholder="文件大小" autocomplete="off" class="layui-input size" lay-verify="required">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="edit">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</form>
+    </div>
+    <!--js逻辑-->
+    <script src="lib/layui/layui.js"></script>
+    <script>
+        layui.use(['element', 'form', 'jquery', 'laydate'], function () {
+
+            var form = layui.form;
+            var $ = layui.jquery;
+
+			// laydate.render({
+			// 	elem: '#birthday',
+			// 	type: "datetime"
+			// });
+			
+			/*form.verify({
+				birthdayVerify: [/^((((1[6-9]|[2-9]\d)\d{2})-(0?[13578]|1[02])-(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2})-(0?[13456789]|1[012])-(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2})-0?2-(0?[1-9]|1\d|2[0-8]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-))(\s(([01]\d{1})|(2[0123])):([0-5]\d):([0-5]\d))?$/, '日期格式不正确']
+			});*/
+			
+			form.on('submit(edit)', function (data) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'ApiV1/editBook',
+                    contentType: "application/json",
+                    data: JSON.stringify(data.field),
+					dataType:'JSON',
+                    success: function (result) {
+                        if (result.success) {
+                            layer.msg("编辑成功！", {icon: 6, time: 1000, anim: 4}, function () {
+                                parent.layer.close(parent.layer.getFrameIndex(window.name));
+                            });
+                        } else {
+                            layer.msg("编辑失败!请稍后重试");
+                        }
+                    }
+                })
+				return false;
+			});
+        })
+    </script>
+</body>
+</html>

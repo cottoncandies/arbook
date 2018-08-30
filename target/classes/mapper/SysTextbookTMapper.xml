@@ -83,7 +83,9 @@
         sz_grade = #{szGrade,jdbcType=VARCHAR},
         sz_subject_id = #{szSubjectId,jdbcType=VARCHAR},
         sz_pub_id = #{szPubId,jdbcType=VARCHAR},
-        ts_updated = now()
+        ts_updated = now(),
+        sz_md5 = #{szMd5,jdbcType=VARCHAR},
+        ng_size = #{ngSize,jdbcType=BIGINT}
         where sz_id = #{szId,jdbcType=VARCHAR}
     </update>
 

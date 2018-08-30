@@ -13,19 +13,25 @@
 <div class="ok-body">
     <!--模糊搜索区域-->
     <div class="layui-row">
-        <form class="layui-form layui-col-md12 ok-search">
-            <label class="layui-form-label">请选择学科:</label>
-            <select name="subject" lay-filter="selectSubject" lay-verify="" id="subject">
-            </select>
-            <label class="layui-form-label">请选择出版社:</label>
-            <select name="publish" lay-filter="selectPublish" lay-verify="" id="publish">
-            </select>
-            <label class="layui-form-label">请选择学段:</label>
-            <select name="section" lay-filter="selectSection" lay-verify="" id="section">
-            </select>
-            <label class="layui-form-label">请选择年级:</label>
-            <select name="grade" lay-filter="selectGrade" lay-verify="" id="grade">
-            </select>
+        <form class="layui-form">
+
+            <label class="layui-form-label">请选择查询条件:</label>
+            <div class="layui-input-inline">
+                <select name="subject" lay-filter="selectSubject" lay-verify="" id="subject"></select>
+            </div>
+
+            <div class="layui-input-inline">
+                <select name="publish" lay-filter="selectPublish" lay-verify="" id="publish"></select>
+            </div>
+
+            <div class="layui-input-inline">
+                <select name="section" lay-filter="selectSection" lay-verify="" id="section"></select>
+            </div>
+
+            <div class="layui-input-inline">
+                <select name="grade" lay-filter="selectGrade" lay-verify="" id="grade"></select>
+            </div>
+
             <button class="layui-btn" lay-submit="" lay-filter="search">
                 <i class="layui-icon layui-icon-search">查询</i>
             </button>
@@ -36,18 +42,18 @@
         <button class="layui-btn layui-btn-normal" id="batchEnabled">
             <i class="iconfont icon-shangsheng"></i>批量导出
         </button>
-        <span>共有数据：<i id="countNum"></i> 条</span>
+        <span>共有数据：<i id="bookCountNum"></i> 条</span>
     </okToolbar>
     <!--数据表格-->
-    <table class="layui-hide" id="tableId" lay-filter="tableFilter"></table>
+    <table class="layui-hide" id="bookTableId" lay-filter="bookTableFilter"></table>
 </div>
 <!--js逻辑-->
 <script src="lib/layui/layui.js"></script>
 <script src="js/booklist.js"></script>
 <!--模板-->
 <script type="text/html" id="operationTpl">
-    <a class="layui-btn layui-btn-mini" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 </body>
 </html>

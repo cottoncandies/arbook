@@ -16,9 +16,9 @@ public interface SysUserTService {
 
     SysUserT selectByPrimaryKey(String szId);
 
-    List<UserVO> selectAll();
+    List<UserVO> selectAll(int page,int limit);
 
-    int updateByPrimaryKey(SysUserT record);
+    int updateByPrimaryKey(UserVO record);
 
     Long selectAllCount();
 

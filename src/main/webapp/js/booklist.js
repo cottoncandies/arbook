@@ -75,7 +75,7 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
         var grade = $('#grade').val();
 
         table.render({
-            elem: '#tableId',
+            elem: '#bookTableId',
             url: 'ApiV1/GetIndex',
             where: {
                 'ak': 111,
@@ -103,10 +103,10 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
                 {field: 'subject', title: '学科'},
                 {field: 'md5', title: '文件的MD5值'},
                 {field: 'size', title: '文件大小'},
-                {field: 'right', title: '操作', toolbar: "#operationTpl", align: 'center'}
+                {fixed: 'right', title: '操作', toolbar: "#operationTpl", align: 'center'}
             ]],
             done: function (res, curr, count) {
-                $("#countNum").text(count);
+                $("#bookCountNum").text(count);
                 //数据表格加载完成时调用此函数
                 //如果是异步请求数据方式，res即为你接口返回的信息。
                 //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
@@ -141,7 +141,7 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
     })
 
     //复选框选中监听,将选中的id 设置到缓存数组,或者删除缓存数组
-    table.on('checkbox(tableFilter)', function (obj) {
+    table.on('checkbox(bookTableFilter)', function (obj) {
         if (obj.checked == true) {
             if (obj.type == 'one') {
                 ids.push(obj.data.id);
@@ -182,21 +182,39 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
         this.length -= 1
     }
 
-    table.on('tool(tableFilter)', function (obj) {
-        var data = obj.data;
+    table.on('tool(bookTableFilter)', function (obj) {
+        var row_data = obj.data;
         var layEvent = obj.event;
         if (layEvent === 'edit') {
-            layer.confirm("确定保存修改吗？", {skin: 'layui-layer-lan', icon: 2, title: '提示', anim: 6}, function (index) {
-                layer.close(index);
-                $.ajax({
-                    type: 'POST',
-                    url: 'ApiV1/editBook',
-                    contentType: "application/json",
-                    data: JSON.stringify(data),
-                    success: function (data) {
-                        layer.msg(data.msg);
-                    }
-                })
+            layer.open({
+                title: '编辑教材',
+                type: 2,
+                shade: true,
+                maxmin: false,
+                shade: 0.5,
+                area: ['90%', '90%'],
+                content: 'book-edit.html',
+                zIndex: layer.zIndex,
+                success : function(layero, index){
+                    var body = layui.layer.getChildFrame('body', index);
+                    // 取到弹出层里的元素，并把编辑的内容放进去
+                    body.find(".id").val(row_data.id);  //将选中的数据的id传到编辑页面的隐藏域，便于根据ID修改数据
+                    body.find(".caption").val(row_data.caption);
+                    body.find(".cover").val(row_data.cover);
+                    body.find(".edition").val(row_data.edition);
+                    body.find(".section").val(row_data.section);
+                    body.find(".grade").val(row_data.grade);
+                    body.find(".publish").val(row_data.publish);
+                    body.find(".subject").val(row_data.subject);
+                    body.find(".md5").val(row_data.md5);
+                    body.find(".size").val(row_data.size);
+                    // 记得重新渲染表单
+                    form.render();
+                },
+                end: function () {
+                    // $(".layui-laypage-btn")[0].click();
+                    table.reload('bookTableId');
+                }
             });
         } else if (layEvent === 'del') {
             layer.confirm("确定要删除吗？", {skin: 'layui-layer-lan', icon: 2, title: '提示', anim: 6}, function (index) {

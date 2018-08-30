@@ -189,8 +189,10 @@ public class SysTextbookTController {
         try {
             sysTextbookTService.editBook(book);
             map.put("msg", "修改成功");
+            map.put("success", true);
         } catch (Exception e) {
             map.put("msg", e.getMessage());
+            map.put("success", false);
         }
         return map;
     }

@@ -37,18 +37,12 @@ public class SysUserTController {
         return map;
     }
 
-    @RequestMapping("/test")
-    public String test(Model model,UserVO userVO) {
-        model.addAttribute("userVO",userVO);
-        return "user-edit";
-    }
-
     @LogAnnotation(description = "查看用户")
     @RequestMapping("/getusers")
     @ResponseBody
-    public Map getusers() {
+    public Map getusers(int page, int limit) {
         HashMap<String, Object> map = new HashMap<>();
-        List<UserVO> userVOS = sysUserTService.selectAll();
+        List<UserVO> userVOS = sysUserTService.selectAll(page,limit);
         map.put("code", 0);//查询状态
         map.put("msg", "成功");//消息提示
         map.put("count", sysUserTService.selectAllCount());//查询总数
@@ -70,6 +64,20 @@ public class SysUserTController {
         HashMap<String, Object> map = new HashMap<>();
         try {
             sysUserTService.insert(userDTO);
+            map.put("success", true);
+        } catch (Exception e) {
+            map.put("success", false);
+        }
+        return map;
+    }
+
+    @LogAnnotation(description = "编辑用户")
+    @RequestMapping("/editUser")
+    @ResponseBody
+    public Map updateuser(UserVO userVO) {
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            sysUserTService.updateByPrimaryKey(userVO);
             map.put("success", true);
         } catch (Exception e) {
             map.put("success", false);
