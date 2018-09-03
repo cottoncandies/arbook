@@ -1,5 +1,6 @@
 package com.alva.arbook.service.impl;
 
+import com.alva.arbook.dao.SysExportTMapper;
 import com.alva.arbook.dao.SysPublishingTMapper;
 import com.alva.arbook.dao.SysSubjectTMapper;
 import com.alva.arbook.dao.SysTextbookTMapper;
@@ -9,6 +10,8 @@ import com.alva.arbook.entity.SysExportT;
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysTextbookTService;
+import com.alva.arbook.util.MD5Util;
+import com.alva.arbook.util.ZipUtil;
 import com.alva.arbook.vo.TextbookVO;
 import org.apache.commons.io.FileUtils;
 import org.dozer.DozerBeanMapper;
@@ -22,7 +25,6 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -39,6 +41,9 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     private SysPublishingTMapper sysPublishingTMapper;
 
     @Resource
+    private SysExportTMapper sysExportTMapper;
+
+    @Resource
     private DozerBeanMapper mapper;
 
     @Override
@@ -49,12 +54,16 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = RuntimeException.class)
-    public int insert(TextbookDTO TextbookDTO, SysTextbookT sysTextbookT) {
-        String term = TextbookDTO.getTerm();
-        String publishName = TextbookDTO.getPublish();
-        String subjectName = TextbookDTO.getSubject();
+    public int insert(TextbookDTO textbookDTO,File file) {
+
+        SysTextbookT sysTextbookT = mapper.map(textbookDTO, SysTextbookT.class);
+        String publishName = textbookDTO.getPublish();
+        String subjectName = textbookDTO.getSubject();
         String subjectId = sysSubjectTMapper.selectIdBySubjectName(subjectName);
         String publishId = sysPublishingTMapper.selectIdByPublishName(publishName);
+        sysTextbookT.setSzPubId(publishId);
+        sysTextbookT.setSzSubjectId(subjectId);
+        String term = textbookDTO.getTerm();
         switch (term) {
             case "全学年":
                 sysTextbookT.setNtTerm(0);
@@ -68,21 +77,15 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
             default:
                 sysTextbookT.setNtTerm(-1);
         }
-        sysTextbookT.setSzSubjectId(subjectId);
-        sysTextbookT.setSzPubId(publishId);
-        sysTextbookT.setNtRowState(1);
-        sysTextbookT.setNtRowVersion(1);
-        sysTextbookT.setSzInsti("633");
-        sysTextbookT.setSzTag(" ");
-        sysTextbookT.setTsCreated(new Date());
-        sysTextbookT.setTsUpdated(new Date());
-        sysTextbookT.setSzId(TextbookDTO.getId());
-        sysTextbookT.setSzCaption(TextbookDTO.getCaption());
-        sysTextbookT.setSzCover(TextbookDTO.getCover());
-        sysTextbookT.setSzEdition(TextbookDTO.getEdition());
-        sysTextbookT.setSzSection(TextbookDTO.getSection());
-        sysTextbookT.setSzGrade(TextbookDTO.getGrade());
-        return sysTextbookTMapper.insert(sysTextbookT);
+        int writeToDB = 0;
+        try {
+            writeToDB = sysTextbookTMapper.insert(sysTextbookT);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 上传的教材信息写入数据库失败时，删除已经上传到服务器的文件
+            file.delete();
+        }
+        return writeToDB;
     }
 
     @Override
@@ -129,7 +132,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     添加导出信息失败时删除已导出的教材
      */
     @Override
-    public SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session) {
+    public boolean exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session) {
         boolean isDownload = true;
         File desFile = null;
         try {
@@ -164,8 +167,10 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
                 SysUserT sysUserT = (SysUserT) session.getAttribute("user");
                 sysExportT.setSzDirectory(directory);
                 sysExportT.setSzOperator(sysUserT.getSzEmail());
-                return sysExportT;
+                sysExportTMapper.insert(sysExportT);
+                return true;
             } catch (Exception e) {
+                //添加数据库失败,将已经导出的教材删掉 确保服务器上的文件与数据库信息保持一致
                 desFile = new File(exportPath + "/" + directory);
                 try {
                     FileUtils.deleteDirectory(desFile);
@@ -174,7 +179,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
                 }
             }
         }
-        return null;
+        return false;
     }
 
     @Override

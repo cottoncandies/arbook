@@ -13,10 +13,14 @@ public class TextbookDTO {
     private String publish;
     private String catalog;
 
+    private Long fileSize;
+    private String md5;
+    private String store; // 上传教材的存储路径
+
     public TextbookDTO() {
     }
 
-    public TextbookDTO(String id, String cover, String caption, String edition, String section, String grade, String subject, String term, String publish, String catalog) {
+    public TextbookDTO(String id, String cover, String caption, String edition, String section, String grade, String subject, String term, String publish, String catalog, Long fileSize, String md5, String store) {
         this.id = id;
         this.cover = cover;
         this.caption = caption;
@@ -27,9 +31,13 @@ public class TextbookDTO {
         this.term = term;
         this.publish = publish;
         this.catalog = catalog;
+        this.fileSize = fileSize;
+        this.md5 = md5;
+        this.store = store;
     }
 
     public String getId() {
+
         return id;
     }
 
@@ -109,6 +117,30 @@ public class TextbookDTO {
         this.catalog = catalog;
     }
 
+    public Long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
+    }
+
+    public String getStore() {
+        return store;
+    }
+
+    public void setStore(String store) {
+        this.store = store;
+    }
+
     @Override
     public String toString() {
         return "TextbookDTO{" +
@@ -122,6 +154,9 @@ public class TextbookDTO {
                 ", term='" + term + '\'' +
                 ", publish='" + publish + '\'' +
                 ", catalog='" + catalog + '\'' +
+                ", fileSize='" + fileSize + '\'' +
+                ", md5='" + md5 + '\'' +
+                ", store='" + store + '\'' +
                 '}';
     }
 }

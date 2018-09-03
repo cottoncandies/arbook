@@ -43,10 +43,9 @@
         nt_row_version)
         values (#{szId,jdbcType=VARCHAR}, #{szCaption,jdbcType=VARCHAR}, #{szCover,jdbcType=VARCHAR}, #{szEdition,jdbcType=VARCHAR},
         #{szSection,jdbcType=VARCHAR}, #{szGrade,jdbcType=VARCHAR}, #{ntTerm,jdbcType=INTEGER}, #{szSubjectId,jdbcType=VARCHAR},
-        #{szPubId,jdbcType=VARCHAR}, #{szInsti,jdbcType=VARCHAR}, #{szStore,jdbcType=VARCHAR},
-        #{szMd5,jdbcType=VARCHAR}, #{ngSize,jdbcType=BIGINT}, #{szTag,jdbcType=VARCHAR},
-        #{tsCreated,jdbcType=TIMESTAMP}, #{tsUpdated,jdbcType=TIMESTAMP}, #{ntRowState,jdbcType=INTEGER},
-        #{ntRowVersion,jdbcType=INTEGER})
+        #{szPubId,jdbcType=VARCHAR}, '633', #{szStore,jdbcType=VARCHAR},
+        #{szMd5,jdbcType=VARCHAR}, #{ngSize,jdbcType=BIGINT}, '',
+        now(), now(), 1,1)
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.alva.arbook.entity.SysTextbookT">
         <!--

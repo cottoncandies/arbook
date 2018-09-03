@@ -2,18 +2,18 @@ package com.alva.arbook.service;
 
 import com.alva.arbook.dto.TextbookDTO;
 import com.alva.arbook.dto.TextbookQueryDTO;
-import com.alva.arbook.entity.SysExportT;
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.vo.TextbookVO;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.List;
 
 public interface SysTextbookTService {
 
     int deleteByPrimaryKey(String szId);
 
-    int insert(TextbookDTO TextbookDTO, SysTextbookT sysTextbookT);
+    int insert(TextbookDTO textbookDTO,File file);
 
     SysTextbookT selectByPrimaryKey(String szId);
 
@@ -27,7 +27,8 @@ public interface SysTextbookTService {
 
     List<String> selectDistinctGrade();
 
-    SysExportT exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session);
+    boolean exportBookList(String[] bookIds, String directory, String exportPath, HttpSession session);
 
     int editBook(TextbookVO textbookVO);
+
 }

@@ -15,7 +15,9 @@ public class DozerBeanMapperConfigure {
                 "dozer/Textbook_DO_VO.xml",
                 "dozer/User_DTO_DO.xml",
                 "dozer/Log_DO_VO.xml",
-                "dozer/User_DO_VO.xml"));
+                "dozer/User_DO_VO.xml",
+                "dozer/Textbook_DTO_DO.xml")
+        );
         return mapper;
     }
 }

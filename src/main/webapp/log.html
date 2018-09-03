@@ -12,16 +12,16 @@
 <body>
     <div class="ok-body">
         <!--模糊搜索区域-->
-        <!--<div class="layui-row">-->
-            <!--<form class="layui-form layui-col-md12 ok-search">-->
-                <!--<input class="layui-input" placeholder="开始日期" autocomplete="off" id="startTime">-->
-                <!--<input class="layui-input" placeholder="截止日期" autocomplete="off" id="endTime">-->
-                <!--<input class="layui-input" placeholder="请输入用户名" autocomplete="off">-->
-                <!--<button class="layui-btn"  lay-submit="" lay-filter="search">-->
-                    <!--<i class="layui-icon layui-icon-search"></i>-->
-                <!--</button>-->
-            <!--</form>-->
-        <!--</div>-->
+        <div class="layui-row">
+            <form class="layui-form layui-col-md12 ok-search">
+                <input class="layui-input" placeholder="开始日期" autocomplete="off" id="startTime">
+                <input class="layui-input" placeholder="截止日期" autocomplete="off" id="endTime">
+                <input class="layui-input" placeholder="请输入用户名" autocomplete="off">
+                <button class="layui-btn"  lay-submit="" lay-filter="search">
+                    <i class="layui-icon layui-icon-search"></i>
+                </button>
+            </form>
+        </div>
         <div class="ok-body-breadcrumb">
             <span>共有数据：<i id="countNum"></i> 条</span>
             <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" title="刷新">
@@ -29,7 +29,7 @@
             </a>
         </div>
         <!--数据表格-->
-		<table class="layui-hide" id="logId" lay-filter="logFilter"></table>
+		<table class="layui-hide" id="logTableId" lay-filter="logFilter"></table>
     </div>
     <!--js逻辑-->
     <script src="lib/layui/layui.js"></script>
@@ -42,25 +42,43 @@
 			var laydate = layui.laydate;
 			
 			table.render({
-				elem: '#logId',
+				elem: '#logTableId',
 				url:'log/getlogs',
 				limit: 10,
 				page: true,
 				cols: [[
-					{field:'id', title:'日志主键'},
 					{field:'email', title:'操作用户'},
 					{field:'title', title: '操作内容'},
 					{field:'time', title:'操作时间'},
-					{field:'type', title:'日志类型'},
-					{field:'address', title:'请求地址'},
-					{field:'uri', title:'URI'},
-					{field:'method', title:'请求方式'},
-					{field:'params', title:'请求参数'},
 				]],
 				done: function(res, curr, count){
 					$("#countNum").text(count);
 				}
 			});
+
+            //监听行单击事件
+            table.on('row(logFilter)', function(obj){
+                //obj 同上
+                // console.log(obj.tr) //得到当前行元素对象
+                // console.log(obj.data) //得到当前行数据
+                //obj.del(); //删除当前行
+                //obj.update(fields) //修改当前行数据
+
+                var data = obj.data;
+
+                layer.alert(JSON.stringify(data), {
+                    title: '当前行数据：'
+                });
+            });
+
+            //监听行双击事件
+            // table.on('rowDouble(logFilter)', function(obj){
+            //     //obj 同上
+            //     console.log(obj.tr) //得到当前行元素对象
+            //     console.log(obj.data) //得到当前行数据
+            //     //obj.del(); //删除当前行
+            //     //obj.update(fields) //修改当前行数据
+            // });
         })
     </script>
 </body>

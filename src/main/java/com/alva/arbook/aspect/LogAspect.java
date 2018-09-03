@@ -4,7 +4,6 @@ import com.alva.arbook.annotation.LogAnnotation;
 import com.alva.arbook.entity.SysLogT;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysLogTService;
-import com.alva.arbook.util.UUIDUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -46,7 +45,6 @@ public class LogAspect {
 
         Object proceed = point.proceed();
 
-
         if (sysUserT != null) {
             String title = getMethodDescription(point);
             String type = "info";                       //日志类型(info:入库,error:错误)
@@ -56,7 +54,6 @@ public class LogAspect {
             Map<String, String[]> params = request.getParameterMap(); //请求提交的参数
 
             SysLogT log = new SysLogT();
-            log.setSzId(UUIDUtils.createUUID());
             log.setSzTitle(title);
             log.setSzType(type);
             log.setSzRemoteAddr(remoteAddr);

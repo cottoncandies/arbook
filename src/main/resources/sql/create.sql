@@ -91,7 +91,7 @@ CREATE TABLE "sys_textbook_t"
 
 CREATE TABLE "sys_export_t"
 (
-	"sz_id" varchar(36)	 NOT NULL,
+	"sz_id" INTEGER	 NOT NULL,
 	"sz_directory" varchar(127)	 NOT NULL UNIQUE ,
 	"sz_comment" varchar(255)	,
 	"sz_operator" varchar(255)	,
@@ -104,7 +104,7 @@ CREATE TABLE "sys_export_t"
 
 CREATE TABLE "sys_user_t"
 (
-	"sz_id" varchar(36)	 NOT NULL,
+	"sz_id" INTEGER NOT NULL,
 	"sz_email" varchar(127)	 NOT NULL UNIQUE ,
 	"sz_password" varchar(255)	,
 	"sz_phone" varchar(255) NOT NULL UNIQUE	,
@@ -117,7 +117,7 @@ CREATE TABLE "sys_user_t"
 
 CREATE TABLE "sys_log_t"
 (
-	"sz_id" varchar(36)	NOT NULL,
+	"sz_id" INTEGER	NOT NULL,
 	"sz_type" varchar(255) ,
 	"sz_title" varchar(255)	,
 	"sz_remote_addr" varchar(255)	,
@@ -161,3 +161,29 @@ ALTER TABLE "sys_user_t" ADD CONSTRAINT "sys_user__pk"
 ALTER TABLE "sys_log_t" ADD CONSTRAINT "sys_log__pk"
 	PRIMARY KEY ("sz_id")
 ;
+
+-- 业务需求 user log export 表的id字段设为自增(原因:1.不与其他表关联,id没有业务处理,只是唯一标识一条数据 2.存储效率高于32位或36位的UUID)
+
+-- 1.创建user log export 表
+-- 2.创建序列
+-- 3.Mybatis中sql语句将序列的值赋给id 实现id字段自增
+CREATE SEQUENCE sys_user_t_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE SEQUENCE sys_log_t_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE SEQUENCE sys_export_t_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;

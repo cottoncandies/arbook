@@ -56,12 +56,9 @@ INSERT INTO sys_export_t(sz_id,sz_directory,sz_comment,sz_operator,ts_created,ts
   ('2','E:/wzh/bb','第一次导入','黄飞鸿',now(),now())
 ;
 /*用户*/
-INSERT INTO sys_user_t(sz_id,sz_email,sz_password,sz_phone,ts_created,ts_updated) VALUES
-  ('1','zhangsan@163.com','123456','13811112222',now(),now()),
-  ('2','lisi@163.com','123456','13833334444',now(),now())
+INSERT INTO sys_user_t(sz_id,sz_email,sz_password,sz_phone,ts_created,ts_updated,nt_row_state,nt_row_version) VALUES
+  (nextval('sys_user_t_id_seq'),'zhangsan@163.com','123456','13811112222',now(),now(),1,1),
+  (nextval('sys_user_t_id_seq'),'lisi@163.com','123456','13833334444',now(),now(),1,1)
 ;
 
-
-
-
-
+-- delete from sys_user_t

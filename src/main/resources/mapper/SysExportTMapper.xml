@@ -25,12 +25,9 @@
     </delete>
     <insert id="insert" parameterType="com.alva.arbook.entity.SysExportT">
         insert into sys_export_t (sz_id, sz_directory, sz_comment, sz_operator,
-        ts_created, ts_updated, nt_row_state,
-        nt_row_version)
-        values (#{szId,jdbcType=VARCHAR}, #{szDirectory,jdbcType=VARCHAR}, #{szComment,jdbcType=VARCHAR},
-        #{szOperator,jdbcType=VARCHAR},
-        #{tsCreated,jdbcType=TIMESTAMP}, #{tsUpdated,jdbcType=TIMESTAMP}, #{ntRowState,jdbcType=INTEGER},
-        #{ntRowVersion,jdbcType=INTEGER})
+        ts_created, ts_updated, nt_row_state, nt_row_version)
+        values (nextval('sys_export_t_id_seq'), #{szDirectory,jdbcType=VARCHAR}, #{szComment,jdbcType=VARCHAR},
+        #{szOperator,jdbcType=VARCHAR}, now(), now(), 1, 1)
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.alva.arbook.entity.SysExportT">
         <!--

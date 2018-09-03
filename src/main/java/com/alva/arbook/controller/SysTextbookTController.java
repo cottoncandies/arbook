@@ -3,8 +3,6 @@ package com.alva.arbook.controller;
 import com.alva.arbook.annotation.LogAnnotation;
 import com.alva.arbook.dto.TextbookDTO;
 import com.alva.arbook.dto.TextbookQueryDTO;
-import com.alva.arbook.entity.SysExportT;
-import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.service.AppKeyTService;
 import com.alva.arbook.service.SysExportTService;
 import com.alva.arbook.service.SysTextbookTService;
@@ -18,11 +16,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,10 +73,8 @@ public class SysTextbookTController {
         if (sysExportTService.selectByDirectory(directory) != null) {
             map.put("msg", "导出文件名已存在,请重新设置");
         } else {
-            Object o = sysTextbookTService.exportBookList(bookIds, directory, exportPath, session);
-            if (o != null) {
-                SysExportT sysExportT = (SysExportT) o;
-                sysExportTService.insert(sysExportT);
+            boolean exportSuccess = sysTextbookTService.exportBookList(bookIds, directory, exportPath, session);
+            if (exportSuccess) {
                 map.put("msg", "教材已导出到目录" + exportPath + "/" + directory);
             } else {
                 map.put("msg", "操作失败!!!请登录系统后重新操作");
@@ -91,27 +84,27 @@ public class SysTextbookTController {
     }
 
     // 下载教材(单文件下载)
-    @RequestMapping(value = "/GetData")
-    public void getData(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws IOException {
-        //授权Key是否合法
-        if (ak != null && ak != "" && appKeyTService.selectByAccessKey(ak) != null) {
-            //下载文件的信息
-            SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
-            String fileName = sysTextbookT.getSzCaption();// 查询文件名
-            String realPath = sysTextbookT.getSzStore();// 查询文件存放位置
-            File file = new File(realPath, fileName);
-            if (file.exists()) {
-                //下载文件
-                response.setContentType("application/octet-stream");
-                response.setHeader("content-type", "application/octet-stream");
-                response.setHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes("utf-8"), "ISO8859-1"));
-                response.addHeader("Content-Length", String.valueOf(file.length()));
-                response.addHeader("File-Name", new String(fileName.getBytes("utf-8"), "ISO8859-1"));
-                ServletOutputStream outputStream = response.getOutputStream();
-                outputStream.write(FileUtils.readFileToByteArray(file));
-            }
-        }
-    }
+//    @RequestMapping(value = "/GetData")
+//    public void getData(HttpServletResponse response, String ak, @RequestParam("id") String bookId) throws IOException {
+//        //授权Key是否合法
+//        if (ak != null && ak != "" && appKeyTService.selectByAccessKey(ak) != null) {
+//            //下载文件的信息
+//            SysTextbookT sysTextbookT = sysTextbookTService.selectByPrimaryKey(bookId);
+//            String fileName = sysTextbookT.getSzCaption();// 查询文件名
+//            String realPath = sysTextbookT.getSzStore();// 查询文件存放位置
+//            File file = new File(realPath, fileName);
+//            if (file.exists()) {
+//                //下载文件
+//                response.setContentType("application/octet-stream");
+//                response.setHeader("content-type", "application/octet-stream");
+//                response.setHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes("utf-8"), "ISO8859-1"));
+//                response.addHeader("Content-Length", String.valueOf(file.length()));
+//                response.addHeader("File-Name", new String(fileName.getBytes("utf-8"), "ISO8859-1"));
+//                ServletOutputStream outputStream = response.getOutputStream();
+//                outputStream.write(FileUtils.readFileToByteArray(file));
+//            }
+//        }
+//    }
 
     @LogAnnotation(description = "上传教材文件")
     @PostMapping(value = "/upload")
@@ -132,15 +125,16 @@ public class SysTextbookTController {
             }
             // 上传临时文件
             file.transferTo(dest);
+
             // 计算文件MD5
             String md5 = MD5Util.getMD5(dest);
             // 文件大小
             long fileSize = file.getSize();
             //读取教材zip中的json文件
-            TextbookDTO TextbookDTO = (TextbookDTO) ZipUtil.readZipJsonToObject(dest, TextbookDTO.class);
-            String subject = TextbookDTO.getSubject();
-            String grade = TextbookDTO.getGrade();
-            String publish = TextbookDTO.getPublish();
+            TextbookDTO textbookDTO = (TextbookDTO) ZipUtil.readZipJsonToObject(dest, TextbookDTO.class);
+            String subject = textbookDTO.getSubject();
+            String grade = textbookDTO.getGrade();
+            String publish = textbookDTO.getPublish();
             // 真实存储路径
             String store = baseUploadPath + "/" + subject + "/" + grade + "/" + publish + "/" + newFileName;
             File destFile = new File(store);
@@ -151,12 +145,19 @@ public class SysTextbookTController {
             // 复制文件
             FileUtils.copyFile(dest, destFile);
             // 将数据存入数据库
-            sysTextbookTService.insert(TextbookDTO, new SysTextbookT(store, md5, fileSize)
-            );
-            // 删除临时文件
-            dest.delete();
-            map.put("msg", "上传成功");
-            map.put("code", 0);
+            textbookDTO.setMd5(md5);
+            textbookDTO.setFileSize(fileSize);
+            textbookDTO.setStore(store);
+            int insert = sysTextbookTService.insert(textbookDTO, destFile);
+            if (insert != 0) {
+                // 删除临时文件
+                dest.delete();
+                map.put("msg", "上传成功");
+                map.put("code", 0);
+            } else {
+                map.put("msg", "上传失败");
+                map.put("code", 1);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             map.put("msg", "上传失败");

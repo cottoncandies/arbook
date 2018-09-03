@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 public class UserVO {
-    private String id;
     private String email;
     private String password;
     private String phone;
@@ -16,20 +15,11 @@ public class UserVO {
     public UserVO() {
     }
 
-    public UserVO(String id, String email, String password, String phone, Date createTime) {
-        this.id = id;
+    public UserVO(String email, String password, String phone, Date createTime) {
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.createTime = createTime;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -67,8 +57,7 @@ public class UserVO {
     @Override
     public String toString() {
         return "UserVO{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", createTime=" + createTime +

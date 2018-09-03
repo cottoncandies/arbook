@@ -9,9 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class SysExportTServiceImpl implements SysExportTService {
@@ -26,13 +24,7 @@ public class SysExportTServiceImpl implements SysExportTService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = RuntimeException.class)
     public int insert(SysExportT record) {
-        String id = UUID.randomUUID().toString().replaceAll("-", "");
-        record.setSzId(id);
-        record.setTsCreated(new Date());
-        record.setTsUpdated(new Date());
-        record.setNtRowState(1);
-        record.setNtRowVersion(1);
-        return sysExportTMapper.insert(record);
+        return 0;
     }
 
     @Override
