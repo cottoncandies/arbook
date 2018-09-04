@@ -4,16 +4,17 @@ import com.alva.arbook.dao.SysUserTMapper;
 import com.alva.arbook.dto.UserDTO;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysUserTService;
-import com.alva.arbook.util.UUIDUtils;
 import com.alva.arbook.vo.UserVO;
 import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional(rollbackFor = RuntimeException.class)
 public class SysUserTServiceImpl implements SysUserTService {
     @Resource
     private SysUserTMapper sysUserTMapper;
@@ -36,24 +37,18 @@ public class SysUserTServiceImpl implements SysUserTService {
 
     @Override
     public int deleteByPrimaryKey(String szId) {
-        return sysUserTMapper.deleteByPrimaryKey(szId);
+        return sysUserTMapper.deleteByPrimaryKey(Integer.valueOf(szId));
     }
 
     @Override
     public int insert(UserDTO record) {
         SysUserT sysUserT = mapper.map(record, SysUserT.class);
-        sysUserT.setSzId(UUIDUtils.createUUID());
         return sysUserTMapper.insert(sysUserT);
     }
 
     @Override
-    public SysUserT selectByPrimaryKey(String szId) {
-        return null;
-    }
-
-    @Override
-    public List<UserVO> selectAll(int page,int limit) {
-        List<SysUserT> sysUserTS = sysUserTMapper.selectAll((page-1)*limit,limit);
+    public List<UserVO> selectAll(int page, int limit) {
+        List<SysUserT> sysUserTS = sysUserTMapper.selectAll((page - 1) * limit, limit);
         List<UserVO> userVOS = new ArrayList<>();
         for (SysUserT sysUserT : sysUserTS) {
             UserVO userVO = mapper.map(sysUserT, UserVO.class);
@@ -81,5 +76,10 @@ public class SysUserTServiceImpl implements SysUserTService {
     @Override
     public SysUserT selectByPhone(String phone) {
         return sysUserTMapper.selectByPhone(phone);
+    }
+
+    @Override
+    public SysUserT selectByPrimaryKey(String szId) {
+        return sysUserTMapper.selectByPrimaryKey(Integer.valueOf(szId));
     }
 }

@@ -118,14 +118,15 @@ CREATE TABLE "sys_user_t"
 CREATE TABLE "sys_log_t"
 (
 	"sz_id" INTEGER	NOT NULL,
-	"sz_type" varchar(255) ,
-	"sz_title" varchar(255)	,
-	"sz_remote_addr" varchar(255)	,
-	"sz_request_uri" varchar(255)	,
-	"sz_method" varchar(255),
-	"sz_params" varchar(255),
+	"sz_type" varchar(31) ,
+	"sz_title" varchar(31)	,
+	"sz_remote_addr" varchar(63)	,
+	"sz_request_uri" varchar(31)	,
+	"sz_method" varchar(31),
+	"sz_params" varchar(63),
 	"ts_created" timestamp NOT NULL,
-	"sz_email" varchar(127) NOT NULL
+	"sz_email" varchar(127) NOT NULL,
+	"sz_detail" varchar(3000)
 )
 ;
 
@@ -180,6 +181,8 @@ CREATE SEQUENCE sys_log_t_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+-- drop sequence sys_log_t_id_seq;
 
 CREATE SEQUENCE sys_export_t_id_seq
     START WITH 1

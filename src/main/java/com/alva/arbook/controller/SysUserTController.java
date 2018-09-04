@@ -1,13 +1,12 @@
 package com.alva.arbook.controller;
 
-import com.alva.arbook.annotation.LogAnnotation;
+import com.alva.arbook.annotation.Modify;
 import com.alva.arbook.dto.UserDTO;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysUserTService;
 import com.alva.arbook.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -37,12 +36,11 @@ public class SysUserTController {
         return map;
     }
 
-    @LogAnnotation(description = "查看用户")
     @RequestMapping("/getusers")
     @ResponseBody
     public Map getusers(int page, int limit) {
         HashMap<String, Object> map = new HashMap<>();
-        List<UserVO> userVOS = sysUserTService.selectAll(page,limit);
+        List<UserVO> userVOS = sysUserTService.selectAll(page, limit);
         map.put("code", 0);//查询状态
         map.put("msg", "成功");//消息提示
         map.put("count", sysUserTService.selectAllCount());//查询总数
@@ -50,14 +48,14 @@ public class SysUserTController {
         return map;
     }
 
-    @LogAnnotation(description = "删除用户")
+    @Modify(description = "删除", serviceclass = SysUserTService.class, handleName = "删除用户信息")
     @RequestMapping("/deleteuser")
     @ResponseBody
     public void deleteuser(String id) {
         sysUserTService.deleteByPrimaryKey(id);
     }
 
-    @LogAnnotation(description = "添加用户")
+    @Modify(description = "新建", serviceclass = SysUserTService.class, handleName = "新建用户")
     @RequestMapping("/adduser")
     @ResponseBody
     public Map adduser(UserDTO userDTO) {
@@ -71,7 +69,7 @@ public class SysUserTController {
         return map;
     }
 
-    @LogAnnotation(description = "编辑用户")
+    @Modify(description = "编辑", serviceclass = SysUserTService.class, handleName = "更改用户信息")
     @RequestMapping("/editUser")
     @ResponseBody
     public Map updateuser(UserVO userVO) {
@@ -109,7 +107,7 @@ public class SysUserTController {
         return map;
     }
 
-    @LogAnnotation(description = "安全退出")
+    //@Log(description = "安全退出")
     @RequestMapping("/exit")
     public String exit(HttpSession session) {
         session.removeAttribute("user");

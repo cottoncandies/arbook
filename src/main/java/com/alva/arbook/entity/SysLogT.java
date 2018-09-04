@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class SysLogT implements Serializable {
-    private String szId;
+    private Integer szId;
 
     private String szType;
 
@@ -23,14 +23,16 @@ public class SysLogT implements Serializable {
 
     private String szEmail;
 
+    private String szDetail;
+
     private static final long serialVersionUID = 1L;
 
-    public String getSzId() {
+    public Integer getSzId() {
         return szId;
     }
 
-    public void setSzId(String szId) {
-        this.szId = szId == null ? null : szId.trim();
+    public void setSzId(Integer szId) {
+        this.szId = szId == null ? null : szId;
     }
 
     public String getSzType() {
@@ -87,7 +89,7 @@ public class SysLogT implements Serializable {
             return;
         }
         StringBuilder params = new StringBuilder();
-        for (Map.Entry<String, String[]> param : ((Map<String, String[]>) paramMap).entrySet()) {
+        for (Map.Entry<String, String[]> param : paramMap.entrySet()) {
             params.append(("".equals(params.toString()) ? "" : "&") + param.getKey() + "=");
             String paramValue = (param.getValue() != null && param.getValue().length > 0 ? param.getValue()[0] : "");
             //params.append(StringUtils.abbr(StringUtils.endsWithIgnoreCase(param.getKey(), "password") ? "" : paramValue, 100));
@@ -112,6 +114,14 @@ public class SysLogT implements Serializable {
         this.szEmail = szEmail == null ? null : szEmail.trim();
     }
 
+    public String getSzDetail() {
+        return szDetail;
+    }
+
+    public void setSzDetail(String szDetail) {
+        this.szDetail = szDetail;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -127,7 +137,7 @@ public class SysLogT implements Serializable {
         sb.append(", szParams=").append(szParams);
         sb.append(", tsCreated=").append(tsCreated);
         sb.append(", szEmail=").append(szEmail);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append(", szDetail=").append(szDetail);
         sb.append("]");
         return sb.toString();
     }

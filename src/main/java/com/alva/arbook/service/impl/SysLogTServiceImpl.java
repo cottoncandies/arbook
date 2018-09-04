@@ -6,12 +6,14 @@ import com.alva.arbook.service.SysLogTService;
 import com.alva.arbook.vo.LogVO;
 import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class SysLogTServiceImpl implements SysLogTService {
 
     @Resource
@@ -39,7 +41,7 @@ public class SysLogTServiceImpl implements SysLogTService {
     public List<LogVO> selectAll() {
         ArrayList<LogVO> logVOS = new ArrayList<>();
         List<SysLogT> sysLogTS = sysLogTMapper.selectAll();
-        for (SysLogT sysLogT: sysLogTS){
+        for (SysLogT sysLogT : sysLogTS) {
             LogVO logVO = mapper.map(sysLogT, LogVO.class);
             logVOS.add(logVO);
         }
@@ -52,10 +54,10 @@ public class SysLogTServiceImpl implements SysLogTService {
     }
 
     @Override
-    public List<LogVO> selectAllByPage(Integer page, Integer limit) {
+    public List<LogVO> selectAllByPage(Integer page, Integer limit, String type) {
         ArrayList<LogVO> logVOS = new ArrayList<>();
-        List<SysLogT> sysLogTS = sysLogTMapper.selectAllByPage((page-1)*limit,limit);
-        for (SysLogT sysLogT: sysLogTS){
+        List<SysLogT> sysLogTS = sysLogTMapper.selectAllByPage((page - 1) * limit, limit, type);
+        for (SysLogT sysLogT : sysLogTS) {
             LogVO logVO = mapper.map(sysLogT, LogVO.class);
             logVOS.add(logVO);
         }

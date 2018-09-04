@@ -7,6 +7,10 @@
         <class-a>com.alva.arbook.entity.SysLogT</class-a>
         <class-b>com.alva.arbook.vo.LogVO</class-b>
         <field>
+            <a>szId</a>
+            <b>id</b>
+        </field>
+        <field>
             <a>szEmail</a>
             <b>email</b>
         </field>
@@ -15,8 +19,16 @@
             <b>title</b>
         </field>
         <field>
+            <a>szMethod</a>
+            <b>method</b>
+        </field>
+        <field>
             <a>tsCreated</a>
             <b>time</b>
+        </field>
+        <field>
+            <a>szDetail</a>
+            <b>detail</b>
         </field>
     </mapping>
 </mappings>

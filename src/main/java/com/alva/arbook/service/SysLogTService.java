@@ -16,5 +16,5 @@ public interface SysLogTService {
 
     int updateByPrimaryKey(SysLogT record);
 
-    List<LogVO> selectAllByPage(Integer page, Integer limit);
+    List<LogVO> selectAllByPage(Integer page, Integer limit, String type);
 }

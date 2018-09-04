@@ -90,8 +90,8 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
             even: true,
             cols: [[
                 {type: 'checkbox'},
-                {field: 'id', title: 'ID', width: 80, sort: true},
-                {field: 'caption', title: '教材名称', edit: 'text'},
+                {field: 'id', title: 'ID', width: 80, sort: true, hide:true},
+                {field: 'caption', title: '教材名称'},
                 {   field: 'cover',
                     title: '封面文件',
                     //templet:'<div><img id="img" src="images/{{ d.cover}}"></div>',style:'height:48px;width:48px;line-height:48px!important;'

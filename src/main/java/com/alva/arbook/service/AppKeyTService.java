@@ -4,10 +4,9 @@ import com.alva.arbook.entity.AppKeyT;
 
 import java.util.List;
 
-public interface AppKeyTService {
+public interface AppKeyTService{
 
     int deleteByPrimaryKey(String szId);
-
 
     int insert(AppKeyT record);
 

@@ -23,9 +23,9 @@ public class SysLogTController {
     private SysLogTMapper sysLogTMapper;
 
     @RequestMapping("/getlogs")
-    public Map getlog(Integer page, Integer limit) {
+    public Map getlog(Integer page, Integer limit, String type) {
         HashMap<String, Object> map = new HashMap<>();
-        List<LogVO> logVOS = sysLogTService.selectAllByPage(page, limit);
+        List<LogVO> logVOS = sysLogTService.selectAllByPage(page, limit, type);
         map.put("code", 0);//查询状态
         map.put("msg", "提交成功");//消息提示
         map.put("count", sysLogTMapper.selectAllCount());//查询总数

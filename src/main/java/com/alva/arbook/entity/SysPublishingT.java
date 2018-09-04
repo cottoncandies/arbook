@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 public class SysPublishingT implements Serializable {
+
     @JsonProperty("id")
     private String szId;
     @JsonProperty("publish")

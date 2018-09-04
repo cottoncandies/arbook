@@ -9,13 +9,13 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.List;
 
-public interface SysTextbookTService {
+public interface SysTextbookTService extends BaseService<SysTextbookT> {
 
     int deleteByPrimaryKey(String szId);
 
-    int insert(TextbookDTO textbookDTO,File file);
+    int insert(TextbookDTO textbookDTO, File file);
 
-    SysTextbookT selectByPrimaryKey(String szId);
+    //SysTextbookT selectByPrimaryKey(String szId);
 
     int updateByPrimaryKey(SysTextbookT record);
 

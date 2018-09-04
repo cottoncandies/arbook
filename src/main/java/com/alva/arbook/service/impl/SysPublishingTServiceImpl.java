@@ -4,11 +4,13 @@ import com.alva.arbook.dao.SysPublishingTMapper;
 import com.alva.arbook.entity.SysPublishingT;
 import com.alva.arbook.service.SysPublishingTService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
+@Transactional
 public class SysPublishingTServiceImpl implements SysPublishingTService {
 
     @Resource

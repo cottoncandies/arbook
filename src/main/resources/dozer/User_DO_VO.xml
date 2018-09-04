@@ -7,6 +7,10 @@
         <class-a>com.alva.arbook.entity.SysUserT</class-a>
         <class-b>com.alva.arbook.vo.UserVO</class-b>
         <field>
+            <a>szId</a>
+            <b>id</b>
+        </field>
+        <field>
             <a>szEmail</a>
             <b>email</b>
         </field>

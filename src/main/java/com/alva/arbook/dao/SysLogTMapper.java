@@ -10,13 +10,13 @@ public interface SysLogTMapper {
 
     int insert(SysLogT record);
 
-    SysLogT selectByPrimaryKey(String szId);
+    SysLogT selectByPrimaryKey(Integer szId);
 
     List<SysLogT> selectAll();
 
     int updateByPrimaryKey(SysLogT record);
 
-    List<SysLogT> selectAllByPage(@Param("offset") Integer offset, @Param("limit") Integer limit);
+    List<SysLogT> selectAllByPage(@Param("offset") Integer offset, @Param("limit") Integer limit, @Param("type") String type );
 
     Long selectAllCount();
 }

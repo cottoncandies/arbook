@@ -4,11 +4,13 @@ import com.alva.arbook.dao.SysSubjectTMapper;
 import com.alva.arbook.entity.SysSubjectT;
 import com.alva.arbook.service.SysSubjectTService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
+@Transactional
 public class SysSubjectTServiceImpl implements SysSubjectTService {
 
     @Resource

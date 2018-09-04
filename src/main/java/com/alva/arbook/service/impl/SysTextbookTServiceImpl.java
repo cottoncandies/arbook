@@ -10,8 +10,6 @@ import com.alva.arbook.entity.SysExportT;
 import com.alva.arbook.entity.SysTextbookT;
 import com.alva.arbook.entity.SysUserT;
 import com.alva.arbook.service.SysTextbookTService;
-import com.alva.arbook.util.MD5Util;
-import com.alva.arbook.util.ZipUtil;
 import com.alva.arbook.vo.TextbookVO;
 import org.apache.commons.io.FileUtils;
 import org.dozer.DozerBeanMapper;
@@ -54,7 +52,7 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = RuntimeException.class)
-    public int insert(TextbookDTO textbookDTO,File file) {
+    public int insert(TextbookDTO textbookDTO, File file) {
 
         SysTextbookT sysTextbookT = mapper.map(textbookDTO, SysTextbookT.class);
         String publishName = textbookDTO.getPublish();

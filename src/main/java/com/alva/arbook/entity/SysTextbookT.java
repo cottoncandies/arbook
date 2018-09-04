@@ -1,19 +1,29 @@
 package com.alva.arbook.entity;
 
+import com.alva.arbook.annotation.DataName;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class SysTextbookT implements Serializable {
     private String szId;
+    @DataName(name = "教材名称")
     private String szCaption;
+    @DataName(name = "教材封面")
     private String szCover;
+    @DataName(name = "教材版本")
     private String szEdition;
+    @DataName(name = "学段")
     private String szSection;
+    @DataName(name = "年级")
     private String szGrade;
+    @DataName(name = "学期")
     private Integer ntTerm;
     private String szSubjectId;
+    @DataName(name = "学科")
     private SysSubjectT sysSubjectT;
     private String szPubId;
+    @DataName(name = "出版社")
     private SysPublishingT sysPublishingT;
     private String szInsti;
     private String szStore;
@@ -21,6 +31,7 @@ public class SysTextbookT implements Serializable {
     private Long ngSize;
     private String szTag;
     private Date tsCreated;
+    @DataName(name = "修改时间")
     private Date tsUpdated;
     private Integer ntRowState;
     private Integer ntRowVersion;

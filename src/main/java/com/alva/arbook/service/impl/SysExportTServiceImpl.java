@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
+@Transactional
 public class SysExportTServiceImpl implements SysExportTService {
     @Resource
     private SysExportTMapper sysExportTMapper;

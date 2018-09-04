@@ -6,7 +6,7 @@ import com.alva.arbook.vo.UserVO;
 
 import java.util.List;
 
-public interface SysUserTService {
+public interface SysUserTService extends BaseService<SysUserT> {
 
     SysUserT login(UserDTO userDTO);
 
@@ -14,7 +14,7 @@ public interface SysUserTService {
 
     int insert(UserDTO record);
 
-    SysUserT selectByPrimaryKey(String szId);
+    //SysUserT selectByPrimaryKey(Integer szId);
 
     List<UserVO> selectAll(int page,int limit);
 

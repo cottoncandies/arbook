@@ -1,6 +1,6 @@
 package com.alva.arbook.controller;
 
-import com.alva.arbook.annotation.LogAnnotation;
+import com.alva.arbook.annotation.Modify;
 import com.alva.arbook.dto.TextbookDTO;
 import com.alva.arbook.dto.TextbookQueryDTO;
 import com.alva.arbook.service.AppKeyTService;
@@ -46,7 +46,6 @@ public class SysTextbookTController {
     private String tempUploadPath;
 
     //根据条件查询教材(联表查询)
-    @LogAnnotation(description = "查询教材信息")
     @RequestMapping("/GetIndex")
     public Map GetIndex(@RequestParam("ak") String accessKey, TextbookQueryDTO textbookQueryDTO) {
         Map<String, Object> map = new HashMap<>();
@@ -64,7 +63,7 @@ public class SysTextbookTController {
         return map;
     }
 
-    @LogAnnotation(description = "批量导出教材")
+    //@Log(description = "批量导出教材")
     @RequestMapping("/exportBookList")
     public Map exportBookList(@RequestParam(value = "bookIds[]") String[] bookIds, String directory, HttpSession session) {
         Map<String, Object> map = new HashMap<>();
@@ -106,7 +105,7 @@ public class SysTextbookTController {
 //        }
 //    }
 
-    @LogAnnotation(description = "上传教材文件")
+    //@Log(description = "上传教材文件")
     @PostMapping(value = "/upload")
     public Map upload(MultipartFile file) {
         Map<String, Object> map = new HashMap<>();
@@ -177,15 +176,15 @@ public class SysTextbookTController {
         return map;
     }
 
-    @LogAnnotation(description = "删除教材信息")
+    @Modify(description = "删除", serviceclass = SysTextbookTService.class, handleName = "删除教材信息")
     @RequestMapping("/deleteBook")
     public void deleteByPrimaryKey(String bookId) {
         sysTextbookTService.deleteByPrimaryKey(bookId);
     }
 
-    @LogAnnotation(description = "编辑教材信息")
+    @Modify(description = "编辑", serviceclass = SysTextbookTService.class, handleName = "更改教材信息")
     @PostMapping("/editBook")
-    public Map editBook(@RequestBody TextbookVO book) {
+    public Map editBook(TextbookVO book) {
         HashMap<String, Object> map = new HashMap<>();
         try {
             sysTextbookTService.editBook(book);

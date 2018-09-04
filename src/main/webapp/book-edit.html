@@ -110,8 +110,7 @@
                 $.ajax({
                     type: 'POST',
                     url: 'ApiV1/editBook',
-                    contentType: "application/json",
-                    data: JSON.stringify(data.field),
+                    data: data.field,
 					dataType:'JSON',
                     success: function (result) {
                         if (result.success) {
