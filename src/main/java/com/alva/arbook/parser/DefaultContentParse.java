@@ -31,7 +31,6 @@ public class DefaultContentParse implements ContentParser {
         BaseService service = null;
         Class cls = modify.serviceclass();
         service = (BaseService) SpringUtil.getBean(cls);
-
         return service.selectByPrimaryKey(id);
     }
 }

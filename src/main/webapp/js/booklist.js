@@ -218,7 +218,7 @@ layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
             });
         } else if (layEvent === 'del') {
             layer.confirm("确定要删除吗？", {skin: 'layui-layer-lan', icon: 2, title: '提示', anim: 6}, function (index) {
-                $.post('ApiV1/deleteBook', {bookId: data.id}, function () {
+                $.post('ApiV1/deleteBook', {id:row_data.id}, function () {
                     obj.del();
                     layer.close(index);
                 })

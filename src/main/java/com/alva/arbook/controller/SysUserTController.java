@@ -51,14 +51,14 @@ public class SysUserTController {
     @Modify(description = "删除", serviceclass = SysUserTService.class, handleName = "删除用户信息")
     @RequestMapping("/deleteuser")
     @ResponseBody
-    public void deleteuser(String id) {
-        sysUserTService.deleteByPrimaryKey(id);
+    public void deleteuser(UserVO userVO) {
+        sysUserTService.deleteByPrimaryKey(userVO.getId());
     }
 
     @Modify(description = "新建", serviceclass = SysUserTService.class, handleName = "新建用户")
     @RequestMapping("/adduser")
     @ResponseBody
-    public Map adduser(UserDTO userDTO) {
+    public SysUserT adduser(UserDTO userDTO) {
         HashMap<String, Object> map = new HashMap<>();
         try {
             sysUserTService.insert(userDTO);
@@ -66,7 +66,8 @@ public class SysUserTController {
         } catch (Exception e) {
             map.put("success", false);
         }
-        return map;
+        SysUserT addUser = sysUserTService.selectByEmail(userDTO.getEmail());
+        return addUser;
     }
 
     @Modify(description = "编辑", serviceclass = SysUserTService.class, handleName = "更改用户信息")

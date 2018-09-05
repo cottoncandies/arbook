@@ -92,6 +92,11 @@ public class SysTextbookTServiceImpl implements SysTextbookTService {
     }
 
     @Override
+    public SysTextbookT selectByEmail(String szEmail) {
+        return null;
+    }
+
+    @Override
     public int updateByPrimaryKey(SysTextbookT record) {
         return 0;
     }

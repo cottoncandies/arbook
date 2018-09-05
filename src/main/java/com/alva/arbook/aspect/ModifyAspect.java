@@ -22,7 +22,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,9 +51,10 @@ public class ModifyAspect {
 
     @Before("@annotation(modify)")
     public void doBefore(JoinPoint joinPoint, Modify modify) {
+        // 所有切面中的第一个参数必须是对象类型
         Object info = joinPoint.getArgs()[0];
         String[] feilds = modify.feildName();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        log.setUsername(BaseContextHandler.getName());
 //        log.setModifyip(ClientUtil.getClientIp(request));
 //        log.setModifydate(sdf.format(new Date()));
@@ -67,7 +67,7 @@ public class ModifyAspect {
 //        log.setModifyname(logAnnotation.name());
 //        log.setModifycontent("");
         //
-        if (ModifyName.UPDATE.equals(modify.description())) {
+        if (ModifyName.UPDATE.equals(modify.description()) || ModifyName.DELETE.equals(modify.description())) {
             for (String feild : feilds) {
                 feildValues = new HashMap<>();
                 Object result = ReflectionUtils.getFieldValue(info, feild);
@@ -78,13 +78,6 @@ public class ModifyAspect {
                 oldObject = contentParser.getResult(feildValues, modify);
             } catch (Exception e) {
                 logger.error("service加载失败:", e);
-            }
-        }
-        if (ModifyName.DELETE.equals(modify.description())) {
-            for (String feild : feilds) {
-                feildValues = new HashMap<>();
-                //Object result = ReflectionUtils.getFieldValue(info, feild);
-                feildValues.put(feild, info);
             }
         }
 
@@ -114,29 +107,61 @@ public class ModifyAspect {
             try {
                 List<Map<String, Object>> changelist = ReflectionUtils.compareTwoClass(oldObject, newObject);
                 StringBuilder str = new StringBuilder();
-                for (Map<String, Object> map : changelist) {
-                    str.append("【" + map.get("name") + "】从【" + map.get("old") + "】改为了【" + map.get("new") + "】;\n");
+                if (changelist.size() != 0) {
+                    for (Map<String, Object> map : changelist) {
+                        str.append("【" + map.get("name") + "】从【" + map.get("old") + "】改为了【" + map.get("new") + "】;\n");
+                    }
+                } else {
+                    str.append("修改前后数据一致");
                 }
                 log.setSzDetail(str.toString());
             } catch (Exception e) {
                 logger.error("比较异常", e);
             }
         } else if (ModifyName.DELETE.equals(modify.description())) {// 删除操作
-            ContentParser contentParser = null;
             try {
-                contentParser = (ContentParser) modify.parseclass().newInstance();
-                newObject = contentParser.getResult(feildValues, modify);// 获取到删除的对象实体
-                List<Map<String, Object>> classContent = ReflectionUtils.getClassContent(newObject);
+                List<Map<String, Object>> classContent = ReflectionUtils.getClassContent(oldObject);
                 StringBuilder str = new StringBuilder();
                 for (Map<String, Object> map : classContent) {
-                    str.append("删除数据 【" + map.get("name") + "】----【" + map.get("value") + "】;\n");
+                    str.append("【" + map.get("name") + "】:【" + map.get("value") + "】;\n");
                 }
                 log.setSzDetail(str.toString());
             } catch (Exception e) {
                 logger.error("service加载失败:", e);
             }
-        }
+       } else if (ModifyName.SAVE.equals(modify.description())) {
+//
+//            Object info = joinPoint.getArgs()[0];
+//            String[] feilds = modify.feildName();
+//
+//            for (String feild : feilds) {
+//                feildValues = new HashMap<>();
+//                Object result = ReflectionUtils.getFieldValue(info, feild);
+//                feildValues.put(feild, result);
+//            }
+//            try {
+//                ContentParser contentParser = (ContentParser) modify.parseclass().newInstance();
+//                oldObject = contentParser.getResult(feildValues, modify);
+//            } catch (Exception e) {
+//                logger.error("service加载失败:", e);
+//            }
+//
+            /**
+             * ReflectionUtils.getClassContent(object)中的参数object
+             * 来自于@AfterReturning(pointcut = "@annotation(modify)", returning = "object")
+             */
+            try {
+                List<Map<String, Object>> classContent = ReflectionUtils.getClassContent(object);
+                StringBuilder str = new StringBuilder();
+                for (Map<String, Object> map : classContent) {
+                    str.append("【" + map.get("name") + "】:【" + map.get("value") + "】;\n");
+                }
+                log.setSzDetail(str.toString());
+            } catch (Exception e) {
+                logger.error("service加载失败:", e);
+            }
 
+        }
 
         String szTitle = modify.handleName();
         log.setSzTitle(szTitle);
@@ -154,10 +179,11 @@ public class ModifyAspect {
             log.setSzEmail("未登录用户");
         }
         Map<String, String[]> params = request.getParameterMap(); //请求提交的参数
-        String[] ids = params.get("id");
-        for (String id : ids) {
-            log.setSzMethod(id);
-        }
+        // 删除和修改操作时,获取删除或修改对象的id  为了方便 使用数据库字段sz_method存储id
+//        String[] ids = params.get("id");
+//        for (String id : ids) {
+//            log.setSzMethod(id);
+//        }
         sysLogTService.insert(log);
     }
 }

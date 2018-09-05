@@ -54,7 +54,7 @@
 					{field:'email', title:'操作用户'},
 					{field:'title', title: '操作内容'},
 					{field:'time', title:'操作时间'},
-					{field:'method', title:'用户id', hide:true},
+                    {field:'method', title:'用户id', hide:true},
 					{field:'detail', title:'详细信息', hide:true}
 				]],
 				done: function(res, curr, count){
@@ -83,12 +83,12 @@
                 // console.log(obj.data) //得到当前行数据
                 //obj.del(); //删除当前行
                 //obj.update(fields) //修改当前行数据
-
-                layer.open({
-                    title: '详细信息',
-                    content:obj.data.detail
-                })
-
+                if(obj.data.detail!=null){
+                    layer.open({
+                        title: '详细信息',
+                        content:obj.data.detail
+                    })
+                }
             });
         })
     </script>

@@ -178,8 +178,8 @@ public class SysTextbookTController {
 
     @Modify(description = "删除", serviceclass = SysTextbookTService.class, handleName = "删除教材信息")
     @RequestMapping("/deleteBook")
-    public void deleteByPrimaryKey(String bookId) {
-        sysTextbookTService.deleteByPrimaryKey(bookId);
+    public void deleteByPrimaryKey(TextbookVO book) {
+        sysTextbookTService.deleteByPrimaryKey(book.getId());
     }
 
     @Modify(description = "编辑", serviceclass = SysTextbookTService.class, handleName = "更改教材信息")

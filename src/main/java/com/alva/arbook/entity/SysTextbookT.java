@@ -17,13 +17,10 @@ public class SysTextbookT implements Serializable {
     private String szSection;
     @DataName(name = "年级")
     private String szGrade;
-    @DataName(name = "学期")
     private Integer ntTerm;
     private String szSubjectId;
-    @DataName(name = "学科")
     private SysSubjectT sysSubjectT;
     private String szPubId;
-    @DataName(name = "出版社")
     private SysPublishingT sysPublishingT;
     private String szInsti;
     private String szStore;
@@ -31,7 +28,6 @@ public class SysTextbookT implements Serializable {
     private Long ngSize;
     private String szTag;
     private Date tsCreated;
-    @DataName(name = "修改时间")
     private Date tsUpdated;
     private Integer ntRowState;
     private Integer ntRowVersion;

@@ -337,18 +337,25 @@ public class ReflectionUtils {
                         field2[j].setAccessible(true);
                         //如果field1[i]属性值与field2[j]属性值内容不相同
                         if (!compareTwo(field1[i].get(class1), field2[j].get(class2))) {
-                            Map<String, Object> map2 = new HashMap<String, Object>();
+                            //Map<String, Object> map2 = new HashMap<String, Object>();
                             DataName name = field1[i].getAnnotation(DataName.class);
                             String fieldName = "";
                             if (name != null) {
+                                Map<String, Object> map2 = new HashMap<String, Object>();
                                 fieldName = name.name();
-                            } else {
-                                fieldName = field1[i].getName();
+                                map2.put("name", fieldName);
+                                map2.put("old", field1[i].get(class1));
+                                map2.put("new", field2[j].get(class2));
+                                list.add(map2);
                             }
-                            map2.put("name", fieldName);
-                            map2.put("old", field1[i].get(class1));
-                            map2.put("new", field2[j].get(class2));
-                            list.add(map2);
+// 目前只记录有DataName注解的实体属性到数据库中,根据开发需要,日后可以解除下面代码注释
+//                            else {
+//                                fieldName = field1[i].getName();
+//                            }
+//                            map2.put("name", fieldName);
+//                            map2.put("old", field1[i].get(class1));
+//                            map2.put("new", field2[j].get(class2));
+//                            list.add(map2);
                         }
                         break;
                     }
@@ -376,17 +383,23 @@ public class ReflectionUtils {
         //遍历属性列表field1
         for (int i = 0; i < field1.length; i++) {
             field1[i].setAccessible(true);
-            Map<String, Object> map2 = new HashMap<String, Object>();
+            //Map<String, Object> map2 = new HashMap<String, Object>();
             DataName name = field1[i].getAnnotation(DataName.class);
             String fieldName = "";
             if (name != null) {
+                Map<String, Object> map2 = new HashMap<String, Object>();
                 fieldName = name.name();
-            } else {
-                fieldName = field1[i].getName();
+                map2.put("name", fieldName);
+                map2.put("value", field1[i].get(class1));
+                list.add(map2);
             }
-            map2.put("name", fieldName);
-            map2.put("value", field1[i].get(class1));
-            list.add(map2);
+// 目前只记录有DataName注解的实体属性到数据库中,根据开发需要,日后可以解除下面代码注释
+//            else {
+//                fieldName = field1[i].getName();
+//            }
+//            map2.put("name", fieldName);
+//            map2.put("value", field1[i].get(class1));
+//            list.add(map2);
         }
         return list;
 

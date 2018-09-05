@@ -4,4 +4,5 @@ public interface BaseService<T> {
 
     T selectByPrimaryKey(String szId);
 
+    T selectByEmail(String szEmail);
 }
