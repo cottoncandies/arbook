@@ -11,6 +11,14 @@ public class SysLogT implements Serializable {
 
     private String szTitle;
 
+    private Date tsCreated;
+
+    private String szEmail;
+
+    private String szDetail;
+
+    private String szStatus;
+
     private String szRemoteAddr;
 
     private String szRequestUri;
@@ -18,12 +26,6 @@ public class SysLogT implements Serializable {
     private String szMethod;
 
     private String szParams;
-
-    private Date tsCreated;
-
-    private String szEmail;
-
-    private String szDetail;
 
     private static final long serialVersionUID = 1L;
 
@@ -77,6 +79,18 @@ public class SysLogT implements Serializable {
 
     public String getSzParams() {
         return szParams;
+    }
+
+    public String getSzStatus() {
+        return szStatus;
+    }
+
+    public void setSzStatus(String szStatus) {
+        this.szStatus = szStatus;
+    }
+
+    public void setSzParams(String szParams) {
+        this.szParams = szParams;
     }
 
     /**

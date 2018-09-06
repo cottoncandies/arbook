@@ -19,16 +19,20 @@
             <b>title</b>
         </field>
         <field>
-            <a>szMethod</a>
-            <b>method</b>
+            <a>szType</a>
+            <b>type</b>
         </field>
         <field>
             <a>tsCreated</a>
-            <b>time</b>
+            <b>createTime</b>
         </field>
         <field>
             <a>szDetail</a>
             <b>detail</b>
+        </field>
+        <field>
+            <a>szStatus</a>
+            <b>status</b>
         </field>
     </mapping>
 </mappings>

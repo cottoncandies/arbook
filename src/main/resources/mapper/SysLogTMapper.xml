@@ -5,30 +5,23 @@
         <id column="sz_id" jdbcType="INTEGER" property="szId"/>
         <result column="sz_type" jdbcType="VARCHAR" property="szType"/>
         <result column="sz_title" jdbcType="VARCHAR" property="szTitle"/>
+        <result column="ts_created" jdbcType="TIMESTAMP" property="tsCreated"/>
+        <result column="sz_email" jdbcType="VARCHAR" property="szEmail"/>
+        <result column="sz_detail" jdbcType="VARCHAR" property="szDetail"/>
+        <result column="sz_status" jdbcType="VARCHAR" property="szStatus"/>
         <result column="sz_remote_addr" jdbcType="VARCHAR" property="szRemoteAddr"/>
         <result column="sz_request_uri" jdbcType="VARCHAR" property="szRequestUri"/>
         <result column="sz_method" jdbcType="VARCHAR" property="szMethod"/>
         <result column="sz_params" jdbcType="VARCHAR" property="szParams"/>
-        <result column="ts_created" jdbcType="TIMESTAMP" property="tsCreated"/>
-        <result column="sz_email" jdbcType="VARCHAR" property="szEmail"/>
-        <result column="sz_detail" jdbcType="VARCHAR" property="szDetail"/>
     </resultMap>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from sys_log_t
-    where sz_id = #{szId,jdbcType=INTEGER}
-  </delete>
-    <!--<insert id="insert" parameterType="com.alva.arbook.entity.SysLogT">-->
-    <!--insert into sys_log_t (sz_id, sz_type, sz_title, sz_remote_addr,-->
-    <!--sz_request_uri, sz_method, sz_params, ts_created, sz_email,sz_detail)-->
-    <!--values (nextval('sys_log_t_id_seq'), #{szType,jdbcType=VARCHAR}, #{szTitle,jdbcType=VARCHAR}, #{szRemoteAddr,jdbcType=VARCHAR},-->
-    <!--#{szRequestUri,jdbcType=VARCHAR}, #{szMethod,jdbcType=VARCHAR}, #{szParams,jdbcType=VARCHAR},-->
-    <!--#{tsCreated,jdbcType=TIMESTAMP}, #{szEmail,jdbcType=VARCHAR},#{szDetail,jdbcType=VARCHAR})-->
-    <!--</insert>-->
-
+        delete from sys_log_t
+        where sz_id = #{szId,jdbcType=INTEGER}
+    </delete>
     <insert id="insert" parameterType="com.alva.arbook.entity.SysLogT">
-        insert into sys_log_t (sz_id, sz_title,sz_type, sz_method, ts_created, sz_email, sz_detail)
+        insert into sys_log_t (sz_id, sz_title,sz_type, ts_created, sz_email, sz_detail, sz_status)
         values (nextval('sys_log_t_id_seq'), #{szTitle,jdbcType=VARCHAR}, #{szType,jdbcType=VARCHAR},
-        #{szMethod,jdbcType=VARCHAR}, now(), #{szEmail,jdbcType=VARCHAR}, #{szDetail,jdbcType=VARCHAR})
+        now(), #{szEmail,jdbcType=VARCHAR}, #{szDetail,jdbcType=VARCHAR}, #{szStatus,jdbcType=VARCHAR})
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.alva.arbook.entity.SysLogT">
     update sys_log_t
@@ -54,15 +47,52 @@
     from sys_log_t
   </select>
     <select id="selectAllByPage" resultMap="BaseResultMap">
-    select sz_id, sz_type, sz_title, sz_remote_addr, sz_request_uri, sz_method, sz_params,
-    ts_created, sz_email, sz_detail
-    from sys_log_t
-    where sz_type = #{type,jdbcType=VARCHAR}
-    offset #{offset,jdbcType=INTEGER}
-    limit #{limit,jdbcType=INTEGER}
-  </select>
+        select sz_id, sz_type, sz_title, sz_remote_addr, sz_request_uri, sz_method, sz_params,
+        ts_created, sz_email, sz_detail, sz_status
+        from sys_log_t
+        <where>
+            <if test="type!=null and type!='' ">
+                sz_type = #{type,jdbcType=VARCHAR}
+            </if>
+            <if test="email!=null and email!='' ">
+                AND sz_email LIKE CONCAT(CONCAT('%',#{email},'%'))
+            </if>
+            <if test="title!=null and title!='' ">
+                AND sz_title LIKE CONCAT(CONCAT('%',#{title},'%'))
+            </if>
+            <if test="startTime!=null and startTime!=''">
+                <![CDATA[  and ts_created >=  to_date(#{startTime},'YYYY-MM-DD')]]>
+            </if>
+            <if test="endTime!=null and endTime!=''">
+                <![CDATA[  and ts_created <=  to_date(#{endTime},'YYYY-MM-DD')]]>
+            </if>
+        </where>
+        offset #{page,jdbcType=INTEGER}
+        limit #{limit,jdbcType=INTEGER}
+    </select>
     <select id="selectAllCount" resultType="java.lang.Long">
-    select count(*)
-    from sys_log_t
-  </select>
+        select count(*)
+        from sys_log_t
+        <where>
+            <if test="type!=null and type!='' ">
+                sz_type = #{type,jdbcType=VARCHAR}
+            </if>
+            <if test="email!=null and email!='' ">
+                AND sz_email LIKE CONCAT(CONCAT('%',#{email},'%'))
+            </if>
+            <if test="title!=null and title!='' ">
+                AND sz_title LIKE CONCAT(CONCAT('%',#{title},'%'))
+            </if>
+            <if test="startTime!=null and startTime!=''">
+                <![CDATA[  and ts_created >=  to_date(#{startTime},'YYYY-MM-DD')]]>
+            </if>
+            <if test="endTime!=null and endTime!=''">
+                <![CDATA[  and ts_created <=  to_date(#{endTime},'YYYY-MM-DD')]]>
+            </if>
+        </where>
+    </select>
+    <select id="selectDistinctType" resultType="String">
+      select DISTINCT sz_type
+      from sys_log_t
+    </select>
 </mapper>

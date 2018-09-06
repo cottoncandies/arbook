@@ -120,13 +120,14 @@ CREATE TABLE "sys_log_t"
 	"sz_id" INTEGER	NOT NULL,
 	"sz_type" varchar(31) ,
 	"sz_title" varchar(31)	,
+	"ts_created" timestamp NOT NULL,
+	"sz_email" varchar(127) NOT NULL,
+	"sz_detail" varchar(3000),
+	"sz_status" varchar(15),
 	"sz_remote_addr" varchar(63)	,
 	"sz_request_uri" varchar(31)	,
 	"sz_method" varchar(31),
-	"sz_params" varchar(63),
-	"ts_created" timestamp NOT NULL,
-	"sz_email" varchar(127) NOT NULL,
-	"sz_detail" varchar(3000)
+	"sz_params" varchar(63)
 )
 ;
 

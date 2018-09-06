@@ -10,81 +10,157 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_693759_wytlyqhtdtj1nhfr.css">
 </head>
 <body>
-    <div class="ok-body">
-        <!--模糊搜索区域-->
-        <div class="layui-row">
-            <form class="layui-form layui-col-md12 ok-search">
-                <input class="layui-input" placeholder="开始日期" autocomplete="off" id="startTime">
-                <input class="layui-input" placeholder="截止日期" autocomplete="off" id="endTime">
-                <input class="layui-input" placeholder="请输入用户名" autocomplete="off">
-                <button class="layui-btn"  lay-submit="" lay-filter="search">
-                    <i class="layui-icon layui-icon-search"></i>
-                </button>
-            </form>
-        </div>
-        <div class="ok-body-breadcrumb">
-            <span>共有数据：<i id="countNum"></i> 条</span>
-            <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" title="刷新">
-                <i class="layui-icon layui-icon-refresh"></i>
-            </a>
-        </div>
-        <!--数据表格-->
-		<table class="layui-hide" id="logTableId" lay-filter="logFilter"></table>
+<div class="ok-body">
+    <!--模糊搜索区域-->
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 ok-search">
+            <div>
+                <select name="type" lay-filter="selectType" lay-verify="" id="type"></select>
+            </div>
+            <input class="layui-input" placeholder="请输入用户名" autocomplete="off" id="email" name="email">
+            <input class="layui-input" placeholder="请输入标题" autocomplete="off" id="title" name="title">
+            <input class="layui-input" placeholder="开始日期" autocomplete="off" id="startTime" name="startTime">
+            <input class="layui-input" placeholder="截止日期" autocomplete="off" id="endTime" name="endTime">
+            <button class="layui-btn" lay-submit="" lay-filter="search">
+                <i class="layui-icon layui-icon-search"></i>
+            </button>
+        </form>
     </div>
-    <!--js逻辑-->
-    <script src="lib/layui/layui.js"></script>
-    <script>
-        layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
-            var element = layui.element;
-            var table = layui.table;
-			var form = layui.form;
-			var $ = layui.jquery;
-			var laydate = layui.laydate;
-			
-			table.render({
-				elem: '#logTableId',
-				url:'log/getlogs',
-				limit: 10,
-				page: true,
-				cols: [[
-					{field:'email', title:'操作用户'},
-					{field:'title', title: '操作内容'},
-					{field:'time', title:'操作时间'},
-				]],
-				done: function(res, curr, count){
-					$("#countNum").text(count);
-				}
-			});
+    <div class="ok-body-breadcrumb">
+        <span>共有数据：<i id="countNum"></i> 条</span>
+        <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" title="刷新">
+            <i class="layui-icon layui-icon-refresh"></i>
+        </a>
+    </div>
+    <!--数据表格-->
+    <table class="layui-hide" id="logTableId" lay-filter="logFilter"></table>
+</div>
+<!--js逻辑-->
+<script src="lib/layui/layui.js"></script>
+<script>
+    layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
+        var element = layui.element;
+        var table = layui.table;
+        var form = layui.form;
+        var $ = layui.jquery;
+        var laydate = layui.laydate;
 
-            //监听行单击事件
-            // table.on('row(logFilter)', function(obj){
-            //     //obj 同上
-            //     // console.log(obj.tr) //得到当前行元素对象
-            //     // console.log(obj.data) //得到当前行数据
-            //     //obj.del(); //删除当前行
-            //     //obj.update(fields) //修改当前行数据
-            //
-            //     var data = obj.data;
-            //     layer.alert(JSON.stringify(data), {
-            //         title: '当前行数据：'
-            //     });
-            // });
+        /*加载日志类型下拉框选项*/
+        $.ajax({
+            type: 'get',
+            url: 'log/selectDistinctType',
+            dataType: 'json',
+            success: function (data) {
+                $("#type").html("");
+                $.each(data, function (idx, val) {
+                    var option1 = $("<option>").val(val).text(val);
+                    $("#type").append($("<option>"));
+                    $("#type").append(option1);
+                    form.render('select');
+                });
+            }
+        });
 
-            //监听行双击事件
-            table.on('rowDouble(logFilter)', function(obj){
-                //obj 同上
-                // console.log(obj.tr) //得到当前行元素对象
-                // console.log(obj.data) //得到当前行数据
-                //obj.del(); //删除当前行
-                //obj.update(fields) //修改当前行数据
+        laydate.render({
+            elem: '#startTime',
+            type: "datetime"
+        });
 
-                layer.open({
+        laydate.render({
+            elem: '#endTime',
+            type: "datetime"
+        });
 
+        table.render({
+            elem: '#logTableId',
+            url: 'log/getlogs',
+            method: 'post',
+            limit: 10,
+            page: true,
+            cols: [[
+                {field: 'id', title: 'ID', hide: true},
+                {field: 'type', title: '日志类型'},
+                {field: 'email', title: '操作用户'},
+                {field: 'title', title: '标题', templet: '#usernameTpl'},
+                {field: 'createTime', title: '操作时间'},
+                {field: 'status', title: '状态'},
+                {field: 'detail', title: '详细信息', hide: true}
+            ]],
+            done: function (res, curr, count) {
+                $("#countNum").text(count);
+            }
+        });
 
-                })
+        /*点击查询按钮触发事件*/
+        //监听提交
+        form.on('submit(search)', function () {
+            var type = $('#type').val();
+            var email = $('#email').val();
+            var title = $('#title').val();
+            var startTime = $('#startTime').val();
+            var endTime = $('#endTime').val();
 
-            });
+            table.render({
+                elem: '#logTableId',
+                url: 'log/getlogs',
+                method: 'post',
+                where: {
+                    'type': type,
+                    'email': email,
+                    'title': title,
+                    'startTime': startTime,
+                    'endTime': endTime
+                },
+                limit: 10,
+                page: true,
+                even: true,
+                cols: [[
+                    {field: 'id', title: 'ID', hide: true},
+                    {field: 'type', title: '日志类型'},
+                    {field: 'email', title: '操作用户'},
+                    {field: 'title', title: '标题', templet: '#usernameTpl'},
+                    {field: 'createTime', title: '操作时间'},
+                    {field: 'status', title: '状态'},
+                    {field: 'detail', title: '详细信息', hide: true}
+                ]],
+                done: function (res, curr, count) {
+                    $("#countNum").text(count);
+                }
+            })
+            return false;
         })
-    </script>
+
+        //监听行单击事件
+        //table.on('row(logFilter)', function(obj){
+        //     //obj 同上
+        //     // console.log(obj.tr) //得到当前行元素对象
+        //     // console.log(obj.data) //得到当前行数据
+        //     //obj.del(); //删除当前行
+        //     //obj.update(fields) //修改当前行数据
+        //
+        //     var data = obj.data;
+        //     layer.alert(JSON.stringify(data), {
+        //         title: '当前行数据：'
+        //     });
+
+        //layer.open({
+        //title: '详细信息',
+        //content:obj.data.detail
+        //})
+        //});
+
+        //监听行双击事件
+        // table.on('rowDouble(logFilter)', function(obj){
+        //     layer.open({
+        //         title: '详细信息',
+        //         content:obj.data.detail
+        //     })
+        // });
+    })
+</script>
+
+<script type="text/html" id="usernameTpl">
+    <a href="javascript:;" class="layui-table-link" target="_blank">{{ d.title }}</a>
+</script>
 </body>
 </html>

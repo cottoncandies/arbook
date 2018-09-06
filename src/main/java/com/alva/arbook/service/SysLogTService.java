@@ -1,5 +1,6 @@
 package com.alva.arbook.service;
 
+import com.alva.arbook.dto.LogQueryDTO;
 import com.alva.arbook.entity.SysLogT;
 import com.alva.arbook.vo.LogVO;
 
@@ -16,5 +17,6 @@ public interface SysLogTService {
 
     int updateByPrimaryKey(SysLogT record);
 
-    List<LogVO> selectAllByPage(Integer page, Integer limit, String type);
+    List<LogVO> selectAllByPage(LogQueryDTO logQueryDTO);
+
 }

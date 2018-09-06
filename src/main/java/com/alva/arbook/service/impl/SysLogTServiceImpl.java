@@ -1,6 +1,7 @@
 package com.alva.arbook.service.impl;
 
 import com.alva.arbook.dao.SysLogTMapper;
+import com.alva.arbook.dto.LogQueryDTO;
 import com.alva.arbook.entity.SysLogT;
 import com.alva.arbook.service.SysLogTService;
 import com.alva.arbook.vo.LogVO;
@@ -54,9 +55,12 @@ public class SysLogTServiceImpl implements SysLogTService {
     }
 
     @Override
-    public List<LogVO> selectAllByPage(Integer page, Integer limit, String type) {
+    public List<LogVO> selectAllByPage(LogQueryDTO logQueryDTO) {
         ArrayList<LogVO> logVOS = new ArrayList<>();
-        List<SysLogT> sysLogTS = sysLogTMapper.selectAllByPage((page - 1) * limit, limit, type);
+        Integer page = logQueryDTO.getPage();
+        Integer limit = logQueryDTO.getLimit();
+        logQueryDTO.setPage((page - 1) * limit);
+        List<SysLogT> sysLogTS = sysLogTMapper.selectAllByPage(logQueryDTO);
         for (SysLogT sysLogT : sysLogTS) {
             LogVO logVO = mapper.map(sysLogT, LogVO.class);
             logVOS.add(logVO);

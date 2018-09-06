@@ -1,7 +1,7 @@
 package com.alva.arbook.dao;
 
+import com.alva.arbook.dto.LogQueryDTO;
 import com.alva.arbook.entity.SysLogT;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,7 +16,9 @@ public interface SysLogTMapper {
 
     int updateByPrimaryKey(SysLogT record);
 
-    List<SysLogT> selectAllByPage(@Param("offset") Integer offset, @Param("limit") Integer limit, @Param("type") String type );
+    List<SysLogT> selectAllByPage(LogQueryDTO logQueryDTO);
 
-    Long selectAllCount();
+    Long selectAllCount(LogQueryDTO logQueryDTO);
+
+    List<String> selectDistinctType();
 }
