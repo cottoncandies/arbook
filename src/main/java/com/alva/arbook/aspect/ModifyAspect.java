@@ -16,12 +16,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.core.NamedThreadLocal;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +48,9 @@ public class ModifyAspect {
     private Object newObject;
 
     private Map<String, Object> feildValues;
+
+    private static final ThreadLocal<SysLogT> logThreadLocal =
+            new NamedThreadLocal<SysLogT>("ThreadLocal log");
 
     @Autowired
     private SysLogTService sysLogTService;
@@ -93,6 +99,24 @@ public class ModifyAspect {
     public void doAfterReturing(Object object, Modify modify) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        String szTitle = modify.handleName();
+        log.setSzTitle(szTitle);
+        if (szTitle.indexOf("教材") != -1) {
+            log.setSzType("教材");
+        } else if (szTitle.indexOf("用户") != -1) {
+            log.setSzType("用户");
+        }
+        //读取session中的用户
+        HttpSession session = request.getSession();
+        SysUserT sysUserT = (SysUserT) session.getAttribute("user");
+        if (sysUserT != null) {
+            log.setSzEmail(sysUserT.getSzEmail());
+        } else {
+            log.setSzEmail("未登录用户");
+        }
+
 
         // 修改操作
         if (ModifyName.UPDATE.equals(modify.description())) {
@@ -108,10 +132,12 @@ public class ModifyAspect {
                 List<Map<String, Object>> changelist = ReflectionUtils.compareTwoClass(oldObject, newObject);
                 StringBuilder str = new StringBuilder();
                 if (changelist.size() != 0) {
+                    str.append("用户【" + sysUserT.getSzEmail() + "】于【" + simpleDateFormat.format(new Date()) + "】成功【" + szTitle + "】\n");
                     for (Map<String, Object> map : changelist) {
                         str.append("【" + map.get("name") + "】从【" + map.get("old") + "】改为了【" + map.get("new") + "】;\n");
                     }
                 } else {
+                    str.append("用户【" + sysUserT.getSzEmail() + "】于【" + simpleDateFormat.format(new Date()) + "】成功【" + szTitle + "】\n");
                     str.append("修改前后数据一致");
                 }
                 log.setSzDetail(str.toString());
@@ -119,16 +145,19 @@ public class ModifyAspect {
                 logger.error("比较异常", e);
             }
         } else if (ModifyName.DELETE.equals(modify.description())) {// 删除操作
-            try {
-                List<Map<String, Object>> classContent = ReflectionUtils.getClassContent(oldObject);
-                StringBuilder str = new StringBuilder();
-                for (Map<String, Object> map : classContent) {
-                    str.append("【" + map.get("name") + "】:【" + map.get("value") + "】;\n");
-                }
-                log.setSzDetail(str.toString());
-            } catch (Exception e) {
-                logger.error("service加载失败:", e);
-            }
+            // 将删除的数据实体信息展示出来
+//            try {
+//                List<Map<String, Object>> classContent = ReflectionUtils.getClassContent(oldObject);
+//                StringBuilder str = new StringBuilder();
+//                for (Map<String, Object> map : classContent) {
+//                    str.append("【" + map.get("name") + "】:【" + map.get("value") + "】;\n");
+//                }
+//                log.setSzDetail(str.toString());
+//            } catch (Exception e) {
+//                logger.error("service加载失败:", e);
+//            }
+            // 简单记录删除操作
+            log.setSzDetail("用户【" + sysUserT.getSzEmail() + "】于【" + simpleDateFormat.format(new Date()) + "】成功【" + szTitle + "】");
         } else if (ModifyName.SAVE.equals(modify.description())) {
 //
 //            Object info = joinPoint.getArgs()[0];
@@ -150,35 +179,26 @@ public class ModifyAspect {
              * ReflectionUtils.getClassContent(object)中的参数object
              * 来自于@AfterReturning(pointcut = "@annotation(modify)", returning = "object")
              */
-            try {
-                List<Map<String, Object>> classContent = ReflectionUtils.getClassContent(object);
-                StringBuilder str = new StringBuilder();
-                for (Map<String, Object> map : classContent) {
-                    str.append("【" + map.get("name") + "】:【" + map.get("value") + "】;\n");
-                }
-                log.setSzDetail(str.toString());
-            } catch (Exception e) {
-                logger.error("service加载失败:", e);
-            }
+//            try {
+//                List<Map<String, Object>> classContent = ReflectionUtils.getClassContent(object);
+//                StringBuilder str = new StringBuilder();
+//                for (Map<String, Object> map : classContent) {
+//                    str.append("【" + map.get("name") + "】:【" + map.get("value") + "】;\n");
+//                }
+//                log.setSzDetail(str.toString());
+//            } catch (Exception e) {
+//                logger.error("service加载失败:", e);
+//            }
+
+            // 简单记录操作
+            log.setSzDetail("用户【" + sysUserT.getSzEmail() + "】于【" + simpleDateFormat.format(new Date()) + "】成功【" + szTitle + "】");
+
 
         }
 
-        String szTitle = modify.handleName();
-        log.setSzTitle(szTitle);
-        if (szTitle.indexOf("教材") != -1) {
-            log.setSzType("教材");
-        } else if (szTitle.indexOf("用户") != -1) {
-            log.setSzType("用户");
-        }
-        //读取session中的用户
-        HttpSession session = request.getSession();
-        SysUserT sysUserT = (SysUserT) session.getAttribute("user");
-        if (sysUserT != null) {
-            log.setSzEmail(sysUserT.getSzEmail());
-        } else {
-            log.setSzEmail("未登录用户");
-        }
-        Map<String, String[]> params = request.getParameterMap(); //请求提交的参数
+
+        log.setSzStatus("成功");
+        //Map<String, String[]> params = request.getParameterMap(); //请求提交的参数
         // 删除和修改操作时,获取删除或修改对象的id  为了方便 使用数据库字段sz_method存储id
 //        String[] ids = params.get("id");
 //        for (String id : ids) {
@@ -186,4 +206,12 @@ public class ModifyAspect {
 //        }
         sysLogTService.insert(log);
     }
+
+//    @AfterThrowing(pointcut = "@annotation(modify)", throwing = "e")
+//    public  void doAfterThrowing(JoinPoint joinPoint, Throwable e) {
+//        SysLogT log = logThreadLocal.get();
+//        log.setSzStatus("失败");
+//        //log.setException(e.toString());
+//        new UpdateLogThread(log, logService).start();
+//    }
 }

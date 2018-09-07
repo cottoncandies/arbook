@@ -176,13 +176,13 @@ public class SysTextbookTController {
         return map;
     }
 
-    @Modify(description = "删除", serviceclass = SysTextbookTService.class, handleName = "删除教材信息")
+    @Modify(description = "删除", serviceclass = SysTextbookTService.class, handleName = "删除教材")
     @RequestMapping("/deleteBook")
     public void deleteByPrimaryKey(TextbookVO book) {
         sysTextbookTService.deleteByPrimaryKey(book.getId());
     }
 
-    @Modify(description = "编辑", serviceclass = SysTextbookTService.class, handleName = "更改教材信息")
+    @Modify(description = "编辑", serviceclass = SysTextbookTService.class, handleName = "修改教材信息")
     @PostMapping("/editBook")
     public Map editBook(TextbookVO book) {
         HashMap<String, Object> map = new HashMap<>();

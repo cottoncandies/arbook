@@ -131,23 +131,41 @@
         })
 
         //监听行单击事件
-        //table.on('row(logFilter)', function(obj){
-        //     //obj 同上
-        //     // console.log(obj.tr) //得到当前行元素对象
-        //     // console.log(obj.data) //得到当前行数据
-        //     //obj.del(); //删除当前行
-        //     //obj.update(fields) //修改当前行数据
-        //
-        //     var data = obj.data;
-        //     layer.alert(JSON.stringify(data), {
-        //         title: '当前行数据：'
-        //     });
+        table.on('row(logFilter)', function (obj) {
+            //obj 同上
+            // console.log(obj.tr) //得到当前行元素对象
+            // console.log(obj.data) //得到当前行数据
+            //obj.del(); //删除当前行
+            //obj.update(fields) //修改当前行数据
 
-        //layer.open({
-        //title: '详细信息',
-        //content:obj.data.detail
-        //})
-        //});
+            // var data = obj.data;
+            // layer.alert(JSON.stringify(data), {
+            //     title: '当前行数据：'
+            // });
+            var row_data = obj.data;
+            layer.open({
+                title: '详细信息',
+                type: 2,
+                area: ['90%', '90%'],
+                //content: obj.data.detail.toString().replace(/\n/g,'<br/>'),
+                content: 'log-detail.html',
+                success: function (layero, index) {
+                    var body = layui.layer.getChildFrame('body', index);
+                    // 取到弹出层里的元素，并把编辑的内容放进去
+                    body.find(".email").text(row_data.email);
+                    body.find(".createTime").text(row_data.createTime);
+                    body.find(".title").text(row_data.title);
+                    body.find(".status").text(row_data.status);
+                    body.find(".detail").html(obj.data.detail.toString().replace(/\n/g, '<br/>'));
+                    // 记得重新渲染表单
+                    table.render();
+                },
+                // end: function () {
+                //     // $(".layui-laypage-btn")[0].click();
+                //     table.reload('userTableId');
+                // }
+            })
+        });
 
         //监听行双击事件
         // table.on('rowDouble(logFilter)', function(obj){
@@ -156,9 +174,9 @@
         //         content:obj.data.detail
         //     })
         // });
+
     })
 </script>
-
 <script type="text/html" id="usernameTpl">
     <a href="javascript:;" class="layui-table-link" target="_blank">{{ d.title }}</a>
 </script>

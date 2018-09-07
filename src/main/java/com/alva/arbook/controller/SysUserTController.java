@@ -48,14 +48,14 @@ public class SysUserTController {
         return map;
     }
 
-    @Modify(description = "删除", serviceclass = SysUserTService.class, handleName = "删除用户信息")
+    @Modify(description = "删除", serviceclass = SysUserTService.class, handleName = "删除用户")
     @RequestMapping("/deleteuser")
     @ResponseBody
     public void deleteuser(UserVO userVO) {
         sysUserTService.deleteByPrimaryKey(userVO.getId());
     }
 
-    @Modify(description = "新建", serviceclass = SysUserTService.class, handleName = "新建用户")
+    @Modify(description = "新建", serviceclass = SysUserTService.class, handleName = "创建新用户")
     @RequestMapping("/adduser")
     @ResponseBody
     public SysUserT adduser(UserDTO userDTO) {
@@ -70,7 +70,7 @@ public class SysUserTController {
         return addUser;
     }
 
-    @Modify(description = "编辑", serviceclass = SysUserTService.class, handleName = "更改用户信息")
+    @Modify(description = "编辑", serviceclass = SysUserTService.class, handleName = "修改用户信息")
     @RequestMapping("/editUser")
     @ResponseBody
     public Map updateuser(UserVO userVO) {
