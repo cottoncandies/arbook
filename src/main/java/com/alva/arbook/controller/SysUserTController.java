@@ -111,7 +111,7 @@ public class SysUserTController {
     //@Log(description = "安全退出")
     @RequestMapping("/exit")
     public String exit(HttpSession session) {
-        session.removeAttribute("user");
+        //session.removeAttribute("user");
         session.invalidate();
         return "redirect:/login.html";
     }

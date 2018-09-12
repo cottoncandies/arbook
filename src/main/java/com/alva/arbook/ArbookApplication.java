@@ -22,9 +22,23 @@ public class ArbookApplication extends SpringBootServletInitializer {
     public class WebMvcConfig extends WebMvcConfigurerAdapter {
         @Override
         public void addInterceptors(InterceptorRegistry registry) {
-            registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
-                    .addPathPatterns("/**.html")
-                    .excludePathPatterns("/login**");
+            registry.addInterceptor(new LoginInterceptor())
+                    .excludePathPatterns("/login**")
+                    .excludePathPatterns("/css/**")
+                    .excludePathPatterns("/images/**")
+                    .excludePathPatterns("/js/**")
+                    .excludePathPatterns("/lib/**")
+                    .excludePathPatterns("/*.css")
+                    .excludePathPatterns("/*.js")
+                    .addPathPatterns("/index.html")
+                    .addPathPatterns("/*.html")
+                    .addPathPatterns("/**")
+            ;
         }
+//        @Override
+//        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//            registry.addResourceHandler("/lib/**").addResourceLocations("/webapp/lib/");
+//            super.addResourceHandlers(registry);
+//        }
     }
 }
