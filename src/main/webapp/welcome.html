@@ -12,7 +12,7 @@
 <body>
 <div class="ok-body">
     <blockquote class="layui-elem-quote">
-        欢迎管理员：<span class="x-red">XXXX</span>！当前时间: <span id="nowTime"></span>
+        欢迎管理员：<span class="loginUser">XXXX</span>！当前时间: <span id="nowTime"></span>
     </blockquote>
 </div>
 <!--js逻辑-->
@@ -49,6 +49,23 @@
         }
         return i;
     }
+
+    /**
+     * 显示登录用户
+     */
+    layui.use(['element', 'table', 'form', 'jquery', 'laydate'], function () {
+        var $ = layui.jquery;
+        $.ajax({
+            type: 'get',
+            url: 'getLoginUser',
+            dataType: 'json',
+            success: function (data) {
+                if (data != null) {
+                    $(".loginUser").html(data.szEmail);
+                }
+            }
+        });
+    })
 </script>
 </body>
 </html>

@@ -115,4 +115,11 @@ public class SysUserTController {
         session.invalidate();
         return "redirect:/login.html";
     }
+
+    @RequestMapping("/getLoginUser")
+    @ResponseBody
+    public SysUserT getLoginUser(HttpSession session) {
+        Object user = session.getAttribute("user");
+        return user != null ? (SysUserT) user : null;
+    }
 }

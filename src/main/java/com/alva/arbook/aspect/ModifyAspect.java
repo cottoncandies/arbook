@@ -16,7 +16,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.core.NamedThreadLocal;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -49,8 +48,8 @@ public class ModifyAspect {
 
     private Map<String, Object> feildValues;
 
-    private static final ThreadLocal<SysLogT> logThreadLocal =
-            new NamedThreadLocal<SysLogT>("ThreadLocal log");
+//    private static final ThreadLocal<SysLogT> logThreadLocal =
+//            new NamedThreadLocal<SysLogT>("ThreadLocal log");
 
     @Autowired
     private SysLogTService sysLogTService;
