@@ -2,7 +2,7 @@ spring:
   ## postgres ##
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/arbook
+    url: jdbc:postgresql://localhost:5432/arbook?characterEncoding=utf8
     username: postgres
     password: postgres
     type: com.alibaba.druid.pool.DruidDataSource

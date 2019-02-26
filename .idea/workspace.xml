@@ -2,29 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6e28c57-b7ca-4499-adea-f8b5b6d5f5e4" name="Default" comment="AOP+自定义注解实现后台管理日志">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/book-edit.html" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc6fa95-d168-421b-93ba-aac4622f11bc.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc6fa95-d168-421b-93ba-aac4622f11bc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc6fa95-d168-421b-93ba-aac4622f11bc/storage_v2/_src_/database/arbook.msb6qw/schema/public.abK9xQ.meta" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc6fa95-d168-421b-93ba-aac4622f11bc/storage_v2/_src_/database/arbook.msb6qw/schema/public.abK9xQ.meta" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysTextbookTController.java" afterPath="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysTextbookTController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysUserTController.java" afterPath="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysUserTController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysUserTMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysUserTMapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysUserTService.java" afterPath="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysUserTService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysUserTServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysUserTServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysTextbookTMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysTextbookTMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysUserTMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SysUserTMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/booklist.html" afterPath="$PROJECT_DIR$/src/main/webapp/booklist.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/booklist.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/booklist.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user-add.html" afterPath="$PROJECT_DIR$/src/main/webapp/user-add.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user-edit.html" afterPath="$PROJECT_DIR$/src/main/webapp/user-edit.html" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.html" afterPath="$PROJECT_DIR$/src/main/webapp/user.html" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" afterPath="$PROJECT_DIR$/target/classes/application.yml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/ArbookApplication.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/ArbookApplication.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/annotation/LogAnnotation.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/aspect/LogAspect.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/config/DozerBeanMapperConfigure.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/config/DozerBeanMapperConfigure.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/config/MvcConfig.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/controller/SysLogTController.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/controller/SysLogTController.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/controller/SysTextbookTController.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/controller/SysTextbookTController.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/controller/SysUserTController.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/controller/SysUserTController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/dao/SysExportTMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/dao/SysExportTMapper.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/dao/SysLogTMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/dao/SysLogTMapper.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/dao/SysUserTMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/dao/SysUserTMapper.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/dto/TextbookDTO.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/dto/TextbookDTO.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysExportT.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysExportT.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysLogT.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysLogT.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysPublishingT.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysPublishingT.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysTextbookT.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysTextbookT.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysUserT.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/entity/SysUserT.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/interceptor/LoginInterceptor.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/interceptor/LoginInterceptor.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/SysLogTService.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/SysLogTService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/SysTextbookTService.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/SysTextbookTService.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/SysUserTService.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/SysUserTService.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/AppKeyTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/AppKeyTServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysExportTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysExportTServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysLogTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysLogTServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysOrgTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysOrgTServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysPublishingTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysPublishingTServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysSubjectTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysSubjectTServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysTextbookTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysTextbookTServiceImpl.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysUserTServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/service/impl/SysUserTServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/vo/LogVO.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/vo/LogVO.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/alva/arbook/vo/UserVO.class" afterPath="$PROJECT_DIR$/target/classes/com/alva/arbook/vo/UserVO.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dozer/Log_DO_VO.xml" afterPath="$PROJECT_DIR$/target/classes/dozer/Log_DO_VO.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/SysExportTMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/SysExportTMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/SysLogTMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/SysLogTMapper.xml" />
       <change beforePath="$PROJECT_DIR$/target/classes/mapper/SysTextbookTMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/SysTextbookTMapper.xml" />
       <change beforePath="$PROJECT_DIR$/target/classes/mapper/SysUserTMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/SysUserTMapper.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sql/create.sql" afterPath="$PROJECT_DIR$/target/classes/sql/create.sql" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sql/init.sql" afterPath="$PROJECT_DIR$/target/classes/sql/init.sql" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
@@ -60,43 +83,81 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SysUserTController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SysUserTController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysUserTController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="34" column="47" lean-forward="true" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
-              <folding>
-                <element signature="e#1819#1820#0" expanded="true" />
-                <element signature="e#1873#1874#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="380">
+              <caret line="33" column="47" lean-forward="true" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SysUserTMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysUserTMapper.xml">
+      <file leaf-file-name="Log_DO_VO.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/dozer/Log_DO_VO.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="67" column="23" lean-forward="false" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
-              <folding>
-                <marker date="1535621305900" expanded="true" signature="1137:1230" ph="update sys_user_t... " />
-                <marker date="1535621305900" expanded="true" signature="1326:1608" ph="insert into sys_user_t... " />
-                <marker date="1535621305900" expanded="true" signature="1716:2799" ph="update sys_user_t... " />
-                <marker date="1535621305900" expanded="true" signature="2918:3117" ph="select sz_id... sys_user_t" />
-                <marker date="1535621305900" expanded="true" signature="3194:3438" ph="select sz_id... sys_user_t" />
-                <marker date="1535621305900" expanded="true" signature="3552:3736" ph="select sz_id... sys_user_t" />
-                <marker date="1535621305900" expanded="true" signature="3850:4034" ph="select sz_id... sys_user_t" />
-                <marker date="1535621305900" expanded="true" signature="4118:4158" ph="select COUNT... sys_user_t" />
-              </folding>
+            <state relative-caret-position="23">
+              <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book-edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/book-edit.html">
+      <file leaf-file-name="SysLogTController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysLogTController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="119" column="31" lean-forward="true" selection-start-line="119" selection-start-column="31" selection-end-line="119" selection-end-column="31" />
+            <state relative-caret-position="251">
+              <caret line="28" column="44" lean-forward="false" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SysLogTServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysLogTServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SysLogTService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysLogTService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="135" column="11" lean-forward="false" selection-start-line="135" selection-start-column="11" selection-end-line="135" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArbookApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/ArbookApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="booklist.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/booklist.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -105,86 +166,19 @@
       <file leaf-file-name="booklist.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/booklist.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3819">
-              <caret line="211" column="34" lean-forward="true" selection-start-line="211" selection-start-column="34" selection-end-line="211" selection-end-column="34" />
+            <state relative-caret-position="646">
+              <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="booklist.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/booklist.html">
+      <file leaf-file-name="log.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/log.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="38" column="10" lean-forward="true" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+            <state relative-caret-position="394">
+              <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-342">
-              <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SysTextbookTController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysTextbookTController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="193" column="43" lean-forward="false" selection-start-line="193" selection-start-column="43" selection-end-line="193" selection-end-column="43" />
-              <folding>
-                <element signature="method#exportBookList#0;class#SysTextbookTController#0" expanded="false" />
-                <element signature="method#getData#0;class#SysTextbookTController#0" expanded="false" />
-                <element signature="method#upload#0;class#SysTextbookTController#0" expanded="false" />
-                <element signature="method#selectDistinctSectionAndGrade#0;class#SysTextbookTController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SysTextbookTServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysTextbookTServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="186" column="40" lean-forward="false" selection-start-line="186" selection-start-column="40" selection-end-line="186" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SysTextbookTMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysTextbookTMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SysTextbookTMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysTextbookTMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="59" column="51" lean-forward="true" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
-              <folding>
-                <marker date="1535624297974" expanded="true" signature="2295:2395" ph="update sys_textbook_t... " />
-                <marker date="1535624297974" expanded="true" signature="2495:3353" ph="insert into sys_textbook_t... " />
-                <marker date="1535624297974" expanded="true" signature="3612:4538" ph="update sys_textbook_t... " />
-                <marker date="1535624297974" expanded="true" signature="4641:5187" ph="update sys_textbook_t... " />
-                <marker date="1535624297974" expanded="true" signature="5307:6126" ph="select textb... sys_textbook_t" />
-                <marker date="1535624297974" expanded="true" signature="6235:7739" ph="select textb... sys_textbook_t" />
-                <marker date="1535624297974" expanded="true" signature="7845:9324" ph="select count... sz_id" />
-                <marker date="1535624297974" expanded="true" signature="9423:9477" ph="select DISTI... sys_textbook_t" />
-                <marker date="1535624297974" expanded="true" signature="9574:9626" ph="select DISTI... sys_textbook_t" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -203,41 +197,44 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>del</find>
-      <find>tableFilter</find>
-      <find>event</find>
-      <find>demoList</find>
-      <find>data</find>
-      <find>sysExportT</find>
-      <find>publishCaption</find>
-      <find>subjectCaption</find>
-      <find>ids</find>
-      <find>sessionLo</find>
-      <find>addres</find>
-      <find>ApiV1`</find>
-      <find>SysTextbookTMapper</find>
-      <find>batchEnabled</find>
-      <find>JsonTextbook</find>
-      <find>responsebooks</find>
-      <find>responseBooks</find>
-      <find>sysExportTMapper</find>
-      <find>sessionLoginUser</find>
-      <find>mybatis</find>
-      <find>json</find>
-      <find>MD5</find>
-      <find>getM``</find>
-      <find>id=&quot;email&quot;</find>
-      <find>tableId</find>
       <find>tableFi</find>
       <find>SysUserTMapper</find>
-      <find>userTableId</find>
       <find>editBoo</find>
       <find>@RequestB</find>
+      <find>logId</find>
+      <find>TextbookDTO</find>
+      <find>upload</find>
+      <find>testListAction</find>
+      <find>demoListView</find>
+      <find>SysUserT</find>
+      <find>sz_id</find>
+      <find>operateLog</find>
+      <find>logService</find>
+      <find>编辑用户</find>
+      <find>oldObject</find>
+      <find>enableGameleyLog</find>
+      <find>log</find>
+      <find>feildValues</find>
+      <find>info</find>
+      <find>index</find>
+      <find>obj</find>
+      <find>data</find>
+      <find>system.</find>
+      <find>SysLogT</find>
+      <find>AppKeyT</find>
+      <find>logThreadLocal</find>
+      <find>userTableId</find>
+      <find>handler</find>
+      <find>layui-nav-child</find>
+      <find>select</find>
     </findStrings>
     <replaceStrings>
       <replace>TextbookDTO</replace>
       <replace />
       <replace>textbookVOS</replace>
+      <replace>sysLogTService</replace>
+      <replace>log</replace>
+      <replace>logAnnotation</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\wzh\project\arbook</dir>
@@ -254,57 +251,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/config/MvcConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/interceptor/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysSubjectTServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/util/ModifyName.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/parser/UUIDContentParse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysTextbookTService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysPublishingTController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/upload.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/logback-spring.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysRoleT.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysPermissionT.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/welcome.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysPublishingT.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SysTextbookTMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/aspect/Log.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/annotation/Log.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/parser/ContentParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/annotation/Insert.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/annotation/Delete.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysUserTServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysUserTMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/aspect/InsertAspect.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SysUserTMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/util/ReflectionUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/booklist.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/BaseService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysTextbookTServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/annotation/LogAnnotation.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/util/UuidUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/util/UUIDUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/aspect/LogAspect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysLogT.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/parser/DefaultContentParse.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/user-edit.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysTextbookT.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/user-add.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/log-user.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/log-textbook.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/vo/LogVO.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/dozer/Log_DO_VO.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/sql/create.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysLogTService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysLogTServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/dto/LogQueryDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysLogTMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysTextbookTController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/log-detail.html" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/SysLogTMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/dozer/LogDOtoVO.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/user.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/log.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysLogTController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysUserT.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/config/DozerBeanMapperConfigure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/dto/UserDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/dozer/User_DTO_DO.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/sql/create.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/aspect/ModifyAspect.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/welcome.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/vo/UserVO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/dozer/User_DO_VO.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/dozer/Log_DO_VO.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/vo/LogVO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/user-add.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysUserTService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysUserTServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/SysUserTMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysUserTMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/user.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/booklist.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/user-edit.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/interceptor/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/ArbookApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/ranzhi-main.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/然之协同.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/lib/layui/lay/modules/element.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysLogT.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysUserTController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/book-edit.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysTextbookTController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/SysTextbookTMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/booklist.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
       </list>
     </option>
   </component>
@@ -337,13 +334,12 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="arbook" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="arbook" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-          <item name="spring-boot" type="36feed69:MavenProjectsStructure$PluginNode" />
+          <item name="Run Configurations" type="21c1f71a:MavenProjectsStructure$RunConfigurationsNode" />
         </path>
       </expand>
       <select />
@@ -353,7 +349,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="567" />
+    <option name="y" value="33" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -397,7 +394,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -445,75 +444,6 @@
               <item name="arbook" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dozer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -524,38 +454,19 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arbook" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arbook" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="layui" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ok-admin" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -567,25 +478,26 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.alva.arbook.service.impl" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\wzh\project\arbook\src\main\webapp" />
-      <recent name="E:\wzh\project\arbook\src\main\webapp\lib" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.alva.arbook.vo" />
-      <recent name="com.alva.arbook.controller" />
-      <recent name="com.alva.arbook.dto" />
-      <recent name="com.alva.arbook.config" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\wzh\project\arbook\src\main\webapp" />
+      <recent name="E:\wzh\project\arbook\src\main\java\com\alva\arbook" />
+      <recent name="E:\wzh\project\arbook\src\main\webapp\lib" />
+      <recent name="E:\wzh\project\arbook\src\main\webapp\lib\layui" />
       <recent name="E:\wzh\project\arbook\src\main\resources\dozer" />
-      <recent name="E:\wzh\project\arbook\src\main\webapp\images" />
-      <recent name="E:\wzh\project\arbook\src\main\resources" />
-      <recent name="E:\wzh\project\arbook\src\main\webapp\js" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.alva.arbook.dto" />
+      <recent name="com.alva.arbook.annotation" />
+      <recent name="com.alva.arbook.parser" />
+      <recent name="com.alva.arbook.util" />
+      <recent name="com.alva.arbook.aspect" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\wzh\project\arbook\src\main\webapp" />
+      <recent name="E:\wzh\project\arbook\src\main\webapp\lib" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -1452,7 +1364,39 @@
       <workItem from="1535453245875" duration="222000" />
       <workItem from="1535506426714" duration="24918000" />
       <workItem from="1535539260631" duration="113000" />
-      <workItem from="1535593041558" duration="24384000" />
+      <workItem from="1535593041558" duration="24548000" />
+      <workItem from="1535679588280" duration="20398000" />
+      <workItem from="1535937666715" duration="4345000" />
+      <workItem from="1535942174370" duration="4447000" />
+      <workItem from="1535954064908" duration="16350000" />
+      <workItem from="1536025412760" duration="2555000" />
+      <workItem from="1536028050335" duration="3547000" />
+      <workItem from="1536032130964" duration="1749000" />
+      <workItem from="1536040618410" duration="13000" />
+      <workItem from="1536040689402" duration="17899000" />
+      <workItem from="1536058678026" duration="403000" />
+      <workItem from="1536111333148" duration="21542000" />
+      <workItem from="1536199194195" duration="18128000" />
+      <workItem from="1536228029889" duration="2813000" />
+      <workItem from="1536283166145" duration="21117000" />
+      <workItem from="1536543544473" duration="4324000" />
+      <workItem from="1536647520051" duration="2748000" />
+      <workItem from="1536661514174" duration="141000" />
+      <workItem from="1536716608630" duration="1394000" />
+      <workItem from="1536737585542" duration="8711000" />
+      <workItem from="1536802361928" duration="1983000" />
+      <workItem from="1537147070796" duration="1199000" />
+      <workItem from="1537178099131" duration="406000" />
+      <workItem from="1537263867852" duration="681000" />
+      <workItem from="1537338031076" duration="904000" />
+      <workItem from="1537339202953" duration="3009000" />
+      <workItem from="1537870197928" duration="1179000" />
+      <workItem from="1537871441931" duration="184000" />
+      <workItem from="1537953829004" duration="132000" />
+      <workItem from="1541558951293" duration="372000" />
+      <workItem from="1546420686477" duration="1566000" />
+      <workItem from="1551061037837" duration="5365000" />
+      <workItem from="1551142986576" duration="14648000" />
     </task>
     <task id="LOCAL-00001" summary="创建user表">
       <created>1533870363336</created>
@@ -1475,7 +1419,77 @@
       <option name="project" value="LOCAL" />
       <updated>1535453426217</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="提交">
+      <created>1535942822611</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1535942822611</updated>
+    </task>
+    <task id="LOCAL-00005" summary="后台日志有关修改操作的切面完成">
+      <created>1536058879038</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1536058879038</updated>
+    </task>
+    <task id="LOCAL-00006" summary="优化">
+      <created>1536059054172</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1536059054172</updated>
+    </task>
+    <task id="LOCAL-00007" summary="实现增删改操作后台日志的记录和双击查看日志详情">
+      <created>1536143701613</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1536143701613</updated>
+    </task>
+    <task id="LOCAL-00008" summary="新版日志查询功能实现">
+      <created>1536230649701</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1536230649701</updated>
+    </task>
+    <task id="LOCAL-00009" summary="根据需求初步完成后台管理系统">
+      <created>1536310787454</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1536310787454</updated>
+    </task>
+    <task id="LOCAL-00010" summary="补交遗漏代码">
+      <created>1536311044903</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1536311044903</updated>
+    </task>
+    <task id="LOCAL-00011" summary="查看日志详情功能,页面点击逻辑优化">
+      <created>1536562315111</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1536562315111</updated>
+    </task>
+    <task id="LOCAL-00012" summary="增加用户登录拦截器,强制用户登录">
+      <created>1536742002911</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1536742002911</updated>
+    </task>
+    <task id="LOCAL-00013" summary="解决静态资源拦截问题">
+      <created>1536749369018</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1536749369018</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1511,7 +1525,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="348425000" />
+    <option name="totallyTimeSpent" value="532841000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1526,43 +1540,89 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26226014" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18550107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25586355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34019503" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33842796" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.4978678" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32286024" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15671642" sideWeight="0.49563318" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3209607" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.4978678" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.4978678" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15031983" sideWeight="0.49563318" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.49573562" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17857143" sideWeight="0.5043668" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3242655" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21588486" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23187633" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33949944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-    </layout>
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32208923" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3242655" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1663113" sideWeight="0.49563318" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17857143" sideWeight="0.5043668" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1597,512 +1657,382 @@
     <MESSAGE value="创建user表" />
     <MESSAGE value="textbook表增加term字段,调整上传文件代码逻辑" />
     <MESSAGE value="AOP+自定义注解实现后台管理日志" />
-    <option name="LAST_COMMIT_MESSAGE" value="AOP+自定义注解实现后台管理日志" />
+    <MESSAGE value="提交" />
+    <MESSAGE value="后台日志有关修改操作的切面完成" />
+    <MESSAGE value="优化" />
+    <MESSAGE value="实现增删改操作后台日志的记录和双击查看日志详情" />
+    <MESSAGE value="新版日志查询功能实现" />
+    <MESSAGE value="根据需求初步完成后台管理系统" />
+    <MESSAGE value="补交遗漏代码" />
+    <MESSAGE value="查看日志详情功能,页面点击逻辑优化" />
+    <MESSAGE value="增加用户登录拦截器,强制用户登录" />
+    <MESSAGE value="解决静态资源拦截问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="解决静态资源拦截问题" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="17" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/net/sf/dozer/dozer/5.4.0/dozer-5.4.0.jar!/org/dozer/DozerBeanMapper.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/aspect/ModifyAspect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-968">
-          <caret line="43" column="13" lean-forward="false" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+        <state relative-caret-position="2527">
+          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysTextbookT.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="21" />
+        <state relative-caret-position="527">
+          <caret line="37" column="58" lean-forward="true" selection-start-line="37" selection-start-column="58" selection-end-line="37" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysLogTService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ranzhi-main.html" />
+    <entry file="file://$PROJECT_DIR$/ranzhi-template/.gitignore/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/然之协同_files/app-team.png" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/然之协同_files/ips.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/然之协同_files/ips.js.下载" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/然之协同_files/all.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/日历 - 然之协同_files/all.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/日历 - 然之协同.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/然之协同.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/layui/layui.all.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        <state relative-caret-position="298">
+          <caret line="4" column="23798" lean-forward="false" selection-start-line="4" selection-start-column="23798" selection-end-line="4" selection-end-column="23798" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/layui/lay/modules/element.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="563" lean-forward="false" selection-start-line="1" selection-start-column="563" selection-end-line="1" selection-end-column="563" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/data/book.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1562">
-          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysLogTMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="55" column="58" lean-forward="true" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysLogTServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="54" column="69" lean-forward="false" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysLogTMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="18" column="98" lean-forward="false" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/file-config.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator/mybatisGeneratorinit.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/data/user.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysUserT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/config/DozerBeanMapperConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/create.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="158" column="1" lean-forward="true" selection-start-line="158" selection-start-column="1" selection-end-line="158" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/arbook.public.sys_user_t">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar!/com/fasterxml/jackson/annotation/JsonFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/log.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dozer/Textbook_DO_VO.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-638">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dto/TextbookDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dto/TextbookQueryDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/entity/SysLogT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/vo/LogVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#542#543#0" expanded="false" />
-            <element signature="e#570#571#0" expanded="false" />
-            <element signature="e#602#603#0" expanded="false" />
-            <element signature="e#630#631#0" expanded="false" />
-            <element signature="e#672#673#0" expanded="false" />
-            <element signature="e#706#707#0" expanded="false" />
-            <element signature="e#738#739#0" expanded="false" />
-            <element signature="e#766#767#0" expanded="false" />
-            <element signature="e#808#809#0" expanded="false" />
-            <element signature="e#842#843#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#898#899#0" expanded="false" />
-            <element signature="e#936#937#0" expanded="false" />
-            <element signature="e#968#969#0" expanded="false" />
-            <element signature="e#999#1000#0" expanded="false" />
-            <element signature="e#1026#1027#0" expanded="false" />
-            <element signature="e#1066#1067#0" expanded="false" />
-            <element signature="e#1098#1099#0" expanded="false" />
-            <element signature="e#1132#1133#0" expanded="false" />
-            <element signature="e#1162#1163#0" expanded="false" />
-            <element signature="e#1208#1209#0" expanded="false" />
-            <element signature="e#1246#1247#0" expanded="false" />
-            <element signature="e#1276#1277#0" expanded="false" />
-            <element signature="e#1302#1303#0" expanded="false" />
-            <element signature="e#1340#1341#0" expanded="false" />
-            <element signature="e#1370#1371#0" expanded="false" />
-            <element signature="e#1403#1404#0" expanded="false" />
-            <element signature="e#1432#1433#0" expanded="false" />
-            <element signature="e#1476#1477#0" expanded="false" />
-            <element signature="e#1512#1513#0" expanded="false" />
-            <element signature="e#1545#1546#0" expanded="false" />
-            <element signature="e#1574#1575#0" expanded="false" />
-            <element signature="e#1618#1619#0" expanded="false" />
-            <element signature="e#1654#1655#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysPublishingTController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysSubjectTController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysLogTController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dozer/Log_DO_VO.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="39" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dto/UserDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/vo/UserVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="68" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#637#638#0" expanded="false" />
-            <element signature="e#662#663#0" expanded="false" />
-            <element signature="e#698#699#0" expanded="false" />
-            <element signature="e#726#727#0" expanded="false" />
-            <element signature="e#758#759#0" expanded="false" />
-            <element signature="e#786#787#0" expanded="false" />
-            <element signature="e#828#829#0" expanded="false" />
-            <element signature="e#862#863#0" expanded="false" />
-            <element signature="e#897#898#0" expanded="false" />
-            <element signature="e#928#929#0" expanded="false" />
-            <element signature="e#976#977#0" expanded="false" />
-            <element signature="e#1016#1017#0" expanded="false" />
-            <element signature="e#1048#1049#0" expanded="false" />
-            <element signature="e#1076#1077#0" expanded="false" />
-            <element signature="e#1118#1119#0" expanded="false" />
-            <element signature="e#1152#1153#0" expanded="false" />
-            <element signature="e#1187#1188#0" expanded="false" />
-            <element signature="e#1220#1221#0" expanded="false" />
-            <element signature="e#1270#1271#0" expanded="false" />
-            <element signature="e#1314#1315#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/layui/lay/modules/laydate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/layui/layui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/lib/layui/layui.all.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/welcome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dozer/User_DO_VO.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dozer/User_DTO_DO.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/user-add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="49" column="22" lean-forward="true" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="1976">
+          <caret line="144" column="42" lean-forward="true" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="51" column="43" lean-forward="true" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+        <state relative-caret-position="95">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="57" lean-forward="true" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-test.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/file-config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/BaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysUserTMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysUserTServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="55" column="55" lean-forward="false" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
+        <state relative-caret-position="399">
+          <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/annotation/Modify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="24" column="6" lean-forward="true" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/create.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2538">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/init.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="61" column="1" lean-forward="true" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysUserTMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="68" column="39" lean-forward="false" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1245#1246#0" expanded="true" />
-            <element signature="e#1307#1308#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1626#1627#0" expanded="true" />
-            <element signature="e#2259#2260#0" expanded="true" />
-            <element signature="e#2313#2314#0" expanded="true" />
-            <element signature="e#2378#2379#0" expanded="true" />
-            <element signature="e#2436#2437#0" expanded="true" />
-            <element signature="e#2501#2502#0" expanded="true" />
-            <element signature="e#2559#2560#0" expanded="true" />
+            <element signature="n#update#0;n#mapper#0;n#!!top" expanded="false" />
+            <marker date="1536116594727" expanded="true" signature="1138:1231" ph="update sys_user_t... " />
+            <marker date="1536116594727" expanded="true" signature="1327:1614" ph="insert into sys_user_t... " />
+            <marker date="1536116594727" expanded="true" signature="2925:3124" ph="select sz_id... sys_user_t" />
+            <marker date="1536116594727" expanded="true" signature="3201:3445" ph="select sz_id... sys_user_t" />
+            <marker date="1536116594727" expanded="true" signature="3559:3743" ph="select sz_id... sys_user_t" />
+            <marker date="1536116594727" expanded="true" signature="3857:4041" ph="select sz_id... sys_user_t" />
+            <marker date="1536116594727" expanded="true" signature="4125:4196" ph="select COUNT... sys_user_t" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysUserTMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysSubjectTMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1534750621713" expanded="true" signature="814:886" ph="delete from sys_subject_t... " />
+            <marker date="1534750621713" expanded="true" signature="1602:1724" ph="update sys_subject_t... " />
+            <marker date="1534750621713" expanded="true" signature="1990:2088" ph="select sz_id... sys_subject_t" />
+            <marker date="1534750621713" expanded="true" signature="2312:2363" ph="select sz_id... sys_subject_t" />
+            <marker date="1534750621713" expanded="true" signature="2492:2573" ph="select sz_id... sys_subject_t" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/arbook.public.app_key_t">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://role:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/pg_read_all_stats">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/user.html">
+    <entry file="das://role:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/pg_stat_scan_tables">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="127" column="77" lean-forward="true" selection-start-line="127" selection-start-column="77" selection-end-line="127" selection-end-column="77" />
+        <state relative-caret-position="19">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/user-edit.html">
+    <entry file="das://role:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/postgres">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+        <state relative-caret-position="38">
+          <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://role:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/pg_read_all_settings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://role:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/pg_monitor">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://sequence:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/arbook.public.sys_user_t_id_seq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://sequence:/44ae23b/7cc6fa95-d168-421b-93ba-aac4622f11bc/arbook.public.sys_export_t_id_seq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysUserTService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        <state relative-caret-position="342">
+          <caret line="22" column="15" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/vo/TextbookVO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/dozer/Log_DO_VO.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="23">
+          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysTextbookTService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysLogTController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        <state relative-caret-position="251">
+          <caret line="28" column="44" lean-forward="false" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysTextbookTServiceImpl.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/net/sf/dozer/dozer/5.4.0/dozer-5.4.0.jar!/org/dozer/DozerBeanMapper.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="186" column="40" lean-forward="false" selection-start-line="186" selection-start-column="40" selection-end-line="186" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/dao/SysTextbookTMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="35" />
+        <state relative-caret-position="-1444">
+          <caret line="122" column="46" lean-forward="true" selection-start-line="122" selection-start-column="46" selection-end-line="122" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342">
-          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="432">
+          <caret line="135" column="11" lean-forward="false" selection-start-line="135" selection-start-column="11" selection-end-line="135" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysUserTController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/ArbookApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="34" column="47" lean-forward="true" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
-          <folding>
-            <element signature="e#1819#1820#0" expanded="true" />
-            <element signature="e#1873#1874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysUserTMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="67" column="23" lean-forward="false" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
-          <folding>
-            <marker date="1535621305900" expanded="true" signature="1137:1230" ph="update sys_user_t... " />
-            <marker date="1535621305900" expanded="true" signature="1326:1608" ph="insert into sys_user_t... " />
-            <marker date="1535621305900" expanded="true" signature="1716:2799" ph="update sys_user_t... " />
-            <marker date="1535621305900" expanded="true" signature="2918:3117" ph="select sz_id... sys_user_t" />
-            <marker date="1535621305900" expanded="true" signature="3194:3438" ph="select sz_id... sys_user_t" />
-            <marker date="1535621305900" expanded="true" signature="3552:3736" ph="select sz_id... sys_user_t" />
-            <marker date="1535621305900" expanded="true" signature="3850:4034" ph="select sz_id... sys_user_t" />
-            <marker date="1535621305900" expanded="true" signature="4118:4158" ph="select COUNT... sys_user_t" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/book-edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="119" column="31" lean-forward="true" selection-start-line="119" selection-start-column="31" selection-end-line="119" selection-end-column="31" />
+        <state relative-caret-position="209">
+          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysTextbookTController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/log.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="193" column="43" lean-forward="false" selection-start-line="193" selection-start-column="43" selection-end-line="193" selection-end-column="43" />
-          <folding>
-            <element signature="method#exportBookList#0;class#SysTextbookTController#0" expanded="false" />
-            <element signature="method#getData#0;class#SysTextbookTController#0" expanded="false" />
-            <element signature="method#upload#0;class#SysTextbookTController#0" expanded="false" />
-            <element signature="method#selectDistinctSectionAndGrade#0;class#SysTextbookTController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysTextbookTMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="59" column="51" lean-forward="true" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
-          <folding>
-            <marker date="1535624297974" expanded="true" signature="2295:2395" ph="update sys_textbook_t... " />
-            <marker date="1535624297974" expanded="true" signature="2495:3353" ph="insert into sys_textbook_t... " />
-            <marker date="1535624297974" expanded="true" signature="3612:4538" ph="update sys_textbook_t... " />
-            <marker date="1535624297974" expanded="true" signature="4641:5187" ph="update sys_textbook_t... " />
-            <marker date="1535624297974" expanded="true" signature="5307:6126" ph="select textb... sys_textbook_t" />
-            <marker date="1535624297974" expanded="true" signature="6235:7739" ph="select textb... sys_textbook_t" />
-            <marker date="1535624297974" expanded="true" signature="7845:9324" ph="select count... sz_id" />
-            <marker date="1535624297974" expanded="true" signature="9423:9477" ph="select DISTI... sys_textbook_t" />
-            <marker date="1535624297974" expanded="true" signature="9574:9626" ph="select DISTI... sys_textbook_t" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/booklist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3819">
-          <caret line="211" column="34" lean-forward="true" selection-start-line="211" selection-start-column="34" selection-end-line="211" selection-end-column="34" />
+        <state relative-caret-position="394">
+          <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/booklist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="38" column="10" lean-forward="true" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+        <state relative-caret-position="356">
+          <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/booklist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="114" column="32" lean-forward="false" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/SysLogTService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/service/impl/SysLogTServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alva/arbook/controller/SysUserTController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="33" column="47" lean-forward="true" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
           <folding />
         </state>
       </provider>

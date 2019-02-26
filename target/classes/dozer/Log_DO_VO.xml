@@ -19,28 +19,20 @@
             <b>title</b>
         </field>
         <field>
-            <a>szRemoteAddr</a>
-            <b>address</b>
-        </field>
-        <field>
-            <a>szRequestUri</a>
-            <b>uri</b>
-        </field>
-        <field>
-            <a>szMethod</a>
-            <b>method</b>
-        </field>
-        <field>
-            <a>szParams</a>
-            <b>params</b>
+            <a>szType</a>
+            <b>type</b>
         </field>
         <field>
             <a>tsCreated</a>
-            <b>time</b>
+            <b>createTime</b>
         </field>
         <field>
-            <a>szType</a>
-            <b>type</b>
+            <a>szDetail</a>
+            <b>detail</b>
+        </field>
+        <field>
+            <a>szStatus</a>
+            <b>status</b>
         </field>
     </mapping>
 </mappings>
